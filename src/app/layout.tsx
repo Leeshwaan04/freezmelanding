@@ -1,0 +1,89 @@
+import React from 'react';
+import type { Metadata } from 'next';
+import { Inter, Crimson_Text, Lora } from 'next/font/google';
+import '@/styles/index.css';
+import '@/styles/tailwind.css';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+  display: 'swap',
+  weight: ['400', '600', '700'],
+  preload: true,
+});
+
+const crimsonText = Crimson_Text({
+  subsets: ['latin'],
+  variable: '--font-crimson-text',
+  display: 'swap',
+  weight: ['400', '600', '700'],
+  preload: true,
+  adjustFontFallback: true,
+});
+
+const lora = Lora({
+  subsets: ['latin'],
+  variable: '--font-lora',
+  display: 'swap',
+  weight: ['400', '600', '700'],
+  preload: true,
+  adjustFontFallback: true,
+});
+
+export const metadata: Metadata = {
+  title: 'Freezme - Premium Matchmaking for Intentional Daters',
+  description: 'Tired of swiping? Experience human-curated matchmaking designed for intentional dating and meaningful connections. Quality over quantity, always.',
+  keywords: ['matchmaking', 'intentional dating', 'premium dating', 'curated introductions', 'serious relationships'],
+  authors: [{ name: 'Sumit', url: 'https://freezme.in' }],
+  metadataBase: new URL('https://freezme.in'),
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    title: 'Freezme - Premium Matchmaking for Intentional Daters',
+    description: 'Human-curated matchmaking for professionals and intentional daters.',
+    url: 'https://freezme.in',
+    siteName: 'Freezme',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  icons: {
+    icon: [
+      { url: '/assets/images/image-1768307203606.png', sizes: '32x32', type: 'image/png' },
+      { url: '/assets/images/image-1768307203606.png', sizes: '16x16', type: 'image/png' },
+      { url: '/assets/images/image-1768307203606.png', sizes: '192x192', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/assets/images/image-1768307203606.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: [{ url: '/assets/images/image-1768307203606.png' }],
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <head>
+        {/* Google Analytics Placeholder - Replace G-XXXXXXXXXX with your actual ID */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-XXXXXXXXXX');
+            `,
+          }}
+        />
+      </head>
+      <body className={`${inter.variable} ${crimsonText.variable} ${lora.variable} antialiased`}>
+        {children}
+      </body>
+    </html>
+  );
+}

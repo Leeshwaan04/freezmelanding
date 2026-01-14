@@ -1,0 +1,150 @@
+'use client';
+
+import React from 'react';
+import Link from 'next/link';
+import Icon from '@/components/ui/AppIcon';
+import Image from 'next/image';
+
+interface FooterProps {
+  className?: string;
+}
+
+const Footer: React.FC<FooterProps> = ({ className = '' }) => {
+  const currentYear = new Date().getFullYear();
+
+  const footerLinks = {
+    company: [
+      { label: 'About Us', href: '/about' },
+      { label: 'How It Works', href: '/how-it-works' },
+      { label: 'Pricing', href: '/pricing' },
+    ],
+    legal: [
+      { label: 'Privacy & Security', href: '/privacy-and-security' },
+      { label: 'Terms of Service', href: '/privacy-and-security' },
+    ],
+    support: [
+      { label: 'Contact Us', href: '/privacy-and-security' },
+      { label: 'FAQ', href: '/pricing' },
+    ],
+  };
+
+  const socialLinks = [
+    { name: 'Instagram', icon: 'CameraIcon', href: '#' },
+    { name: 'LinkedIn', icon: 'BriefcaseIcon', href: '#' },
+    { name: 'Twitter', icon: 'ChatBubbleLeftIcon', href: '#' },
+  ];
+
+  return (
+    <footer className={`bg-foreground text-background ${className}`}>
+      <div className="container mx-auto px-4 py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          {/* Brand Section */}
+          <div className="md:col-span-2">
+            <Link href="/homepage" className="inline-block mb-4">
+              <Image
+                src="/assets/images/image-1768293601753.png"
+                alt="Freezme Logo"
+                width={140}
+                height={40}
+                style={{ width: 'auto', height: 'auto' }}
+              />
+            </Link>
+            <p className="font-body text-sm text-background/80 mb-4 max-w-sm">
+              Premium matchmaking service for intentional daters seeking quality over quantity.
+            </p>
+            <div className="flex items-center gap-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  className="w-10 h-10 bg-background/10 rounded-full flex items-center justify-center hover:bg-accent transition-colors duration-300"
+                  aria-label={social.name}
+                >
+                  <Icon name={social.icon as any} size={20} variant="outline" className="text-background" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {/* Company Links */}
+          <div>
+            <h3 className="font-headline text-base font-semibold text-background mb-4">
+              Company
+            </h3>
+            <ul className="space-y-2">
+              {footerLinks.company.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="font-body text-sm text-background/70 hover:text-accent transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal Links */}
+          <div>
+            <h3 className="font-headline text-base font-semibold text-background mb-4">
+              Legal
+            </h3>
+            <ul className="space-y-2">
+              {footerLinks.legal.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="font-body text-sm text-background/70 hover:text-accent transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Support Links */}
+          <div>
+            <h3 className="font-headline text-base font-semibold text-background mb-4">
+              Support
+            </h3>
+            <ul className="space-y-2">
+              {footerLinks.support.map((link) => (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className="font-body text-sm text-background/70 hover:text-accent transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-background/20">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="font-body text-sm text-background/70 text-center md:text-left">
+              © {currentYear} Freezme. All rights reserved.
+            </p>
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2">
+                <Icon name="ShieldCheckIcon" size={16} variant="solid" className="text-accent" />
+                <span className="font-body text-xs text-background/70">Secure & Private</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Icon name="LockClosedIcon" size={16} variant="solid" className="text-accent" />
+                <span className="font-body text-xs text-background/70">SSL Encrypted</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

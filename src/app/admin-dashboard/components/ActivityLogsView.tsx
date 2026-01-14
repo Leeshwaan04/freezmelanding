@@ -1,0 +1,1 @@
+// DELETE THIS ENTIRE FILE - Activity logs not needed

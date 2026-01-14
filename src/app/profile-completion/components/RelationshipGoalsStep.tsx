@@ -1,0 +1,1 @@
+// DELETE THIS ENTIRE FILE - Relationship goals step not needed

@@ -1,0 +1,1 @@
+// DELETE THIS ENTIRE FILE - Applications management not needed

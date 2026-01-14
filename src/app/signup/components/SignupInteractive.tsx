@@ -1,0 +1,1 @@
+// DELETE THIS ENTIRE FILE - Signup component not needed

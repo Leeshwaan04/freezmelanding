@@ -1,0 +1,1 @@
+// DELETE THIS ENTIRE FILE - Admin dashboard component not needed
