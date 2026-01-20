@@ -40,7 +40,7 @@ const MoneyBackGuarantee: React.FC<MoneyBackGuaranteeProps> = ({ className = '' 
                 <Icon name="HandThumbUpIcon" size={32} variant="solid" className="text-white" />
               </div>
               <h2 className="font-headline text-3xl md:text-4xl font-semibold text-foreground mb-4">
-                Our Excellence Guarantee
+                Our Process Promise
               </h2>
               <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto">
                 We stand behind our curation process with absolute confidence. Your journey toward a meaningful partnership is in expert hands.
