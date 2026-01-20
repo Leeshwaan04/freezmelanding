@@ -16,7 +16,7 @@ const CTASection: React.FC<CTASectionProps> = ({ className = '' }) => {
           <p className="font-body text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto leading-relaxed">
             Join hundreds of intentional daters who chose quality over quantity. Your perfect match is waiting for a thoughtful introduction.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <a
               href="/application"
@@ -41,11 +41,11 @@ const CTASection: React.FC<CTASectionProps> = ({ className = '' }) => {
             </div>
             <div className="flex items-center gap-2">
               <Icon name="CheckCircleIcon" size={20} variant="solid" className="text-accent" />
-              <span className="font-body text-sm">Satisfaction Guarantee</span>
+              <span className="font-body text-sm">No Time Pressure</span>
             </div>
             <div className="flex items-center gap-2">
               <Icon name="CheckCircleIcon" size={20} variant="solid" className="text-accent" />
-              <span className="font-body text-sm">Secure Payments</span>
+              <span className="font-body text-sm">Global Data Security</span>
             </div>
           </div>
         </div>

@@ -17,36 +17,36 @@ const FAQ: React.FC<FAQProps> = ({ className = '' }) => {
 
   const faqData: FAQItem[] = [
     {
-      question: 'What payment methods do you accept?',
-      answer: 'We accept all major credit/debit cards, UPI, net banking, and popular digital wallets. All payments are processed through secure, PCI-compliant payment gateways.',
+      question: 'Is there an application fee?',
+      answer: 'No. Applying to Freezme is completely complimentary. We believe in assessing potential compatibility before any financial commitment is made.',
     },
     {
-      question: 'Is there a refund policy?',
-      answer: 'Yes. We offer a 100% refund on the assessment fee within 7 days if you\'re not satisfied. For the introduction service, we guarantee at least 3 curated introductions within 6 months or extend your service period at no additional cost.',
+      question: 'What is the selection criteria?',
+      answer: 'We look for emotional maturity, relationship readiness, and genuine intent. Our community is curated to ensure that every member is serious about finding a life partner, not just a date.',
     },
     {
-      question: 'Are there any hidden fees?',
-      answer: 'Absolutely not. The prices listed are comprehensive and include all services mentioned in each tier. We believe in complete transparency—what you see is what you pay.',
+      question: 'How does the membership work?',
+      answer: 'Membership is by invitation only. If your profile aligns with our community, we will invite you for a consultation to discuss the membership tier that best suits your relationship goals.',
     },
     {
       question: 'Can I upgrade my plan later?',
-      answer: 'Yes, you can upgrade from Essential to Premium at any time. We\'ll credit your initial payment toward the Premium tier, so you only pay the difference.',
+      answer: 'Yes. You can discuss upgrading your membership tier with your dedicated relationship manager at any point during your journey.',
     },
     {
-      question: 'What happens after I pay?',
-      answer: 'After payment, you\'ll receive a confirmation email with next steps. For the assessment fee, we\'ll schedule your in-depth consultation within 48 hours. For the introduction service, we begin the curation process immediately.',
+      question: 'What happens after I apply?',
+      answer: 'Our vetting team reviews every application manually. You will receive an email within 3-5 business days regarding the status of your application and potential next steps.',
     },
     {
       question: 'How long does the service last?',
-      answer: 'The Essential tier provides service for 6 months, while Premium offers 12 months. Both include the specified number of introductions during this period. If we don\'t meet our commitment, we extend your service at no cost.',
+      answer: 'Service duration depends on the membership tier you select, typically ranging from 6 to 12 months. We are committed to supporting you until you find a meaningful connection.',
     },
     {
-      question: 'Do you offer payment plans?',
-      answer: 'Currently, we require full payment upfront to ensure commitment from both sides. However, we occasionally offer seasonal promotions. Contact us to discuss your specific situation.',
+      question: 'Is my data private?',
+      answer: 'Absolutely. We operate with strict confidentiality. Your profile is never public, and your details are only shared with potential matches after we have verified mutual interest.',
     },
     {
       question: 'What if I don\'t connect with any introductions?',
-      answer: 'We provide detailed feedback after each introduction and adjust our approach based on your experience. If you don\'t connect with the initial introductions, we continue working with you within your service period to find better matches.',
+      answer: 'We view every introduction as a learning opportunity. We gather detailed feedback to refine our search. Our goal is quality, and we will continue to curate matches within your membership period.',
     },
   ];
 
@@ -85,9 +85,8 @@ const FAQ: React.FC<FAQProps> = ({ className = '' }) => {
                     name="ChevronDownIcon"
                     size={24}
                     variant="outline"
-                    className={`text-primary flex-shrink-0 transition-transform duration-300 ${
-                      openIndex === index ? 'rotate-180' : ''
-                    }`}
+                    className={`text-primary flex-shrink-0 transition-transform duration-300 ${openIndex === index ? 'rotate-180' : ''
+                      }`}
                   />
                 </button>
                 {openIndex === index && (

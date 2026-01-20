@@ -1,4 +1,7 @@
+'use client';
+
 import Icon from '@/components/ui/AppIcon';
+import { motion } from 'framer-motion';
 
 interface Step {
   number: number;
@@ -13,47 +16,67 @@ interface StepIndicatorProps {
 
 const StepIndicator = ({ steps, currentStep }: StepIndicatorProps) => {
   return (
-    <div className="hidden lg:block w-full max-w-4xl mx-auto mb-12">
+    <div className="hidden lg:block w-full max-w-4xl mx-auto mb-16 px-4">
       <div className="flex items-center justify-between relative">
-        {/* Connection Line */}
-        <div className="absolute top-6 left-0 right-0 h-0.5 bg-border -z-10">
-          <div
-            className="h-full bg-primary transition-all duration-500"
-            style={{ width: `${((currentStep - 1) / (steps.length - 1)) * 100}%` }}
-          />
-        </div>
+        {/* Connection Line Backend */}
+        <div className="absolute top-6 left-[2.5rem] right-[2.5rem] h-1 bg-muted/30 rounded-full -z-10" />
 
-        {steps.map((step) => (
-          <div key={step.number} className="flex flex-col items-center relative">
-            <div
-              className={`w-12 h-12 rounded-full flex items-center justify-center font-headline font-semibold text-lg transition-all duration-300 ${
-                step.number < currentStep
-                  ? 'bg-primary text-primary-foreground'
-                  : step.number === currentStep
-                  ? 'bg-accent text-accent-foreground ring-4 ring-accent/20'
-                  : 'bg-muted text-muted-foreground'
-              }`}
-            >
-              {step.number < currentStep ? (
-                <Icon name="CheckIcon" size={20} variant="solid" />
-              ) : (
-                step.number
-              )}
-            </div>
-            <div className="mt-3 text-center max-w-[120px]">
-              <p
-                className={`font-headline font-semibold text-sm ${
-                  step.number === currentStep ? 'text-primary' : 'text-muted-foreground'
-                }`}
+        {/* Connection Line Progress */}
+        <motion.div
+          className="absolute top-6 left-[2.5rem] h-1 bg-gradient-to-r from-primary to-accent rounded-full -z-10"
+          initial={{ width: 0 }}
+          animate={{
+            width: `calc(${((currentStep - 1) / (steps.length - 1)) * 100}% - 5rem)`
+          }}
+          transition={{ type: "spring", stiffness: 50, damping: 20 }}
+        />
+
+        {steps.map((step) => {
+          const isActive = step.number === currentStep;
+          const isCompleted = step.number < currentStep;
+
+          return (
+            <div key={step.number} className="flex flex-col items-center relative group">
+              <motion.div
+                initial={false}
+                animate={{
+                  scale: isActive ? 1.1 : 1,
+                  backgroundColor: isCompleted ? 'rgb(var(--primary))' : isActive ? 'rgb(var(--accent))' : 'rgb(var(--muted))',
+                  color: isCompleted || isActive ? 'white' : 'rgb(var(--muted-foreground))',
+                  boxShadow: isActive ? '0 0 20px rgba(var(--accent), 0.4)' : 'none'
+                }}
+                className={`w-12 h-12 rounded-2xl flex items-center justify-center font-headline font-bold text-lg transition-all duration-300 transform-gpu cursor-default`}
               >
-                {step.title}
-              </p>
-              <p className="text-xs text-muted-foreground mt-1 hidden xl:block">
-                {step.description}
-              </p>
+                {isCompleted ? (
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", stiffness: 200 }}
+                  >
+                    <Icon name="CheckIcon" size={24} variant="solid" />
+                  </motion.div>
+                ) : (
+                  <span>{step.number}</span>
+                )}
+              </motion.div>
+
+              <div className="mt-4 text-center absolute -bottom-14 w-32 left-1/2 -translate-x-1/2">
+                <motion.p
+                  animate={{
+                    color: isActive ? 'rgb(var(--primary))' : 'rgb(var(--muted-foreground))',
+                    scale: isActive ? 1.05 : 1
+                  }}
+                  className={`font-headline font-bold text-sm tracking-tight transition-all`}
+                >
+                  {step.title}
+                </motion.p>
+                <p className={`text-[10px] uppercase font-bold tracking-widest mt-1 opacity-60`}>
+                  {isCompleted ? 'Completed' : isActive ? 'In Progress' : 'Upcoming'}
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   );

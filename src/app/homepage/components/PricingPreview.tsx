@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Icon from '@/components/ui/AppIcon';
+import { motion } from 'framer-motion';
 
 interface PricingPreviewProps {
   className?: string;
@@ -40,12 +41,12 @@ const PricingPreview = ({ className = '' }: PricingPreviewProps) => {
                 <div className="flex-grow">
                   <div className="flex items-baseline justify-between mb-2">
                     <h4 className="font-headline text-lg font-semibold text-foreground">
-                      Application Assessment
+                      Initial Consultation
                     </h4>
-                    <span className="font-headline text-xl font-bold text-primary">₹5,000</span>
+                    <span className="font-headline text-sm font-bold text-accent uppercase tracking-widest">Included</span>
                   </div>
                   <p className="font-body text-sm text-muted-foreground">
-                    One-time fee for personal profile review and community fit assessment
+                    Complimentary profile review and personal assessment conversation for all applicants.
                   </p>
                 </div>
               </div>
@@ -57,12 +58,11 @@ const PricingPreview = ({ className = '' }: PricingPreviewProps) => {
                 <div className="flex-grow">
                   <div className="flex items-baseline justify-between mb-2">
                     <h4 className="font-headline text-lg font-semibold text-foreground">
-                      Introduction Fee
+                      Curated Experience
                     </h4>
-                    <span className="font-headline text-xl font-bold text-primary">₹25,000</span>
                   </div>
                   <p className="font-body text-sm text-muted-foreground">
-                    Per curated introduction with detailed compatibility context
+                    Bespoke matching plans tailored to your specific relationship goals and lifestyle.
                   </p>
                 </div>
               </div>
@@ -71,16 +71,16 @@ const PricingPreview = ({ className = '' }: PricingPreviewProps) => {
             {/* What's Included */}
             <div className="border-t border-border pt-6 mb-8">
               <h4 className="font-headline text-lg font-semibold text-foreground mb-4">
-                What's Included:
+                What to Expect:
               </h4>
               <ul className="space-y-3">
                 {[
-                  'Personal profile review by founder',
-                  'Thoughtful compatibility assessment',
-                  'Detailed introduction context',
-                  'Ongoing support and guidance',
-                  'Complete privacy protection',
-                  'No time pressure or rush',
+                  'Personal review by our elite curation team',
+                  'Deep-dive compatibility assessment',
+                  'High-intent introductions',
+                  'Ongoing guidance during your journey',
+                  'Total privacy & identity protection',
+                  'A human-centric matchmaking approach',
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <Icon name="CheckCircleIcon" size={20} variant="solid" className="text-success flex-shrink-0 mt-0.5" />
@@ -94,10 +94,12 @@ const PricingPreview = ({ className = '' }: PricingPreviewProps) => {
             <div className="text-center">
               <Link
                 href="/pricing"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-headline font-semibold rounded-md hover:-translate-y-0.5 hover:shadow-hover transition-all duration-200"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-headline font-semibold rounded-2xl hover:shadow-[0_10px_30px_rgba(var(--primary),0.3)] hover:-translate-y-1 transition-all duration-300 group"
               >
-                View Full Pricing Details
-                <Icon name="ArrowRightIcon" size={20} variant="outline" />
+                Explore Membership
+                <motion.div whileHover={{ x: 5 }}>
+                  <Icon name="ArrowRightIcon" size={20} variant="outline" />
+                </motion.div>
               </Link>
             </div>
           </div>

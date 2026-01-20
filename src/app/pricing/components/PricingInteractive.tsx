@@ -5,7 +5,7 @@ import PricingHero from './PricingHero';
 import PricingCard from './PricingCard';
 import ValueProposition from './ValueProposition';
 import CostComparison from './CostComparison';
-import PaymentSecurity from './PaymentSecurity';
+import DataPrivacySecurity from './DataPrivacySecurity';
 import MoneyBackGuarantee from './MoneyBackGuarantee';
 import FAQ from './FAQ';
 import CTASection from './CTASection';
@@ -30,30 +30,30 @@ const PricingInteractive: React.FC = () => {
 
   const pricingTiers: PricingTier[] = [
     {
-      title: 'Assessment Only',
-      price: '₹5,000',
-      description: 'Perfect for those wanting to understand their dating readiness before committing.',
+      title: 'Application',
+      price: 'Complimentary',
+      description: 'Start your journey with a comprehensive profile review and community fit assessment.',
       features: [
         { text: 'In-depth personality assessment', included: true },
-        { text: 'One-on-one consultation (60 minutes)', included: true },
+        { text: 'Community fit evaluation', included: true },
         { text: 'Detailed compatibility profile', included: true },
-        { text: 'Personalized dating strategy', included: true },
+        { text: 'Application feedback', included: true },
         { text: 'Curated introductions', included: false },
         { text: 'Ongoing support', included: false },
         { text: 'Profile optimization', included: false },
         { text: 'Date coaching', included: false },
       ],
       isPopular: false,
-      ctaText: 'Start Assessment',
+      ctaText: 'Apply Now',
       ctaLink: '/application',
     },
     {
       title: 'Essential',
-      price: '₹50,000',
+      price: 'Starts at ₹25,000',
       description: 'Comprehensive service for serious relationship seekers ready to invest in quality.',
       features: [
-        { text: 'Everything in Assessment', included: true },
-        { text: '3 curated introductions (6 months)', included: true },
+        { text: 'Everything in Application', included: true },
+        { text: 'Curated introductions', included: true },
         { text: 'Profile optimization & photography guidance', included: true },
         { text: 'Post-date feedback & coaching', included: true },
         { text: 'Email & phone support', included: true },
@@ -62,16 +62,16 @@ const PricingInteractive: React.FC = () => {
         { text: 'VIP event access', included: false },
       ],
       isPopular: true,
-      ctaText: 'Choose Essential',
+      ctaText: 'Inquire for Essential',
       ctaLink: '/application',
     },
     {
       title: 'Premium',
-      price: '₹1,50,000',
+      price: 'Starts at ₹65,000',
       description: 'Elite service with priority matching, extended support, and exclusive benefits.',
       features: [
         { text: 'Everything in Essential', included: true },
-        { text: '6 curated introductions (12 months)', included: true },
+        { text: 'Extended service duration', included: true },
         { text: 'Priority matching & faster turnaround', included: true },
         { text: 'Professional photography session', included: true },
         { text: 'Unlimited coaching sessions', included: true },
@@ -80,7 +80,7 @@ const PricingInteractive: React.FC = () => {
         { text: '24/7 priority support', included: true },
       ],
       isPopular: false,
-      ctaText: 'Choose Premium',
+      ctaText: 'Inquire for Premium',
       ctaLink: '/application',
     },
   ];
@@ -127,7 +127,7 @@ const PricingInteractive: React.FC = () => {
 
           <div className="mt-12 text-center">
             <p className="font-body text-sm text-muted-foreground">
-              All prices are in Indian Rupees (₹) and include applicable taxes.
+              All prices are indicative estimates. Final membership fees are determined after consultation.
             </p>
           </div>
         </div>
@@ -135,7 +135,7 @@ const PricingInteractive: React.FC = () => {
 
       <ValueProposition />
       <CostComparison />
-      <PaymentSecurity />
+      <DataPrivacySecurity />
       <MoneyBackGuarantee />
       <FAQ />
       <CTASection />

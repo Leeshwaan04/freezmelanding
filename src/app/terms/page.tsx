@@ -20,28 +20,35 @@ export default function TermsPage() {
                     </section>
 
                     <section>
-                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">2. Assessment Fee</h2>
+                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">2. Application & Vetting</h2>
                         <p>
-                            The <strong>₹5,000 assessment fee</strong> is a non-refundable payment for the manual review of your application, verification of details, and community fit assessment. Payment of this fee does not guarantee acceptance into the membership program or a specific number of introductions.
+                            The application process involves a manual review of your profile to ensure community alignment. By submitting an application, you agree to provide truthful information. Freezme reserves the right to accept or decline applications based on our internal quality standards and current community balance.
                         </p>
                     </section>
 
                     <section>
-                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">3. Eligibility</h2>
+                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">3. Confidentiality</h2>
+                        <p>
+                            We treat all application data with the highest level of discretion. Your personal narrative and private details are used exclusively for the purpose of matchmaking and are never shared with third parties or other members without your explicit consent.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">4. Eligibility</h2>
                         <p>
                             You must be at least 21 years of age and legally single to use our services. By applying, you represent and warrant that you have never been convicted of a felony and that you are not required to register as a sex offender with any government entity.
                         </p>
                     </section>
 
                     <section>
-                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">4. Human Curation & Accuracy</h2>
+                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">5. Human Curation & Accuracy</h2>
                         <p>
                             While we strive to provide accurate information about potential matches, we rely on information provided by members. We do not perform criminal background checks on all members and advise all users to exercise caution when meeting new people.
                         </p>
                     </section>
 
                     <section>
-                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">5. Termination</h2>
+                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">6. Termination</h2>
                         <p>
                             We reserve the right to decline any application or terminate any membership at our sole discretion, without providing specific reasons, if we believe the member does not align with our community values.
                         </p>

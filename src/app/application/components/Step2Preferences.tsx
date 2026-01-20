@@ -1,4 +1,7 @@
+'use client';
+
 import FormField from './FormField';
+import { motion } from 'framer-motion';
 
 interface PreferencesData {
   ageRangeMin: string;
@@ -61,109 +64,160 @@ const Step2Preferences = ({ data, errors, onChange }: Step2PreferencesProps) => 
     { value: 'eggetarian', label: 'Eggetarian' },
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, x: -10 },
+    visible: { opacity: 1, x: 0 }
+  };
+
   return (
-    <div className="space-y-6">
-      <div>
-        <h2 className="font-headline text-2xl font-semibold text-foreground mb-2">
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className="space-y-8"
+    >
+      <div className="border-b border-border/20 pb-6">
+        <h2 className="font-headline text-3xl font-bold bg-gradient-to-r from-foreground to-foreground/60 bg-clip-text text-transparent mb-2">
           Partner Preferences
         </h2>
-        <p className="text-muted-foreground font-body">
-          Help us understand what you&apos;re looking for in a potential match. Be honest—this helps us curate better introductions.
+        <p className="text-muted-foreground font-body text-sm">
+          Help us understand what you&apos;re looking for. Be authentic—this helps our experts curate the most compatible introductions for you.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <FormField
-          label="Preferred Age Range (Min)"
-          name="ageRangeMin"
-          type="number"
-          value={data.ageRangeMin}
-          onChange={onChange}
-          error={errors.ageRangeMin}
-          required
-          placeholder="25"
-          helpText="Minimum age preference"
-        />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+        <motion.div variants={itemVariants}>
+          <FormField
+            label="Min Age Preference"
+            name="ageRangeMin"
+            type="number"
+            value={data.ageRangeMin}
+            onChange={onChange}
+            error={errors.ageRangeMin}
+            required
+            placeholder="25"
+            icon="ArrowsPointingInIcon"
+            helpText="The lower bound of your biological age preference."
+          />
+        </motion.div>
 
-        <FormField
-          label="Preferred Age Range (Max)"
-          name="ageRangeMax"
-          type="number"
-          value={data.ageRangeMax}
-          onChange={onChange}
-          error={errors.ageRangeMax}
-          required
-          placeholder="35"
-          helpText="Maximum age preference"
-        />
+        <motion.div variants={itemVariants}>
+          <FormField
+            label="Max Age Preference"
+            name="ageRangeMax"
+            type="number"
+            value={data.ageRangeMax}
+            onChange={onChange}
+            error={errors.ageRangeMax}
+            required
+            placeholder="35"
+            icon="ArrowsPointingOutIcon"
+            helpText="The upper bound of your biological age preference."
+          />
+        </motion.div>
 
-        <FormField
-          label="Height Preference"
-          name="heightPreference"
-          type="select"
-          value={data.heightPreference}
-          onChange={onChange}
-          error={errors.heightPreference}
-          required
-          options={heightOptions}
-        />
+        <motion.div variants={itemVariants}>
+          <FormField
+            label="Height Alignment"
+            name="heightPreference"
+            type="select"
+            value={data.heightPreference}
+            onChange={onChange}
+            error={errors.heightPreference}
+            required
+            options={heightOptions}
+            icon="Bars3Icon"
+            placeholder="Search criteria"
+          />
+        </motion.div>
 
-        <FormField
-          label="Religion Preference"
-          name="religionPreference"
-          type="select"
-          value={data.religionPreference}
-          onChange={onChange}
-          error={errors.religionPreference}
-          required
-          options={religionOptions}
-        />
+        <motion.div variants={itemVariants}>
+          <FormField
+            label="Spiritual & Cultural Background"
+            name="religionPreference"
+            type="select"
+            value={data.religionPreference}
+            onChange={onChange}
+            error={errors.religionPreference}
+            required
+            options={religionOptions}
+            icon="SparklesIcon"
+            placeholder="Alignment"
+          />
+        </motion.div>
 
-        <FormField
-          label="Education Preference"
-          name="educationPreference"
-          type="select"
-          value={data.educationPreference}
-          onChange={onChange}
-          error={errors.educationPreference}
-          required
-          options={educationOptions}
-        />
+        <motion.div variants={itemVariants}>
+          <FormField
+            label="Educational Prowess"
+            name="educationPreference"
+            type="select"
+            value={data.educationPreference}
+            onChange={onChange}
+            error={errors.educationPreference}
+            required
+            options={educationOptions}
+            icon="AcademicCapIcon"
+            placeholder="Minimum expectation"
+          />
+        </motion.div>
 
-        <FormField
-          label="Smoking Preference"
-          name="smokingPreference"
-          type="select"
-          value={data.smokingPreference}
-          onChange={onChange}
-          error={errors.smokingPreference}
-          required
-          options={lifestyleOptions}
-        />
+        <motion.div variants={itemVariants}>
+          <FormField
+            label="Lifestyle Sync: Tobacco"
+            name="smokingPreference"
+            type="select"
+            value={data.smokingPreference}
+            onChange={onChange}
+            error={errors.smokingPreference}
+            required
+            options={lifestyleOptions}
+            icon="NoSymbolIcon"
+            placeholder="Preference"
+          />
+        </motion.div>
 
-        <FormField
-          label="Drinking Preference"
-          name="drinkingPreference"
-          type="select"
-          value={data.drinkingPreference}
-          onChange={onChange}
-          error={errors.drinkingPreference}
-          required
-          options={lifestyleOptions}
-        />
+        <motion.div variants={itemVariants}>
+          <FormField
+            label="Lifestyle Sync: Alcohol"
+            name="drinkingPreference"
+            type="select"
+            value={data.drinkingPreference}
+            onChange={onChange}
+            error={errors.drinkingPreference}
+            required
+            options={lifestyleOptions}
+            icon="InformationCircleIcon"
+            placeholder="Social preferences"
+          />
+        </motion.div>
 
-        <FormField
-          label="Diet Preference"
-          name="dietPreference"
-          type="select"
-          value={data.dietPreference}
-          onChange={onChange}
-          error={errors.dietPreference}
-          required
-          options={dietOptions}
-        />
+        <motion.div variants={itemVariants}>
+          <FormField
+            label="Dietary Philosophy"
+            name="dietPreference"
+            type="select"
+            value={data.dietPreference}
+            onChange={onChange}
+            error={errors.dietPreference}
+            required
+            options={dietOptions}
+            icon="FaceSmileIcon"
+            placeholder="Daily values"
+          />
+        </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

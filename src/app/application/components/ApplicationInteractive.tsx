@@ -7,8 +7,10 @@ import StepIndicator from './StepIndicator';
 import Step1Personal from './Step1Personal';
 import Step2Preferences from './Step2Preferences';
 import Step3AboutYou from './Step3AboutYou';
-import Step4Payment from './Step4Payment';
+import Step4Finalize from './Step4Finalize';
 import Script from 'next/script';
+import { motion, AnimatePresence } from 'framer-motion';
+import confetti from 'canvas-confetti';
 
 interface FormData {
   // Step 1
@@ -79,6 +81,8 @@ const ApplicationInteractive = () => {
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [direction, setDirection] = useState(0);
+  const [isSaving, setIsSaving] = useState(false);
 
   useEffect(() => {
     setIsHydrated(true);
@@ -100,19 +104,28 @@ const ApplicationInteractive = () => {
     }
   }, []);
 
-  // Save progress to localStorage
+  // Save progress to localStorage (debounced)
   useEffect(() => {
-    if (isHydrated) {
+    if (!isHydrated) return;
+
+    setIsSaving(true);
+    const timer = setTimeout(() => {
       localStorage.setItem('freezme_application_progress', JSON.stringify(formData));
       localStorage.setItem('freezme_application_step', currentStep.toString());
-    }
+      setIsSaving(false);
+    }, 1000); // Save only after 1 second of inactivity
+
+    return () => {
+      clearTimeout(timer);
+      setIsSaving(false);
+    };
   }, [formData, currentStep, isHydrated]);
 
   const steps = [
-    { number: 1, title: 'Personal Info', description: 'Basic details' },
-    { number: 2, title: 'Preferences', description: 'Partner criteria' },
-    { number: 3, title: 'About You', description: 'Your story' },
-    { number: 4, title: 'Payment', description: 'Complete application' },
+    { number: 1, title: 'Identity', description: 'The foundational details' },
+    { number: 2, title: 'The Compass', description: 'Your vision for a partner' },
+    { number: 3, title: 'The Deep Dive', description: 'Values, legacy & story' },
+    { number: 4, title: 'Finalize', description: 'Review & submit application' },
   ];
 
   const handleInputChange = (
@@ -163,8 +176,8 @@ const ApplicationInteractive = () => {
       if (!formData.dietPreference) newErrors.dietPreference = 'Diet preference is required';
     } else if (step === 3) {
       if (!formData.aboutYourself.trim()) newErrors.aboutYourself = 'Please tell us about yourself';
-      else if (formData.aboutYourself.trim().split(/\s+/).length < 100)
-        newErrors.aboutYourself = 'Please write at least 100 words';
+      else if (formData.aboutYourself.trim().split(/\s+/).length < 20)
+        newErrors.aboutYourself = 'Please write at least 20 words';
       if (!formData.hobbies.trim()) newErrors.hobbies = 'Please share your hobbies';
       if (!formData.relationshipGoals) newErrors.relationshipGoals = 'Relationship goals are required';
       if (!formData.dealBreakers.trim()) newErrors.dealBreakers = 'Please specify your deal breakers';
@@ -174,7 +187,7 @@ const ApplicationInteractive = () => {
     } else if (step === 4) {
       if (!formData.acceptTerms) newErrors.acceptTerms = 'You must accept the terms of service';
       if (!formData.acceptPrivacy) newErrors.acceptPrivacy = 'You must accept the privacy policy';
-      if (!formData.paymentMethod) newErrors.paymentMethod = 'Please select a payment method';
+      // Payment method is handled by Razorpay modal, no need to validate here
     }
 
     setErrors(newErrors);
@@ -183,12 +196,17 @@ const ApplicationInteractive = () => {
 
   const handleNext = () => {
     if (validateStep(currentStep)) {
+      setDirection(1);
       setCurrentStep((prev) => Math.min(prev + 1, 4));
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // If validation fails, scroll to top so user sees the errors
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
   const handlePrevious = () => {
+    setDirection(-1);
     setCurrentStep((prev) => Math.max(prev - 1, 1));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -199,43 +217,7 @@ const ApplicationInteractive = () => {
     setIsSubmitting(true);
 
     try {
-      // 1. Initialize Razorpay Payment
-      const res = await new Promise((resolve, reject) => {
-        const options = {
-          key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || 'rzp_test_placeholder',
-          amount: 500000, // 5000 INR in paise
-          currency: 'INR',
-          name: 'Freezme',
-          description: 'Application Assessment Fee',
-          image: '/assets/images/image-1768307203606.png',
-          handler: function (response: any) {
-            resolve(response);
-          },
-          prefill: {
-            name: formData.fullName,
-            email: formData.email,
-            contact: formData.phone,
-          },
-          theme: {
-            color: '#2C5F5D',
-          },
-          modal: {
-            ondismiss: function () {
-              reject(new Error('Payment cancelled'));
-            }
-          }
-        };
-
-        if (!(window as any).Razorpay) {
-          reject(new Error('Razorpay SDK failed to load'));
-          return;
-        }
-
-        const rzp = new (window as any).Razorpay(options);
-        rzp.open();
-      });
-
-      // 2. Submit Data to API
+      // Submit Data to API directly (leads only)
       const response = await fetch('/api/apply', {
         method: 'POST',
         headers: {
@@ -243,25 +225,31 @@ const ApplicationInteractive = () => {
         },
         body: JSON.stringify({
           ...formData,
-          paymentResponse: res
+          leadSource: 'website_application'
         }),
       });
 
       if (!response.ok) {
-        throw new Error('Failed to save application data');
+        throw new Error('Failed to submit application');
       }
 
       setIsSubmitting(false);
       setShowSuccessModal(true);
+
+      // Trigger Confetti
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#2C5F5D', '#D9A174', '#F8F1EB']
+      });
 
       // Clear saved progress
       localStorage.removeItem('freezme_application_progress');
       localStorage.removeItem('freezme_application_step');
     } catch (error: any) {
       console.error('Submission error:', error);
-      if (error.message !== 'Payment cancelled') {
-        alert(error.message || 'There was an error processing your request.');
-      }
+      alert(error.message || 'There was an error processing your request.');
       setIsSubmitting(false);
     }
   };
@@ -284,12 +272,6 @@ const ApplicationInteractive = () => {
 
   return (
     <div className="min-h-screen bg-background py-8 px-4">
-      {/* Razorpay Integration */}
-      <Script
-        src="https://checkout.razorpay.com/v1/checkout.js"
-        onLoad={() => console.log('Razorpay SDK loaded')}
-      />
-
       <div className="container mx-auto max-w-4xl">
         {/* Header */}
         <div className="text-center mb-8">
@@ -314,115 +296,173 @@ const ApplicationInteractive = () => {
         <StepIndicator steps={steps} currentStep={currentStep} />
 
         {/* Form Content */}
-        <div className="bg-card rounded-lg shadow-card p-6 md:p-8 mb-8">
-          {currentStep === 1 && (
-            <Step1Personal
-              data={{
-                fullName: formData.fullName,
-                email: formData.email,
-                phone: formData.phone,
-                dateOfBirth: formData.dateOfBirth,
-                gender: formData.gender,
-                city: formData.city,
-                profession: formData.profession,
-                education: formData.education,
+        {/* Form Content */}
+        <div className="relative overflow-hidden min-h-[500px]">
+          <AnimatePresence mode="wait" initial={false} custom={direction}>
+            <motion.div
+              key={currentStep}
+              custom={direction}
+              variants={{
+                enter: (direction: number) => ({
+                  x: direction > 0 ? 100 : -100,
+                  opacity: 0,
+                  filter: 'blur(10px)'
+                }),
+                center: {
+                  zIndex: 1,
+                  x: 0,
+                  opacity: 1,
+                  filter: 'blur(0px)'
+                },
+                exit: (direction: number) => ({
+                  zIndex: 0,
+                  x: direction < 0 ? 100 : -100,
+                  opacity: 0,
+                  filter: 'blur(10px)'
+                })
               }}
-              errors={errors}
-              onChange={handleInputChange}
-            />
-          )}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{
+                x: { type: "spring", stiffness: 300, damping: 30 },
+                opacity: { duration: 0.2 }
+              }}
+              className="bg-card/50 backdrop-blur-md border border-border/50 rounded-3xl shadow-2xl p-6 md:p-10 mb-8 transform-gpu"
+            >
+              {currentStep === 1 && (
+                <Step1Personal
+                  data={{
+                    fullName: formData.fullName,
+                    email: formData.email,
+                    phone: formData.phone,
+                    dateOfBirth: formData.dateOfBirth,
+                    gender: formData.gender,
+                    city: formData.city,
+                    profession: formData.profession,
+                    education: formData.education,
+                  }}
+                  errors={errors}
+                  onChange={handleInputChange}
+                />
+              )}
 
-          {currentStep === 2 && (
-            <Step2Preferences
-              data={{
-                ageRangeMin: formData.ageRangeMin,
-                ageRangeMax: formData.ageRangeMax,
-                heightPreference: formData.heightPreference,
-                religionPreference: formData.religionPreference,
-                educationPreference: formData.educationPreference,
-                smokingPreference: formData.smokingPreference,
-                drinkingPreference: formData.drinkingPreference,
-                dietPreference: formData.dietPreference,
-              }}
-              errors={errors}
-              onChange={handleInputChange}
-            />
-          )}
+              {currentStep === 2 && (
+                <Step2Preferences
+                  data={{
+                    ageRangeMin: formData.ageRangeMin,
+                    ageRangeMax: formData.ageRangeMax,
+                    heightPreference: formData.heightPreference,
+                    religionPreference: formData.religionPreference,
+                    educationPreference: formData.educationPreference,
+                    smokingPreference: formData.smokingPreference,
+                    drinkingPreference: formData.drinkingPreference,
+                    dietPreference: formData.dietPreference,
+                  }}
+                  errors={errors}
+                  onChange={handleInputChange}
+                />
+              )}
 
-          {currentStep === 3 && (
-            <Step3AboutYou
-              data={{
-                aboutYourself: formData.aboutYourself,
-                hobbies: formData.hobbies,
-                relationshipGoals: formData.relationshipGoals,
-                dealBreakers: formData.dealBreakers,
-                previousRelationships: formData.previousRelationships,
-                familyValues: formData.familyValues,
-              }}
-              errors={errors}
-              onChange={handleInputChange}
-            />
-          )}
+              {currentStep === 3 && (
+                <Step3AboutYou
+                  data={{
+                    aboutYourself: formData.aboutYourself,
+                    hobbies: formData.hobbies,
+                    relationshipGoals: formData.relationshipGoals,
+                    dealBreakers: formData.dealBreakers,
+                    previousRelationships: formData.previousRelationships,
+                    familyValues: formData.familyValues,
+                  }}
+                  errors={errors}
+                  onChange={handleInputChange}
+                />
+              )}
 
-          {currentStep === 4 && (
-            <Step4Payment
-              data={{
-                acceptTerms: formData.acceptTerms,
-                acceptPrivacy: formData.acceptPrivacy,
-                paymentMethod: formData.paymentMethod,
-              }}
-              errors={errors}
-              onChange={handleInputChange}
-            />
-          )}
+              {currentStep === 4 && (
+                <Step4Finalize
+                  data={{
+                    acceptTerms: formData.acceptTerms,
+                    acceptPrivacy: formData.acceptPrivacy,
+                    paymentMethod: formData.paymentMethod,
+                  }}
+                  errors={errors}
+                  onChange={handleInputChange}
+                />
+              )}
+            </motion.div>
+          </AnimatePresence>
         </div>
 
         {/* Navigation Buttons */}
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 px-2">
           <button
             onClick={handlePrevious}
             disabled={currentStep === 1}
-            className="inline-flex items-center gap-2 px-6 py-3 border border-border rounded-md font-body font-medium text-foreground hover:bg-muted transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full md:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 border border-border/50 rounded-2xl font-body font-medium text-foreground hover:bg-muted/50 transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed group"
           >
-            <Icon name="ChevronLeftIcon" size={20} variant="outline" />
+            <motion.div whileHover={{ x: -4 }}>
+              <Icon name="ChevronLeftIcon" size={20} variant="outline" />
+            </motion.div>
             Previous
           </button>
 
-          {currentStep < 4 ? (
-            <button
-              onClick={handleNext}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-md font-body font-semibold hover:-translate-y-0.5 hover:shadow-hover transition-all duration-200"
-            >
-              Next
-              <Icon name="ChevronRightIcon" size={20} variant="outline" />
-            </button>
-          ) : (
-            <button
-              onClick={handleSubmit}
-              disabled={isSubmitting}
-              className="inline-flex items-center gap-2 px-8 py-3 bg-accent text-accent-foreground rounded-md font-headline font-semibold hover:-translate-y-0.5 hover:shadow-hover transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {isSubmitting ? (
-                <>
-                  <div className="w-5 h-5 border-2 border-accent-foreground border-t-transparent rounded-full animate-spin" />
-                  Processing...
-                </>
-              ) : (
-                <>
-                  Submit & Pay ₹5,000
-                  <Icon name="CheckCircleIcon" size={20} variant="solid" />
-                </>
-              )}
-            </button>
-          )}
-        </div>
+          <div className="flex flex-col items-center gap-4 w-full md:w-auto">
+            {currentStep < 4 ? (
+              <button
+                onClick={handleNext}
+                className="w-full md:w-auto inline-flex items-center justify-center gap-3 px-12 py-4 bg-primary text-primary-foreground rounded-2xl font-headline font-bold text-lg hover:shadow-[0_10px_30px_rgba(var(--primary),0.3)] hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group"
+              >
+                <span className="relative z-10">Next Step</span>
+                <motion.div className="relative z-10" whileHover={{ x: 4 }}>
+                  <Icon name="ChevronRightIcon" size={20} variant="outline" />
+                </motion.div>
+                <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+              </button>
+            ) : (
+              <button
+                onClick={handleSubmit}
+                disabled={isSubmitting}
+                className="w-full md:w-auto inline-flex items-center justify-center gap-3 px-14 py-4 bg-accent text-accent-foreground rounded-2xl font-headline font-bold text-xl hover:shadow-[0_10px_30px_rgba(var(--accent),0.3)] hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed relative group"
+              >
+                {isSubmitting ? (
+                  <>
+                    <div className="w-6 h-6 border-3 border-accent-foreground/30 border-t-accent-foreground rounded-full animate-spin" />
+                    Validating...
+                  </>
+                ) : (
+                  <>
+                    Submit Application
+                    <Icon name="CheckCircleIcon" size={22} variant="solid" />
+                  </>
+                )}
+                <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+              </button>
+            )}
 
-        {/* Save Progress Note */}
-        <div className="mt-6 text-center">
-          <p className="text-sm font-body text-muted-foreground flex items-center justify-center gap-2">
-            <Icon name="CloudArrowUpIcon" size={16} variant="outline" />
-            Your progress is automatically saved. You can return anytime to complete your application.
-          </p>
+            {/* Auto-save status */}
+            <AnimatePresence mode="wait">
+              {isSaving ? (
+                <motion.p
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  className="text-xs font-body text-muted-foreground/60 flex items-center gap-2"
+                >
+                  <div className="w-2 h-2 rounded-full bg-success animate-pulse" />
+                  Saving progress...
+                </motion.p>
+              ) : (
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="text-xs font-body text-muted-foreground/40"
+                >
+                  Last saved: {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </div>
 
@@ -437,7 +477,7 @@ const ApplicationInteractive = () => {
               Application Submitted!
             </h2>
             <p className="font-body text-muted-foreground mb-6">
-              Thank you for applying to Freezme. We&apos;ve received your application and payment. Our team will review your profile within 3-5 business days and reach out via email.
+              Thank you for applying to Freezme. We&apos;ve received your application. Our team will review your profile and reach out within 3-5 business days.
             </p>
             <div className="bg-muted/50 rounded-md p-4 mb-6 text-left">
               <p className="text-sm font-body text-foreground mb-2">
