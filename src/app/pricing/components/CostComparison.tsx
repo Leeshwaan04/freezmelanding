@@ -100,7 +100,7 @@ const CostComparison: React.FC<CostComparisonProps> = ({ className = '' }) => {
                     One-time
                   </td>
                   <td className="px-6 py-4 font-body text-sm text-foreground font-semibold">
-                    From ₹12,000
+                    From ₹2,999
                   </td>
                   <td className="px-6 py-4 font-body text-sm text-foreground font-semibold">
                     10-20 hours
