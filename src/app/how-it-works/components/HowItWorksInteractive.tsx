@@ -95,39 +95,37 @@ export default function HowItWorksInteractive() {
 
   const pricingOptions: PricingData[] = [
     {
-      title: "Application",
+      title: "The Assessment",
       amount: "Complimentary",
-      description: "Initial profile review",
+      description: "Zero-cost entry point",
       features: [
-        "Comprehensive application review",
+        "Professional profile review",
+        "Compatibility potential score",
         "Community fit assessment",
-        "No financial commitment required",
-        "Feedback on application status"]
+        "Database inclusion (Passive)"]
 
     },
     {
-      title: "Essential Membership",
-      amount: "Starts at ₹25,000",
-      description: "Curated introductions",
+      title: "Verified Access",
+      amount: "₹2,999",
+      description: "One-time verification",
       features: [
-        "Personally curated match introductions",
-        "Detailed compatibility context",
-        "Mutual consent verification",
-        "3 months of ongoing support",
-        "Relationship guidance resources"],
+        "Human Verification check",
+        "Verified Profile Badge",
+        "Priority visibility in search",
+        "Pay-per-match introductions"],
 
       isHighlighted: true
     },
     {
-      title: "Premium Membership",
-      amount: "Starts at ₹65,000",
-      description: "Priority search & coaching",
+      title: "Personal Matchmaker",
+      amount: "From ₹15,000",
+      description: "Human-led service",
       features: [
-        "Priority matching & dedicated search",
-        "Extended 6-12 month support period",
-        "Personalized dating coaching sessions",
-        "Exclusive community events access",
-        "Dedicated relationship manager"]
+        "Dedicated Relationship Manager",
+        "Proactive candidate search",
+        "Hand-picked introductions",
+        "Date arrangement & feedback"]
 
     }];
 
