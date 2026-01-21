@@ -41,13 +41,9 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
           {/* Brand Section */}
           <div className="md:col-span-2">
             <Link href="/homepage" className="inline-block mb-4">
-              <Image
-                src="/assets/images/image-1768293601753.png"
-                alt="Freezme Logo"
-                width={140}
-                height={40}
-                style={{ width: 'auto', height: 'auto' }}
-              />
+              <span className="font-headline text-3xl font-bold text-background">
+                Freezme
+              </span>
             </Link>
             <p className="font-body text-sm text-background/80 mb-4 max-w-sm">
               Premium matchmaking service for intentional daters seeking quality over quantity.
