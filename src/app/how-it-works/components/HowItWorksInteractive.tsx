@@ -5,6 +5,7 @@ import ProcessStep from './ProcessStep';
 import PricingCard from './PricingCard';
 import TestimonialCard from './TestimonialCard';
 import FAQItem from './FAQItem';
+import Footer from '@/components/common/Footer';
 
 interface ProcessStepData {
   stepNumber: number;
@@ -339,66 +340,7 @@ export default function HowItWorksInteractive() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-              <div>
-                <h3 className="font-headline text-lg font-semibold mb-4">Freezme</h3>
-                <p className="font-body text-sm text-white/80">
-                  Intentional introductions for meaningful connections.
-                </p>
-              </div>
-              <div>
-                <h4 className="font-headline text-sm font-semibold mb-4">Quick Links</h4>
-                <ul className="space-y-2">
-                  <li>
-                    <a href="/homepage" className="font-body text-sm text-white/80 hover:text-white transition-colors">
-                      Home
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/how-it-works" className="font-body text-sm text-white/80 hover:text-white transition-colors">
-                      How It Works
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/about" className="font-body text-sm text-white/80 hover:text-white transition-colors">
-                      About
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/pricing" className="font-body text-sm text-white/80 hover:text-white transition-colors">
-                      Pricing
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-headline text-sm font-semibold mb-4">Legal</h4>
-                <ul className="space-y-2">
-                  <li>
-                    <a href="/privacy-and-security" className="font-body text-sm text-white/80 hover:text-white transition-colors">
-                      Privacy & Security
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-headline text-sm font-semibold mb-4">Connect</h4>
-                <p className="font-body text-sm text-white/80">
-                  hello@freezme.in
-                </p>
-              </div>
-            </div>
-            <div className="border-t border-white/20 pt-8 text-center">
-              <p className="font-body text-sm text-white/80">
-                &copy; {new Date().getFullYear()} Freezme. All rights reserved.
-              </p>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>);
 
 }
