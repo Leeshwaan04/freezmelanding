@@ -6,7 +6,7 @@ import MissionValues from './components/MissionValues';
 import PhilosophySection from './components/PhilosophySection';
 import CredentialsSection from './components/CredentialsSection';
 import CTASection from './components/CTASection';
-import Footer from './components/Footer';
+import Footer from '@/components/common/Footer';
 
 export const metadata: Metadata = {
   title: 'About - Freezme',
@@ -17,7 +17,7 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-background">
       <Header />
-      
+
       <div className="pt-16">
         <HeroSection />
         <FounderStory />
