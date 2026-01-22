@@ -36,7 +36,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
     >
       {isPopular && (
         <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 bg-accent rounded-full shadow-md">
-          <span className="font-headline text-sm font-bold text-accent-foreground uppercase tracking-wide">
+          <span className="font-headline text-sm font-semibold text-accent-foreground uppercase tracking-widest">
             Most Popular
           </span>
         </div>
@@ -49,7 +49,7 @@ const PricingCard: React.FC<PricingCardProps> = ({
         <div className="mb-4 flex flex-col items-center">
           <span className="font-headline text-5xl font-bold text-primary">{price}</span>
           {priceLabel && (
-            <span className="inline-block mt-2 px-3 py-1 text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-100 rounded-full border border-amber-200">
+            <span className="inline-block mt-2 px-3 py-1 text-xs font-headline font-semibold uppercase tracking-widest text-primary bg-accent/20 rounded-full border border-accent/50">
               {priceLabel}
             </span>
           )}
@@ -79,8 +79,8 @@ const PricingCard: React.FC<PricingCardProps> = ({
       <a
         href={ctaLink}
         className={`block w-full py-3 px-6 rounded-md text-center font-headline font-semibold transition-all duration-200 ${isPopular
-            ? 'bg-accent text-accent-foreground hover:shadow-hover hover:-translate-y-0.5'
-            : 'bg-secondary text-secondary-foreground hover:shadow-hover hover:-translate-y-0.5'
+          ? 'bg-accent text-accent-foreground hover:shadow-hover hover:-translate-y-0.5'
+          : 'bg-secondary text-secondary-foreground hover:shadow-hover hover:-translate-y-0.5'
           }`}
       >
         {ctaText}
