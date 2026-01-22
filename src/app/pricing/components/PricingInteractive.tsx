@@ -14,6 +14,7 @@ import Footer from '@/components/common/Footer';
 interface PricingTier {
   title: string;
   price: string;
+  priceLabel?: string;
   description: string;
   features: Array<{ text: string; included: boolean }>;
   isPopular: boolean;
@@ -49,7 +50,8 @@ const PricingInteractive: React.FC = () => {
     },
     {
       title: 'Select Membership',
-      price: '₹2,999 (By Invitation)',
+      price: '₹2,999',
+      priceLabel: 'By Invitation Only',
       description: 'Exclusive status for verified individuals. Fee payable only upon acceptance. Lifetime validity.',
       features: [
         { text: 'Everything in Candidate Profile', included: true },
@@ -67,7 +69,8 @@ const PricingInteractive: React.FC = () => {
     },
     {
       title: 'Signature Service',
-      price: 'From ₹15,000 (By Invitation)',
+      price: 'From ₹15,000',
+      priceLabel: 'By Invitation Only',
       description: 'Limited spots available. Application required. Bespoke matchmaking by dedicated experts.',
       features: [
         { text: 'Everything in Select Membership', included: true },
@@ -116,6 +119,7 @@ const PricingInteractive: React.FC = () => {
                 key={index}
                 title={tier.title}
                 price={tier.price}
+                priceLabel={tier.priceLabel}
                 description={tier.description}
                 features={tier.features}
                 isPopular={tier.isPopular}

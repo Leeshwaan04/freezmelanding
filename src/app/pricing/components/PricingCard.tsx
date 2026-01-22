@@ -9,6 +9,7 @@ interface PricingFeature {
 interface PricingCardProps {
   title: string;
   price: string;
+  priceLabel?: string;
   description: string;
   features: PricingFeature[];
   isPopular?: boolean;
@@ -20,6 +21,7 @@ interface PricingCardProps {
 const PricingCard: React.FC<PricingCardProps> = ({
   title,
   price,
+  priceLabel,
   description,
   features,
   isPopular = false,
@@ -29,13 +31,12 @@ const PricingCard: React.FC<PricingCardProps> = ({
 }) => {
   return (
     <div
-      className={`relative bg-card rounded-lg shadow-card border-2 ${
-        isPopular ? 'border-accent' : 'border-border'
-      } p-8 transition-all duration-300 hover:shadow-hover hover:-translate-y-1 ${className}`}
+      className={`relative bg-card rounded-lg border-2 ${isPopular ? 'border-accent shadow-xl scale-105 z-10' : 'border-border shadow-card'
+        } p-8 transition-all duration-300 hover:shadow-hover hover:-translate-y-1 ${className}`}
     >
       {isPopular && (
-        <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 bg-accent rounded-full">
-          <span className="font-headline text-sm font-semibold text-accent-foreground">
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-6 py-2 bg-accent rounded-full shadow-md">
+          <span className="font-headline text-sm font-bold text-accent-foreground uppercase tracking-wide">
             Most Popular
           </span>
         </div>
@@ -45,8 +46,13 @@ const PricingCard: React.FC<PricingCardProps> = ({
         <h3 className="font-headline text-2xl font-semibold text-foreground mb-3">
           {title}
         </h3>
-        <div className="mb-4">
+        <div className="mb-4 flex flex-col items-center">
           <span className="font-headline text-5xl font-bold text-primary">{price}</span>
+          {priceLabel && (
+            <span className="inline-block mt-2 px-3 py-1 text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-100 rounded-full border border-amber-200">
+              {priceLabel}
+            </span>
+          )}
         </div>
         <p className="font-body text-muted-foreground">{description}</p>
       </div>
@@ -61,9 +67,8 @@ const PricingCard: React.FC<PricingCardProps> = ({
               className={feature.included ? 'text-success mt-0.5' : 'text-muted-foreground mt-0.5'}
             />
             <span
-              className={`font-body text-sm ${
-                feature.included ? 'text-foreground' : 'text-muted-foreground line-through'
-              }`}
+              className={`font-body text-sm ${feature.included ? 'text-foreground' : 'text-muted-foreground line-through'
+                }`}
             >
               {feature.text}
             </span>
@@ -73,11 +78,10 @@ const PricingCard: React.FC<PricingCardProps> = ({
 
       <a
         href={ctaLink}
-        className={`block w-full py-3 px-6 rounded-md text-center font-headline font-semibold transition-all duration-200 ${
-          isPopular
+        className={`block w-full py-3 px-6 rounded-md text-center font-headline font-semibold transition-all duration-200 ${isPopular
             ? 'bg-accent text-accent-foreground hover:shadow-hover hover:-translate-y-0.5'
             : 'bg-secondary text-secondary-foreground hover:shadow-hover hover:-translate-y-0.5'
-        }`}
+          }`}
       >
         {ctaText}
       </a>
