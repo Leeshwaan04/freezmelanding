@@ -41,7 +41,6 @@ interface FormData {
   // Step 4
   acceptTerms: boolean;
   acceptPrivacy: boolean;
-  paymentMethod: string;
 }
 
 interface FormErrors {
@@ -76,7 +75,6 @@ const ApplicationInteractive = () => {
     familyValues: '',
     acceptTerms: false,
     acceptPrivacy: false,
-    paymentMethod: '',
   });
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -187,7 +185,6 @@ const ApplicationInteractive = () => {
     } else if (step === 4) {
       if (!formData.acceptTerms) newErrors.acceptTerms = 'You must accept the terms of service';
       if (!formData.acceptPrivacy) newErrors.acceptPrivacy = 'You must accept the privacy policy';
-      // Payment method is handled by Razorpay modal, no need to validate here
     }
 
     setErrors(newErrors);
@@ -217,7 +214,7 @@ const ApplicationInteractive = () => {
     setIsSubmitting(true);
 
     try {
-      // Submit Data to API directly (leads only)
+      // Submit Data to API directly
       const response = await fetch('/api/apply', {
         method: 'POST',
         headers: {
@@ -384,7 +381,6 @@ const ApplicationInteractive = () => {
                   data={{
                     acceptTerms: formData.acceptTerms,
                     acceptPrivacy: formData.acceptPrivacy,
-                    paymentMethod: formData.paymentMethod,
                   }}
                   errors={errors}
                   onChange={handleInputChange}

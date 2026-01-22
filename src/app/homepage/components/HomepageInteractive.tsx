@@ -8,7 +8,7 @@ import TestimonialsSection from './TestimonialsSection';
 import PricingPreview from './PricingPreview';
 import CTASection from './CTASection';
 import FAQSection from './FAQSection';
-import Footer from './Footer';
+import Footer from '@/components/common/Footer';
 
 const HomepageInteractive = () => {
   return (

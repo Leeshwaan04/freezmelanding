@@ -29,7 +29,7 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
   };
 
   const socialLinks = [
-    { name: 'Instagram', icon: 'CameraIcon', href: '#' },
+    { name: 'Instagram', icon: 'CameraIcon', href: 'https://www.instagram.com/freezme7/?hl=en' },
     { name: 'LinkedIn', icon: 'BriefcaseIcon', href: '#' },
     { name: 'Twitter', icon: 'ChatBubbleLeftIcon', href: '#' },
   ];
@@ -98,6 +98,22 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
                 </li>
               ))}
             </ul>
+          </div>
+
+          {/* Connect Section */}
+          <div>
+            <h3 className="font-headline text-base font-semibold text-background mb-4">
+              Connect
+            </h3>
+            <div className="space-y-3">
+              <a
+                href="mailto:hello@freezme.in"
+                className="flex items-center gap-2 font-body text-sm text-background/70 hover:text-accent transition-colors duration-300"
+              >
+                <Icon name="EnvelopeIcon" size={16} variant="outline" />
+                hello@freezme.in
+              </a>
+            </div>
           </div>
 
           {/* Support Links */}

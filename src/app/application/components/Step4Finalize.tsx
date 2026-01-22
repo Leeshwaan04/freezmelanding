@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 interface PaymentData {
   acceptTerms: boolean;
   acceptPrivacy: boolean;
-  paymentMethod: string;
 }
 
 interface Step4FinalizeProps {

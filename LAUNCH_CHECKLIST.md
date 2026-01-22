@@ -16,10 +16,8 @@ CREATE TABLE applications (
   gender TEXT,
   city TEXT,
   profession TEXT,
-  education TEXT,
   preferences JSONB,
   about JSONB,
-  payment_method TEXT,
   submitted_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
 );
 
@@ -34,7 +32,6 @@ CREATE POLICY "Allow public submissions" ON applications FOR INSERT TO public WI
 - [ ] Configure the following **Environment Variables** in Vercel:
   - `NEXT_PUBLIC_SUPABASE_URL`: Your Supabase Project URL.
   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Your Supabase Anon Key.
-  - `RAZORPAY_KEY_ID`: Your Razorpay Live Key ID (once ready).
 
 ## 3. Domain Configuration (Hostinger)
 - [ ] In Vercel Settings > **Domains**, add `freezme.in`.
@@ -45,7 +42,6 @@ CREATE POLICY "Allow public submissions" ON applications FOR INSERT TO public WI
 
 ## 4. Final Polish & Analytics
 - [ ] **Google Analytics**: Update the tracking ID (G-XXXXXXXXXX) in `src/app/layout.tsx`.
-- [ ] **Payments**: Move Razorpay from "Test Mode" to "Live Mode" in your Razorpay Dashboard.
 - [ ] **Test Submission**: Complete a test application on the live site to verify data appears in Supabase.
 
 ---

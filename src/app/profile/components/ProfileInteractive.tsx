@@ -32,7 +32,7 @@ export default function ProfileInteractive() {
     setUpdating(true);
 
     const result = await updateProfile({ name: formData.name });
-    
+
     if (result.success) {
       setSuccess('Profile updated successfully');
       setIsEditing(false);
@@ -40,7 +40,7 @@ export default function ProfileInteractive() {
     } else {
       setError(result.error || 'Update failed');
     }
-    
+
     setUpdating(false);
   };
 
@@ -55,7 +55,7 @@ export default function ProfileInteractive() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-card to-background">
       <Header />
-      
+
       <div className="pt-24 pb-12 px-4">
         <div className="container mx-auto max-w-4xl">
           {/* Profile Header */}
@@ -165,44 +165,7 @@ export default function ProfileInteractive() {
             )}
           </div>
 
-          {/* Quick Actions */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Link
-              href="/transaction-history"
-              className="bg-card rounded-lg shadow-card p-6 hover:shadow-hover transition-shadow group"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <Icon name="ClockIcon" size={24} className="text-primary" />
-                </div>
-                <Icon name="ChevronRightIcon" size={20} className="text-muted-foreground" />
-              </div>
-              <h3 className="font-headline text-xl font-bold text-primary mb-2">
-                Transaction History
-              </h3>
-              <p className="text-muted-foreground text-sm">
-                View all your payment transactions and history
-              </p>
-            </Link>
 
-            <Link
-              href="/member-portal"
-              className="bg-card rounded-lg shadow-card p-6 hover:shadow-hover transition-shadow group"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                  <Icon name="UserGroupIcon" size={24} className="text-accent" />
-                </div>
-                <Icon name="ChevronRightIcon" size={20} className="text-muted-foreground" />
-              </div>
-              <h3 className="font-headline text-xl font-bold text-primary mb-2">
-                Member Portal
-              </h3>
-              <p className="text-muted-foreground text-sm">
-                Access curated introductions and member benefits
-              </p>
-            </Link>
-          </div>
         </div>
       </div>
     </div>

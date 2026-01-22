@@ -46,7 +46,6 @@ export async function POST(request: Request) {
                                 history: body.previousRelationships,
                                 family_values: body.familyValues,
                             },
-                            payment_method: body.paymentMethod,
                             submitted_at: new Date().toISOString(),
                         },
                     ]);

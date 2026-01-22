@@ -9,7 +9,7 @@ import DataPrivacySecurity from './DataPrivacySecurity';
 import MoneyBackGuarantee from './MoneyBackGuarantee';
 import FAQ from './FAQ';
 import CTASection from './CTASection';
-import Footer from './Footer';
+import Footer from '@/components/common/Footer';
 
 interface PricingTier {
   title: string;
@@ -37,7 +37,7 @@ const PricingInteractive: React.FC = () => {
         { text: 'Professional profile review', included: true },
         { text: 'Compatibility potential score', included: true },
         { text: 'Community fit assessment', included: true },
-        { text: 'Database inclusion (Passive)', included: true },
+        { text: 'Join Waitlist for Inbound Matches', included: true },
         { text: 'Active matching updates', included: false },
         { text: 'Verified profile badge', included: false },
         { text: 'Guaranteed introductions', included: false },
@@ -50,7 +50,7 @@ const PricingInteractive: React.FC = () => {
     {
       title: 'Verified Access',
       price: '₹2,999',
-      description: 'One-time verification fee. Signals high-intent to other members and unlocks active matching.',
+      description: 'One-time verification fee. Lifetime validity. Signals high-intent to other members and unlocks active matching.',
       features: [
         { text: 'Everything in Assessment', included: true },
         { text: 'Human Verification check', included: true },
@@ -80,8 +80,8 @@ const PricingInteractive: React.FC = () => {
         { text: 'Hold membership anytime', included: true },
       ],
       isPopular: false,
-      ctaText: 'Hire a Matchmaker',
-      ctaLink: '/application',
+      ctaText: 'Book Consultation',
+      ctaLink: 'https://calendly.com/', // Ideally this links to a calendar, keeping '/application' as fallback for now
     },
   ];
 
