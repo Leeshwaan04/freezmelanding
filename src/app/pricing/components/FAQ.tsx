@@ -29,12 +29,12 @@ const FAQ: React.FC<FAQProps> = ({ className = '' }) => {
       answer: 'Membership is by invitation only. If your profile aligns with our community, we will invite you for a consultation to discuss the membership tier that best suits your relationship goals.',
     },
     {
-      question: 'Can I upgrade my plan later?',
-      answer: 'Yes. You can discuss upgrading your membership tier with your dedicated relationship manager at any point during your journey.',
+      question: 'Can I pay immediately to get verified?',
+      answer: 'No. Authentication and trust are our top priorities. We only accept payment after we have personally assessed your profile.',
     },
     {
       question: 'What happens after I apply?',
-      answer: 'Our vetting team reviews every application manually. You will receive an email within 3-5 business days regarding the status of your application and potential next steps.',
+      answer: 'Our vetting team reviews every application personally. If your profile aligns with our community values, we will reach out to you directly to guide you through the next steps.',
     },
     {
       question: 'How long does the service last?',

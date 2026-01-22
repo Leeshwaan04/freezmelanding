@@ -30,9 +30,9 @@ const PricingInteractive: React.FC = () => {
 
   const pricingTiers: PricingTier[] = [
     {
-      title: 'The Assessment',
+      title: 'Candidate Profile',
       price: 'Complimentary',
-      description: 'Your zero-cost entry point. We specifically evaluate your profile to see if you qualify for our community.',
+      description: 'Your entry point. Submit your profile for evaluation by our curation team.',
       features: [
         { text: 'Professional profile review', included: true },
         { text: 'Compatibility potential score', included: true },
@@ -44,33 +44,33 @@ const PricingInteractive: React.FC = () => {
         { text: 'Personal matchmaker', included: false },
       ],
       isPopular: false,
-      ctaText: 'Start Free Assessment',
+      ctaText: 'Join Waitlist',
       ctaLink: '/application',
     },
     {
-      title: 'Verified Access',
-      price: '₹2,999',
-      description: 'One-time verification fee. Lifetime validity. Signals high-intent to other members and unlocks active matching.',
+      title: 'Select Membership',
+      price: '₹2,999 (By Invitation)',
+      description: 'Exclusive status for verified individuals. Fee payable only upon acceptance. Lifetime validity.',
       features: [
-        { text: 'Everything in Assessment', included: true },
+        { text: 'Everything in Candidate Profile', included: true },
         { text: 'Human Verification check', included: true },
-        { text: 'Verified Profile Badge (Trust signal)', included: true },
+        { text: 'Select Member Badge (Trust signal)', included: true },
         { text: 'Priority visibility in search', included: true },
-        { text: 'Pay-per-match introductions', included: true },
+        { text: 'Intro fees (₹500-₹1.5k) only upon acceptance', included: true },
         { text: 'Dedicated personal matchmaker', included: false },
         { text: 'Date planning & coordination', included: false },
         { text: 'External headhunting', included: false },
       ],
       isPopular: true,
-      ctaText: 'Get Verified',
+      ctaText: 'Request Invitation',
       ctaLink: '/application',
     },
     {
-      title: 'Personal Matchmaker',
-      price: 'From ₹15,000',
-      description: 'Human-led matchmaking service. A dedicated expert curates matches and provides feedback.',
+      title: 'Signature Service',
+      price: 'From ₹15,000 (By Invitation)',
+      description: 'Limited spots available. Application required. Bespoke matchmaking by dedicated experts.',
       features: [
-        { text: 'Everything in Verified Access', included: true },
+        { text: 'Everything in Select Membership', included: true },
         { text: 'Dedicated Relationship Manager', included: true },
         { text: 'Proactive candidate search', included: true },
         { text: 'Hand-picked introductions', included: true },
@@ -80,8 +80,8 @@ const PricingInteractive: React.FC = () => {
         { text: 'Hold membership anytime', included: true },
       ],
       isPopular: false,
-      ctaText: 'Book Consultation',
-      ctaLink: 'https://calendly.com/', // Ideally this links to a calendar, keeping '/application' as fallback for now
+      ctaText: 'Inquire for Access',
+      ctaLink: '/application',
     },
   ];
 
