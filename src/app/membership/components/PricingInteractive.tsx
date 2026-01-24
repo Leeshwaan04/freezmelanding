@@ -50,10 +50,10 @@ const PricingInteractive: React.FC = () => {
 
       {/* Unified Pricing Section */}
       <section className="relative py-24 md:py-32 bg-background overflow-hidden font-display">
-        {/* Artistic Background Decorations */}
+        {/* Artistic Background Decorations - Optimized for performance */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute top-[-10%] right-[-5%] w-[800px] h-[800px] bg-primary/[0.04] rounded-full blur-[150px] animate-pulse" />
-          <div className="absolute bottom-[-10%] left-[-5%] w-[800px] h-[800px] bg-accent/[0.04] rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '3s' }} />
+          <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-primary/[0.03] rounded-full blur-[100px] will-change-transform" />
+          <div className="absolute bottom-[-10%] left-[-5%] w-[600px] h-[600px] bg-accent/[0.03] rounded-full blur-[100px] will-change-transform" />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
@@ -72,7 +72,7 @@ const PricingInteractive: React.FC = () => {
               {/* Outer Glow Effect */}
               <div className="absolute -inset-1 bg-gradient-to-r from-accent/20 via-primary/10 to-accent/20 rounded-[3rem] blur-2xl opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 pointer-events-none" />
 
-              <div className="relative bg-card rounded-[2.5rem] p-8 md:p-16 border border-white/40 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] backdrop-blur-xl">
+              <div className="relative bg-card/90 rounded-[2.5rem] p-8 md:p-16 border border-white/40 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] backdrop-blur-lg">
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
 
