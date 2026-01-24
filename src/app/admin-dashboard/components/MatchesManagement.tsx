@@ -108,9 +108,9 @@ export default function MatchesManagement({ onRefresh }: MatchesManagementProps)
                 </div>
               </div>
 
-              {match.matchmakerName && (
+              {match.introducerName && (
                 <div className="text-center text-sm text-gray-600">
-                  Matchmaker: <span className="font-medium">{match.matchmakerName}</span>
+                  Introducer: <span className="font-medium">{match.introducerName}</span>
                 </div>
               )}
 

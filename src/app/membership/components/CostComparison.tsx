@@ -30,7 +30,7 @@ const CostComparison: React.FC<CostComparisonProps> = ({ className = '' }) => {
       successRate: '5-10%',
     },
     {
-      service: 'Traditional Matchmakers',
+      service: 'Traditional Introducers',
       monthlyCost: '₹15,000',
       yearlyTotal: '₹1,80,000',
       timeInvested: '50+ hours',

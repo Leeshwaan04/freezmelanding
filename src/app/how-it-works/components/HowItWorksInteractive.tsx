@@ -122,7 +122,7 @@ export default function HowItWorksInteractive() {
       isHighlighted: true
     },
     {
-      title: "Personal Matchmaker",
+      title: "Personal Introducer",
       amount: "By Application",
       description: "Human-led service",
       features: [

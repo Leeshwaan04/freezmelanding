@@ -28,7 +28,7 @@ const PricingHero: React.FC<PricingHeroProps> = ({ className = '' }) => {
           </h1>
 
           <p className="font-body text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed mb-10">
-            Stop swiping and start connecting. Apply for a verified membership today and join a community of high-intent singles, or hire a personal matchmaker to do the work for you.
+            Stop swiping and start connecting. Apply for a verified membership today and join a community of high-intent singles, or hire a personal introducer to do the work for you.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-sm font-medium text-muted-foreground">
