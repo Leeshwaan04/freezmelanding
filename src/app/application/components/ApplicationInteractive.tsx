@@ -180,6 +180,7 @@ const ApplicationInteractive = () => {
       if (!formData.smokingPreference) newErrors.smokingPreference = 'Smoking preference is required';
       if (!formData.drinkingPreference) newErrors.drinkingPreference = 'Drinking preference is required';
       if (!formData.dietPreference) newErrors.dietPreference = 'Diet preference is required';
+      if (!formData.wantsChildren) newErrors.wantsChildren = 'Children preference is required';
     } else if (step === 3) {
       if (!formData.aboutYourself.trim()) newErrors.aboutYourself = 'Please tell us about yourself';
       else if (formData.aboutYourself.trim().split(/\s+/).length < 20)
