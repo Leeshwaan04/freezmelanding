@@ -13,82 +13,91 @@ export default function TermsPage() {
 
                 <div className="space-y-8 font-body text-foreground/80 leading-relaxed">
                     <section>
-                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">1. Service Description</h2>
-                        <p>
-                            Freezme provides a high-end, human-curated matchmaking service. Our objective is to facilitate introductions based on compatibility assessments performed by our expert curators. We do not use automated algorithms to guarantee matches.
+                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">1. Service Description & Philosophy</h2>
+                        <p className="mb-4">
+                            Freezme is not a typical dating app. We provide a <strong>human-curated matchmaking service</strong> designed for "Slow Dating." This means we prioritize quality over quantity and depth over speed.
                         </p>
+                        <p>
+                            <strong>What this means for you:</strong>
+                        </p>
+                        <ul className="list-disc pl-5 space-y-2 mt-2">
+                            <li><strong>No Algorithms:</strong> You will not be matched by a computer code. A real human curator reads your story and hand-picks matches based on emotional intelligence and values.</li>
+                            <li><strong>Intentionality:</strong> This service is strictly for individuals seeking serious, long-term connections. Casual dating seekers are advised to look elsewhere.</li>
+                        </ul>
                     </section>
 
                     <section>
-                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">2. Application & Vetting</h2>
-                        <p>
-                            The application process involves a manual review of your profile to ensure community alignment. By submitting an application, you agree to provide truthful information. Freezme reserves the right to accept or decline applications based on our internal quality standards and current community balance.
+                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">2. Application & Vetting Process</h2>
+                        <p className="mb-4">
+                            Access to Freezme is exclusive. Submitting an application does not guarantee membership.
                         </p>
+                        <ul className="list-disc pl-5 space-y-2">
+                            <li><strong>Manual Review:</strong> Every profile is reviewed by our team within 24-48 hours.</li>
+                            <li><strong>Waitlist:</strong> If we believe we cannot currently serve you well (e.g., due to location or match availability), you may be placed on a waitlist. This is to ensure we don't waste your time.</li>
+                            <li><strong>Truthfulness:</strong> You agree that all information provided is accurate. Misrepresentation of age, marital status, or profession is grounds for immediate ban.</li>
+                        </ul>
                     </section>
 
                     <section>
-                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">3. Confidentiality</h2>
-                        <p>
-                            We treat all application data with the highest level of discretion. Your personal narrative and private details are used exclusively for the purpose of matchmaking and are never shared with third parties or other members without your explicit consent.
+                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">3. Code of Conduct & "No Ghosting" Policy</h2>
+                        <p className="mb-4">
+                            We are building a community of emotionally mature adults. To remain a member, you must adhere to our "Gold Standard" of behavior:
                         </p>
+                        <ul className="list-disc pl-5 space-y-2">
+                            <li><strong>Responsiveness:</strong> We have a strict <strong>No Ghosting</strong> policy. If you are not interested in a match, you are expected to communicate that politely ("Thank you, but I don't feel a connection"). Disappearing without a word is prohibited.</li>
+                            <li><strong>Respect:</strong> Harassment, hate speech, or rudeness will result in an immediate, permanent ban.</li>
+                            <li><strong>Privacy:</strong> You must respect the privacy of your matches. Sharing their profiles or private details publicly is strictly forbidden.</li>
+                        </ul>
                     </section>
 
                     <section>
-                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">4. Eligibility</h2>
-                        <p>
-                            You must be at least 21 years of age and legally single to use our services. By applying, you represent and warrant that you have never been convicted of a felony and that you are not required to register as a sex offender with any government entity.
+                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">4. Fees & Refund Policy</h2>
+                        <p className="mb-4">
+                            Please understand what your membership fee pays for: <strong>Human Time.</strong>
                         </p>
-                    </section>
-
-                    <section>
-                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">5. Human Curation & Accuracy</h2>
                         <p>
-                            While we strive to provide accurate information about potential matches, we rely on information provided by members. We do not perform criminal background checks on all members and advise all users to exercise caution when meeting new people.
+                            Unlike apps that charge for "access to a database," Freezme charges for the <strong>service</strong> of curation. Our team spends hours reviewing your profile, searching for matches, and facilitating introductions.
                         </p>
-                    </section>
-
-                    <section>
-                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">6. Code of Conduct</h2>
-                        <p>
-                            We expect all members to treat others with dignity and respect. Harassment, discrimination, hate speech, or inappropriate behavior during interactions (online or offline) will result in immediate termination of membership. You agree to report any concerning behavior to our team immediately.
-                        </p>
-                    </section>
-
-                    <section>
-                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">7. Liability & Interaction Safety</h2>
-                        <div className="p-5 bg-destructive/5 border border-destructive/20 rounded-xl">
-                            <p className="font-bold text-destructive mb-2 uppercase text-xs tracking-widest">Important Disclaimer</p>
-                            <p>
-                                You connect with other members at your own risk. Freezme is a facilitator of introductions, not a guarantor of safety. We are not responsible for the conduct of any user on or off the service. You agree to take all necessary precautions when meeting other members, including meeting in public places and informing a friend or family member of your plans.
+                        <div className="p-4 bg-muted/50 border border-border rounded-lg mt-4">
+                            <p className="font-bold">Refund Policy:</p>
+                            <p className="text-sm mt-1">
+                                Because our work (the curation and assessment) begins immediately upon your payment, <strong>membership fees are non-refundable</strong> once the curation process has started. We cannot "return" the hours our curators have spent working on your profile.
                             </p>
                         </div>
                     </section>
 
                     <section>
-                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">8. Fees & Refunds</h2>
-                        <p>
-                            Membership fees are billed as per the agreed plan. <strong>All fees are non-refundable once the curation process has commenced.</strong> This includes the initial consultation and profile assessment phase. We dedicate significant human resources to each member immediately upon joining.
-                        </p>
+                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">5. Safety & Liability (The "Offline Risk")</h2>
+                        <div className="p-5 bg-destructive/5 border border-destructive/20 rounded-xl space-y-3">
+                            <p className="font-bold text-destructive uppercase text-xs tracking-widest">Important Disclaimer</p>
+                            <p>
+                                <strong>We vet profiles, not people's entire lives.</strong>
+                            </p>
+                            <p>
+                                While we screen for consistency and intent, Freezme <strong>cannot</strong> guarantee the criminal background or personal history of any member. When you agree to meet a match in person, <strong>you do so at your own risk.</strong>
+                            </p>
+                            <p>
+                                <strong>Your Responsibility:</strong> You agree to take standard precautions:
+                                <ul className="list-disc pl-5 mt-2">
+                                    <li>Always meet in a public place for the first date.</li>
+                                    <li>Tell a friend or family member where you are going.</li>
+                                    <li>Trust your gut—if something feels off, leave.</li>
+                                </ul>
+                            </p>
+                        </div>
                     </section>
 
                     <section>
-                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">9. Intellectual Property</h2>
+                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">6. Intellectual Property</h2>
                         <p>
-                            The Freezme brand, website content, and curation methodology are the exclusive property of Freezme. You typically agree not to copy, distribute, or create derivative works from our content without express written permission.
-                        </p>
-                    </section>
-
-                    <section>
-                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">10. Termination</h2>
-                        <p>
-                            We reserve the right to decline any application or terminate any membership at our sole discretion, without providing specific reasons, if we believe the member does not align with our community values.
+                            The Freezme brand, website content, and our unique "Alignment" methodology are the exclusive property of Freezme. You agree not to copy, distribute, or create derivative works from our content.
                         </p>
                     </section>
 
                     <section className="bg-muted p-6 rounded-lg border border-border">
                         <h2 className="font-headline text-xl font-semibold text-foreground mb-2">Contact Us</h2>
                         <p>
-                            If you have any questions regarding these terms, please contact us at <a href="mailto:hello@freezme.in" className="text-primary font-medium hover:underline">hello@freezme.in</a>.
+                            If you have questions about these terms or need to report a violation, please contact our Trust & Safety team directly at <a href="mailto:hello@freezme.in" className="text-primary font-medium hover:underline">hello@freezme.in</a>.
                         </p>
                     </section>
                 </div>
