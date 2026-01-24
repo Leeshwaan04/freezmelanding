@@ -33,7 +33,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
       />
 
       {/* Overlay for Contrast */}
-      <div className="absolute inset-0 z-0 bg-background/80 backdrop-blur-[1px]" />
+      <div className="absolute inset-0 z-0 bg-background/60 backdrop-blur-[1px]" />
 
       <div className="container relative z-10 mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
