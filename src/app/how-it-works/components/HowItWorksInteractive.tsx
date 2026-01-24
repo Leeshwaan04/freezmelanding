@@ -20,6 +20,7 @@ interface PricingData {
   amount: string;
   description: string;
   features: string[];
+  ctaText: string;
   isHighlighted?: boolean;
 }
 
@@ -103,8 +104,9 @@ export default function HowItWorksInteractive() {
         "Professional profile review",
         "Compatibility potential score",
         "Community fit assessment",
-        "Database inclusion (Passive)"]
+        "Database inclusion (Passive)"],
 
+      ctaText: "Start Free Assessment"
     },
     {
       title: "Verified Access",
@@ -116,6 +118,7 @@ export default function HowItWorksInteractive() {
         "Priority visibility in search",
         "Pay-per-match introductions"],
 
+      ctaText: "Apply for Verification",
       isHighlighted: true
     },
     {
@@ -126,8 +129,9 @@ export default function HowItWorksInteractive() {
         "Dedicated Relationship Manager",
         "Proactive candidate search",
         "Hand-picked introductions",
-        "Date arrangement & feedback"]
+        "Date arrangement & feedback"],
 
+      ctaText: "Request Consultation"
     }];
 
 
