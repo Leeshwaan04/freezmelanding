@@ -68,7 +68,7 @@ const Step3AboutYou = ({ data, errors, onChange }: Step3AboutYouProps) => {
       <div className="space-y-10">
         <motion.div variants={itemVariants} className="relative">
           <FormField
-            label="The Narrative of You"
+            label="Tell us about yourself"
             name="aboutYourself"
             type="textarea"
             value={data.aboutYourself}
@@ -76,7 +76,7 @@ const Step3AboutYou = ({ data, errors, onChange }: Step3AboutYouProps) => {
             error={errors.aboutYourself}
             required
             rows={5}
-            placeholder="Go beyond the resume. Describe your internal compass, your values, and the experiences that shaped the person you are today."
+            placeholder="e.g., I'm a product designer who finds joy in creating meaningful experiences. I value deep conversations over small talk and believe in building a life rooted in curiosity, kindness, and adventure. On weekends, you'll find me exploring new hiking trails or trying out a new recipe in the kitchen."
             icon="FingerPrintIcon"
           />
           <div className="absolute right-0 -bottom-7 text-[10px] font-headline font-bold uppercase tracking-widest text-muted-foreground/40 flex space-x-6">
@@ -91,7 +91,7 @@ const Step3AboutYou = ({ data, errors, onChange }: Step3AboutYouProps) => {
 
         <motion.div variants={itemVariants}>
           <FormField
-            label="Intellectual & Physical Curiosity"
+            label="Hobbies & Interests"
             name="hobbies"
             type="textarea"
             value={data.hobbies}
@@ -99,14 +99,14 @@ const Step3AboutYou = ({ data, errors, onChange }: Step3AboutYouProps) => {
             error={errors.hobbies}
             required
             rows={3}
-            placeholder="What pursuits currently consume your curiosity or keep you active? We value passion over a list of generic activities."
+            placeholder="e.g., I love photography, cooking Italian food, playing tennis on weekends, and I'm currently learning to play the guitar. I'm also passionate about sustainability and volunteer with local environmental groups."
             icon="HeartIcon"
           />
         </motion.div>
 
         <motion.div variants={itemVariants} className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <FormField
-            label="Vision for Partnership"
+            label="What are you looking for?"
             name="relationshipGoals"
             type="select"
             value={data.relationshipGoals}
@@ -115,11 +115,11 @@ const Step3AboutYou = ({ data, errors, onChange }: Step3AboutYouProps) => {
             required
             options={relationshipGoalsOptions}
             icon="LifebuoyIcon"
-            placeholder="Primary objective"
+            placeholder="Select your goal"
           />
 
           <FormField
-            label="Legacy & Family Values"
+            label="How important is family to you?"
             name="familyValues"
             type="select"
             value={data.familyValues}
@@ -128,13 +128,13 @@ const Step3AboutYou = ({ data, errors, onChange }: Step3AboutYouProps) => {
             required
             options={familyValuesOptions}
             icon="UserGroupIcon"
-            placeholder="Core connection"
+            placeholder="Select importance"
           />
         </motion.div>
 
         <motion.div variants={itemVariants}>
           <FormField
-            label="The Non-Negotiables"
+            label="Deal Breakers"
             name="dealBreakers"
             type="textarea"
             value={data.dealBreakers}
@@ -142,22 +142,22 @@ const Step3AboutYou = ({ data, errors, onChange }: Step3AboutYouProps) => {
             error={errors.dealBreakers}
             required
             rows={3}
-            placeholder="What specific traits or life-paths would make a long-term partnership impossible for you? Clarity here ensures better matching."
+            placeholder="e.g., I need someone who values honesty and communication. Someone who isn't willing to compromise on mutual respect or who doesn't want children in the future wouldn't be right for me."
             icon="NoSymbolIcon"
           />
         </motion.div>
 
         <motion.div variants={itemVariants}>
           <FormField
-            label="Wisdom from the Past"
+            label="Past Relationship Lessons (Optional)"
             name="previousRelationships"
             type="textarea"
             value={data.previousRelationships}
             onChange={onChange}
             error={errors.previousRelationships}
-            required
+            required={false}
             rows={3}
-            placeholder="Reflect on your relationship history. What were the most significant lessons learned about yourself and your needs?"
+            placeholder="e.g., I've learned that clear communication is essential for me, and I need a partner who can balance independence with togetherness. My past relationships taught me the importance of shared values."
             icon="HandThumbUpIcon"
           />
         </motion.div>

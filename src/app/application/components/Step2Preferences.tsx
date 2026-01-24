@@ -12,6 +12,7 @@ interface PreferencesData {
   smokingPreference: string;
   drinkingPreference: string;
   dietPreference: string;
+  wantsChildren: string;
 }
 
 interface Step2PreferencesProps {
@@ -64,6 +65,14 @@ const Step2Preferences = ({ data, errors, onChange }: Step2PreferencesProps) => 
     { value: 'eggetarian', label: 'Eggetarian' },
   ];
 
+  const childrenOptions = [
+    { value: 'yes-soon', label: 'Yes, within 1-2 years' },
+    { value: 'yes-eventually', label: 'Yes, but not immediately' },
+    { value: 'maybe', label: 'Open to discussion' },
+    { value: 'no', label: 'No' },
+    { value: 'have-children', label: 'I already have children' },
+  ];
+
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -99,7 +108,7 @@ const Step2Preferences = ({ data, errors, onChange }: Step2PreferencesProps) => 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
         <motion.div variants={itemVariants}>
           <FormField
-            label="Min Age Preference"
+            label="Minimum Age"
             name="ageRangeMin"
             type="number"
             value={data.ageRangeMin}
@@ -108,13 +117,13 @@ const Step2Preferences = ({ data, errors, onChange }: Step2PreferencesProps) => 
             required
             placeholder="25"
             icon="ArrowsPointingInIcon"
-            helpText="The lower bound of your biological age preference."
+            helpText="Minimum age you're looking for"
           />
         </motion.div>
 
         <motion.div variants={itemVariants}>
           <FormField
-            label="Max Age Preference"
+            label="Maximum Age"
             name="ageRangeMax"
             type="number"
             value={data.ageRangeMax}
@@ -123,13 +132,13 @@ const Step2Preferences = ({ data, errors, onChange }: Step2PreferencesProps) => 
             required
             placeholder="35"
             icon="ArrowsPointingOutIcon"
-            helpText="The upper bound of your biological age preference."
+            helpText="Maximum age you're looking for"
           />
         </motion.div>
 
         <motion.div variants={itemVariants}>
           <FormField
-            label="Height Alignment"
+            label="Height Preference"
             name="heightPreference"
             type="select"
             value={data.heightPreference}
@@ -138,13 +147,13 @@ const Step2Preferences = ({ data, errors, onChange }: Step2PreferencesProps) => 
             required
             options={heightOptions}
             icon="Bars3Icon"
-            placeholder="Search criteria"
+            placeholder="Select height range"
           />
         </motion.div>
 
         <motion.div variants={itemVariants}>
           <FormField
-            label="Spiritual & Cultural Background"
+            label="Religion Preference"
             name="religionPreference"
             type="select"
             value={data.religionPreference}
@@ -153,13 +162,13 @@ const Step2Preferences = ({ data, errors, onChange }: Step2PreferencesProps) => 
             required
             options={religionOptions}
             icon="SparklesIcon"
-            placeholder="Alignment"
+            placeholder="Select preference"
           />
         </motion.div>
 
         <motion.div variants={itemVariants}>
           <FormField
-            label="Educational Prowess"
+            label="Education Level"
             name="educationPreference"
             type="select"
             value={data.educationPreference}
@@ -168,13 +177,13 @@ const Step2Preferences = ({ data, errors, onChange }: Step2PreferencesProps) => 
             required
             options={educationOptions}
             icon="AcademicCapIcon"
-            placeholder="Minimum expectation"
+            placeholder="Minimum education"
           />
         </motion.div>
 
         <motion.div variants={itemVariants}>
           <FormField
-            label="Lifestyle Sync: Tobacco"
+            label="Smoking"
             name="smokingPreference"
             type="select"
             value={data.smokingPreference}
@@ -183,13 +192,13 @@ const Step2Preferences = ({ data, errors, onChange }: Step2PreferencesProps) => 
             required
             options={lifestyleOptions}
             icon="NoSymbolIcon"
-            placeholder="Preference"
+            placeholder="Select preference"
           />
         </motion.div>
 
         <motion.div variants={itemVariants}>
           <FormField
-            label="Lifestyle Sync: Alcohol"
+            label="Drinking"
             name="drinkingPreference"
             type="select"
             value={data.drinkingPreference}
@@ -198,13 +207,13 @@ const Step2Preferences = ({ data, errors, onChange }: Step2PreferencesProps) => 
             required
             options={lifestyleOptions}
             icon="InformationCircleIcon"
-            placeholder="Social preferences"
+            placeholder="Select preference"
           />
         </motion.div>
 
         <motion.div variants={itemVariants}>
           <FormField
-            label="Dietary Philosophy"
+            label="Diet"
             name="dietPreference"
             type="select"
             value={data.dietPreference}
@@ -213,7 +222,22 @@ const Step2Preferences = ({ data, errors, onChange }: Step2PreferencesProps) => 
             required
             options={dietOptions}
             icon="FaceSmileIcon"
-            placeholder="Daily values"
+            placeholder="Select diet"
+          />
+        </motion.div>
+
+        <motion.div variants={itemVariants} className="md:col-span-2">
+          <FormField
+            label="Do you want children?"
+            name="wantsChildren"
+            type="select"
+            value={data.wantsChildren}
+            onChange={onChange}
+            error={errors.wantsChildren}
+            required
+            options={childrenOptions}
+            icon="HeartIcon"
+            placeholder="Your preference"
           />
         </motion.div>
       </div>

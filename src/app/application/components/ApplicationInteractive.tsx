@@ -19,6 +19,8 @@ interface FormData {
   phone: string;
   dateOfBirth: string;
   gender: string;
+  height: string;
+  religion: string;
   city: string;
   profession: string;
   education: string;
@@ -31,6 +33,7 @@ interface FormData {
   smokingPreference: string;
   drinkingPreference: string;
   dietPreference: string;
+  wantsChildren: string;
   // Step 3
   aboutYourself: string;
   hobbies: string;
@@ -56,6 +59,8 @@ const ApplicationInteractive = () => {
     phone: '',
     dateOfBirth: '',
     gender: '',
+    height: '',
+    religion: '',
     city: '',
     profession: '',
     education: '',
@@ -67,6 +72,7 @@ const ApplicationInteractive = () => {
     smokingPreference: '',
     drinkingPreference: '',
     dietPreference: '',
+    wantsChildren: '',
     aboutYourself: '',
     hobbies: '',
     relationshipGoals: '',
@@ -158,6 +164,8 @@ const ApplicationInteractive = () => {
       if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
       if (!formData.dateOfBirth) newErrors.dateOfBirth = 'Date of birth is required';
       if (!formData.gender) newErrors.gender = 'Gender is required';
+      if (!formData.height) newErrors.height = 'Height is required';
+      if (!formData.religion) newErrors.religion = 'Religion is required';
       if (!formData.city) newErrors.city = 'City is required';
       if (!formData.profession.trim()) newErrors.profession = 'Profession is required';
       if (!formData.education.trim()) newErrors.education = 'Education is required';
@@ -179,8 +187,7 @@ const ApplicationInteractive = () => {
       if (!formData.hobbies.trim()) newErrors.hobbies = 'Please share your hobbies';
       if (!formData.relationshipGoals) newErrors.relationshipGoals = 'Relationship goals are required';
       if (!formData.dealBreakers.trim()) newErrors.dealBreakers = 'Please specify your deal breakers';
-      if (!formData.previousRelationships.trim())
-        newErrors.previousRelationships = 'Please share your relationship history';
+      // previousRelationships is now optional
       if (!formData.familyValues) newErrors.familyValues = 'Family values preference is required';
     } else if (step === 4) {
       if (!formData.acceptTerms) newErrors.acceptTerms = 'You must accept the terms of service';
@@ -335,6 +342,8 @@ const ApplicationInteractive = () => {
                     phone: formData.phone,
                     dateOfBirth: formData.dateOfBirth,
                     gender: formData.gender,
+                    height: formData.height,
+                    religion: formData.religion,
                     city: formData.city,
                     profession: formData.profession,
                     education: formData.education,
@@ -355,6 +364,7 @@ const ApplicationInteractive = () => {
                     smokingPreference: formData.smokingPreference,
                     drinkingPreference: formData.drinkingPreference,
                     dietPreference: formData.dietPreference,
+                    wantsChildren: formData.wantsChildren,
                   }}
                   errors={errors}
                   onChange={handleInputChange}

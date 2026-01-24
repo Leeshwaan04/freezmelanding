@@ -9,6 +9,8 @@ interface PersonalData {
   phone: string;
   dateOfBirth: string;
   gender: string;
+  height: string;
+  religion: string;
   city: string;
   profession: string;
   education: string;
@@ -37,6 +39,27 @@ const Step1Personal = ({ data, errors, onChange }: Step1PersonalProps) => {
     { value: 'kolkata', label: 'Kolkata' },
     { value: 'ahmedabad', label: 'Ahmedabad' },
     { value: 'other', label: 'Other' },
+  ];
+
+  const heightOptions = [
+    { value: '140-150', label: '140-150 cm (4\'7" - 4\'11")' },
+    { value: '150-160', label: '150-160 cm (4\'11" - 5\'3")' },
+    { value: '160-170', label: '160-170 cm (5\'3" - 5\'7")' },
+    { value: '170-180', label: '170-180 cm (5\'7" - 5\'11")' },
+    { value: '180-190', label: '180-190 cm (5\'11" - 6\'3")' },
+    { value: '190+', label: '190+ cm (6\'3"+)' },
+  ];
+
+  const religionOptions = [
+    { value: 'hindu', label: 'Hindu' },
+    { value: 'muslim', label: 'Muslim' },
+    { value: 'christian', label: 'Christian' },
+    { value: 'sikh', label: 'Sikh' },
+    { value: 'buddhist', label: 'Buddhist' },
+    { value: 'jain', label: 'Jain' },
+    { value: 'jewish', label: 'Jewish' },
+    { value: 'other', label: 'Other' },
+    { value: 'prefer-not-to-say', label: 'Prefer not to say' },
   ];
 
   const containerVariants = {
@@ -138,6 +161,36 @@ const Step1Personal = ({ data, errors, onChange }: Step1PersonalProps) => {
             options={genderOptions}
             icon="UserCircleIcon"
             placeholder="Identity"
+          />
+        </motion.div>
+
+        <motion.div variants={itemVariants}>
+          <FormField
+            label="Your Height"
+            name="height"
+            type="select"
+            value={data.height}
+            onChange={onChange}
+            error={errors.height}
+            required
+            options={heightOptions}
+            icon="ArrowsPointingOutIcon"
+            placeholder="Select your height"
+          />
+        </motion.div>
+
+        <motion.div variants={itemVariants}>
+          <FormField
+            label="Religion"
+            name="religion"
+            type="select"
+            value={data.religion}
+            onChange={onChange}
+            error={errors.religion}
+            required
+            options={religionOptions}
+            icon="SparklesIcon"
+            placeholder="Your faith"
           />
         </motion.div>
 
