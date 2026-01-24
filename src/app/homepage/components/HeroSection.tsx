@@ -61,7 +61,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
         />
 
         {/* Noise Texture for Premium Feel */}
-        <div className="absolute inset-0 z-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light filter contrast-150 brightness-100" />
+        <div className="absolute inset-0 z-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10" />
       </div>
 
       <div className="container relative z-10 mx-auto px-4">

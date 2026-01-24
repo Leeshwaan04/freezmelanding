@@ -102,10 +102,10 @@ const FAQ: React.FC<FAQProps> = ({ className = '' }) => {
 
           <div className="mt-12 text-center">
             <p className="font-body text-muted-foreground mb-4">
-              Still have questions about pricing?
+              Still have questions?
             </p>
             <a
-              href="/privacy-and-security"
+              href="mailto:hello@freezme.in"
               className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-headline font-semibold rounded-md hover:shadow-hover hover:-translate-y-0.5 transition-all duration-200"
             >
               Contact Our Team
