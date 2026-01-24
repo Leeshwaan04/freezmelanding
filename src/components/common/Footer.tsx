@@ -20,10 +20,10 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
     ],
     legal: [
       { label: 'Privacy & Security', href: '/privacy-and-security' },
-      { label: 'Terms of Service', href: '/privacy-and-security' },
+      { label: 'Terms of Service', href: '/terms' },
     ],
     support: [
-      { label: 'Contact Us', href: '/privacy-and-security' },
+      { label: 'Contact Us', href: 'mailto:hello@freezme.in' },
       { label: 'FAQ', href: '/membership' },
     ],
   };
