@@ -116,24 +116,7 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
             </div>
           </div>
 
-          {/* Support Links */}
-          <div>
-            <h3 className="font-headline text-base font-semibold text-background mb-4">
-              Support
-            </h3>
-            <ul className="space-y-2">
-              {footerLinks.support.map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    className="font-body text-sm text-background/70 hover:text-accent transition-colors duration-300"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+
         </div>
 
         {/* Bottom Bar */}
