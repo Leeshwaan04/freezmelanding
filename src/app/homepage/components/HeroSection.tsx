@@ -16,7 +16,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
   }, []);
 
   return (
-    <section className={`relative bg-gradient-to-br from-background via-card to-muted py-20 lg:py-32 ${className}`}>
+    <section className={`relative bg-[url('/images/freezme_hero_bg.png')] bg-cover bg-center bg-no-repeat py-20 lg:py-32 ${className}`}>
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           {/* Main Headline */}
