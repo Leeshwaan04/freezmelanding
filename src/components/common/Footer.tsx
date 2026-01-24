@@ -30,8 +30,6 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
 
   const socialLinks = [
     { name: 'Instagram', icon: 'CameraIcon', href: 'https://www.instagram.com/freezme7/?hl=en' },
-    { name: 'LinkedIn', icon: 'BriefcaseIcon', href: '#' },
-    { name: 'Twitter', icon: 'ChatBubbleLeftIcon', href: '#' },
   ];
 
   return (
