@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Icon from '@/components/ui/AppIcon';
 
 interface Testimonial {
@@ -17,12 +17,7 @@ interface TestimonialsSectionProps {
 }
 
 const TestimonialsSection = ({ className = '' }: TestimonialsSectionProps) => {
-  const [isHydrated, setIsHydrated] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    setIsHydrated(true);
-  }, []);
 
   const testimonials: Testimonial[] = [
     {
@@ -58,31 +53,6 @@ const TestimonialsSection = ({ className = '' }: TestimonialsSectionProps) => {
   const handleNext = () => {
     setCurrentIndex((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
   };
-
-  if (!isHydrated) {
-    return (
-      <section className={`py-16 lg:py-24 bg-card ${className}`}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-4">
-                Success Stories
-              </h2>
-              <p className="font-body text-lg text-muted-foreground">
-                Real experiences from our community members
-              </p>
-            </div>
-            <div className="bg-popover p-8 rounded-lg shadow-sm min-h-[300px] flex items-center justify-center">
-              <div className="animate-pulse text-center">
-                <div className="h-4 bg-muted rounded w-3/4 mx-auto mb-4"></div>
-                <div className="h-4 bg-muted rounded w-1/2 mx-auto"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   const currentTestimonial = testimonials[currentIndex];
 
@@ -152,9 +122,8 @@ const TestimonialsSection = ({ className = '' }: TestimonialsSectionProps) => {
                 <button
                   key={index}
                   onClick={() => setCurrentIndex(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-200 ${
-                    index === currentIndex ? 'bg-primary w-6' : 'bg-muted'
-                  }`}
+                  className={`w-2 h-2 rounded-full transition-all duration-200 ${index === currentIndex ? 'bg-primary w-6' : 'bg-muted'
+                    }`}
                   aria-label={`Go to testimonial ${index + 1}`}
                 />
               ))}

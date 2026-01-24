@@ -14,49 +14,20 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
 
   return (
     <section className={`relative overflow-hidden py-20 lg:py-32 ${className}`}>
-      {/* Aurora Mesh Gradient Background - Static Image Texture (Performance Optimized) */}
-      <div className="absolute inset-0 z-0 bg-background overflow-hidden transform-gpu">
-        <motion.div
-          animate={{
-            rotate: [0, 360],
-            scale: [1.2, 1.4, 1.2], // Gentle breathing scale
-          }}
-          transition={{
-            duration: 90, // Very slow rotation
-            repeat: Infinity,
-            repeatType: "loop",
-            ease: "linear"
-          }}
-          className="absolute inset-[-50%] w-[200%] h-[200%] opacity-60"
-          style={{
-            willChange: 'transform',
-            // Fallback gradient while image loads
-            backgroundColor: 'var(--color-primary)',
-            backgroundImage: "url('/assets/images/aurora-mesh.png'), linear-gradient(to bottom right, var(--color-primary), var(--color-secondary))",
-            backgroundSize: 'cover, cover',
-            backgroundPosition: 'center',
-            backgroundBlendMode: 'normal, overlay'
-          }}
+      {/* Optimized Background - Static and Lightweight */}
+      <div className="absolute inset-0 z-0 bg-background overflow-hidden">
+        {/* Soft Ambient Glows - Radial Gradients (Fastest way to render glows) */}
+        <div
+          className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full pointer-events-none"
+          style={{ background: 'radial-gradient(circle, hsla(177, 37%, 27%, 0.1) 0%, transparent 70%)' }}
         />
-
-        {/* Floating Highlight - Breathing Effect (Simpler) */}
-        <motion.div
-          animate={{
-            opacity: [0.2, 0.4, 0.2],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "easeInOut"
-          }}
-          className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-accent/10 rounded-full blur-[80px]"
-          style={{ willChange: 'transform' }}
+        <div
+          className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] rounded-full pointer-events-none"
+          style={{ background: 'radial-gradient(circle, hsla(32, 55%, 65%, 0.05) 0%, transparent 70%)' }}
         />
 
         {/* Noise Texture for Premium Feel */}
-        <div className="absolute inset-0 z-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10" />
+        <div className="absolute inset-0 z-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] pointer-events-none" />
       </div>
 
       <div className="container relative z-10 mx-auto px-4">
