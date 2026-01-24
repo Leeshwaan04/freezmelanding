@@ -35,9 +35,12 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
           className="absolute inset-[-50%] w-[200%] h-[200%] opacity-60"
           style={{
             willChange: 'transform',
-            backgroundImage: "url('/assets/images/aurora-mesh.png')",
-            backgroundSize: 'cover',
+            // Fallback gradient while image loads
+            backgroundColor: 'var(--color-primary)',
+            backgroundImage: "url('/assets/images/aurora-mesh.png'), linear-gradient(to bottom right, var(--color-primary), var(--color-secondary))",
+            backgroundSize: 'cover, cover',
             backgroundPosition: 'center',
+            backgroundBlendMode: 'normal, overlay'
           }}
         />
 
