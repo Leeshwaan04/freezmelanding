@@ -45,7 +45,7 @@ const FormField = ({
           <motion.span
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-[10px] font-bold text-destructive uppercase tracking-tighter"
+            className="text-xs font-semibold text-destructive tracking-wide"
           >
             {error}
           </motion.span>

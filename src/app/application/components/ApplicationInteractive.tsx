@@ -162,7 +162,21 @@ const ApplicationInteractive = () => {
       else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
         newErrors.email = 'Invalid email format';
       if (!formData.phone.trim()) newErrors.phone = 'Phone number is required';
-      if (!formData.dateOfBirth) newErrors.dateOfBirth = 'Date of birth is required';
+      if (!formData.dateOfBirth) {
+        newErrors.dateOfBirth = 'Date of birth is required';
+      } else {
+        const dob = new Date(formData.dateOfBirth);
+        const today = new Date();
+        const age = Math.floor((today.getTime() - dob.getTime()) / (365.25 * 24 * 60 * 60 * 1000));
+
+        if (dob > today) {
+          newErrors.dateOfBirth = 'Date of birth cannot be in the future';
+        } else if (age < 18) {
+          newErrors.dateOfBirth = 'You must be at least 18 years old';
+        } else if (age > 100) {
+          newErrors.dateOfBirth = 'Please enter a valid date of birth';
+        }
+      }
       if (!formData.gender) newErrors.gender = 'Gender is required';
       if (!formData.height) newErrors.height = 'Height is required';
       if (!formData.religion) newErrors.religion = 'Religion is required';
