@@ -161,13 +161,13 @@ const PrivacyFooter: React.FC<PrivacyFooterProps> = ({ className = '' }) => {
                 <Icon name="AtSymbolIcon" size={20} variant="outline" className="text-foreground" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.instagram.com/freezme7/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-muted rounded-full flex items-center justify-center hover:bg-primary/10 transition-colors duration-200"
-                aria-label="LinkedIn">
-
-                <Icon name="UserGroupIcon" size={20} variant="outline" className="text-foreground" />
+                aria-label="Instagram"
+              >
+                <Icon name="CameraIcon" size={20} variant="outline" className="text-foreground" />
               </a>
             </div>
           </div>
