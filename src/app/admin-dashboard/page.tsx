@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabase';
 import Icon from '@/components/ui/AppIcon';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -51,12 +50,12 @@ export default function AdminDashboard() {
         async function fetchApplications() {
             setLoading(true);
             try {
-                const { data, error } = await supabase
-                    .from('applications')
-                    .select('*')
-                    .order('submitted_at', { ascending: false });
-
-                if (error) throw error;
+                // Fetch from Internal API (which reads from Local DB)
+                const response = await fetch('/api/admin/applications');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch applications');
+                }
+                const data = await response.json();
                 setApplications(data || []);
                 setError(null);
             } catch (err: any) {
