@@ -9,9 +9,9 @@ const PricingHero: React.FC<PricingHeroProps> = ({ className = '' }) => {
     <section className={`relative py-20 md:py-32 overflow-hidden ${className}`}>
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-background to-background z-0" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full z-0 opacity-30 pointer-events-none">
-        <div className="absolute top-10 left-10 w-72 h-72 bg-accent/20 rounded-full blur-[100px]" />
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full z-0 opacity-30 pointer-events-none overflow-hidden">
+        <div className="absolute top-10 left-10 w-72 h-72 bg-accent/20 rounded-full blur-[80px] will-change-transform" />
+        <div className="absolute bottom-10 right-10 w-96 h-96 bg-primary/10 rounded-full blur-[100px] will-change-transform" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
