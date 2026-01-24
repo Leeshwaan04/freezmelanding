@@ -32,7 +32,7 @@ const PricingInteractive: React.FC = () => {
   const pricingTiers: PricingTier[] = [
     {
       title: 'Candidate Profile',
-      price: 'Complimentary',
+      price: '',
       description: 'Your entry point. Submit your profile for evaluation by our curation team.',
       features: [
         { text: 'Professional profile review', included: true },
@@ -49,31 +49,31 @@ const PricingInteractive: React.FC = () => {
       ctaLink: '/application',
     },
     {
-      title: 'Select Membership',
-      price: '₹2,999',
-      priceLabel: 'By Invitation Only',
-      description: 'Exclusive status for verified individuals. Fee payable only upon acceptance. Lifetime validity.',
+      title: 'Verified Member',
+      price: '',
+      priceLabel: 'By Application',
+      description: 'Exclusive status for verified individuals. Priority access to the network.',
       features: [
         { text: 'Everything in Candidate Profile', included: true },
         { text: 'Human Verification check', included: true },
-        { text: 'Select Member Badge (Trust signal)', included: true },
+        { text: 'Verified Member Badge (Trust signal)', included: true },
         { text: 'Priority visibility in search', included: true },
-        { text: 'Intro fees (₹500-₹1.5k) only upon acceptance', included: true },
+        { text: 'Fast-track approval process', included: true },
         { text: 'Dedicated personal matchmaker', included: false },
         { text: 'Date planning & coordination', included: false },
         { text: 'External headhunting', included: false },
       ],
       isPopular: true,
-      ctaText: 'Request Invitation',
+      ctaText: 'Apply for Access',
       ctaLink: '/application',
     },
     {
-      title: 'Signature Service',
-      price: 'From ₹15,000',
-      priceLabel: 'By Invitation Only',
-      description: 'Limited spots available. Application required. Bespoke matchmaking by dedicated experts.',
+      title: 'Signature Client',
+      price: '',
+      priceLabel: 'Invitation Only',
+      description: 'Limited spots available. Bespoke matchmaking by dedicated experts.',
       features: [
-        { text: 'Everything in Select Membership', included: true },
+        { text: 'Everything in Verified Member', included: true },
         { text: 'Dedicated Relationship Manager', included: true },
         { text: 'Proactive candidate search', included: true },
         { text: 'Hand-picked introductions', included: true },
@@ -83,7 +83,7 @@ const PricingInteractive: React.FC = () => {
         { text: 'Hold membership anytime', included: true },
       ],
       isPopular: false,
-      ctaText: 'Inquire for Access',
+      ctaText: 'Check Eligibility',
       ctaLink: '/application',
     },
   ];
@@ -111,9 +111,15 @@ const PricingInteractive: React.FC = () => {
       <PricingHero />
 
       {/* Pricing Cards Section */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+      <section className="relative py-16 md:py-24 bg-background overflow-hidden">
+        {/* Background Decorations */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          <div className="absolute top-[10%] -left-[10%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]" />
+          <div className="absolute bottom-[10%] -right-[10%] w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px]" />
+        </div>
+
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto items-stretch">
             {pricingTiers.map((tier, index) => (
               <PricingCard
                 key={index}
@@ -129,9 +135,11 @@ const PricingInteractive: React.FC = () => {
             ))}
           </div>
 
-          <div className="mt-12 text-center">
-            <p className="font-body text-sm text-muted-foreground">
-              All prices are indicative estimates. Final membership fees are determined after consultation.
+          <div className="mt-16 text-center">
+            <p className="font-body text-sm text-muted-foreground/60 max-w-2xl mx-auto">
+              Membership fees are determined based on specific requirements after consultation.
+              <br />
+              Local taxes may apply.
             </p>
           </div>
         </div>

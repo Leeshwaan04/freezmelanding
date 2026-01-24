@@ -19,11 +19,11 @@ const PrivacyFooter: React.FC<PrivacyFooterProps> = ({ className = '' }) => {
   }, []);
 
   const footerLinks = [
-  { label: 'Home', href: '/homepage' },
-  { label: 'How It Works', href: '/how-it-works' },
-  { label: 'About', href: '/about' },
-  { label: 'Pricing', href: '/pricing' },
-  { label: 'Application', href: '/application' }];
+    { label: 'Home', href: '/homepage' },
+    { label: 'How It Works', href: '/how-it-works' },
+    { label: 'About', href: '/about' },
+    { label: 'Membership', href: '/membership' },
+    { label: 'Application', href: '/application' }];
 
 
   if (!isHydrated) {
@@ -62,10 +62,10 @@ const PrivacyFooter: React.FC<PrivacyFooterProps> = ({ className = '' }) => {
 
               <nav className="flex flex-wrap justify-center gap-6">
                 {footerLinks.map((link) =>
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
 
                     {link.label}
                   </Link>
@@ -112,7 +112,7 @@ const PrivacyFooter: React.FC<PrivacyFooterProps> = ({ className = '' }) => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             {/* Logo */}
             <Link href="/homepage" className="flex items-center">
-              
+
 
 
 
@@ -123,10 +123,10 @@ const PrivacyFooter: React.FC<PrivacyFooterProps> = ({ className = '' }) => {
 
             <nav className="flex flex-wrap justify-center gap-6">
               {footerLinks.map((link) =>
-              <Link
-                key={link.href}
-                href={link.href}
-                className="font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="font-body text-sm text-muted-foreground hover:text-primary transition-colors duration-200">
 
                   {link.label}
                 </Link>

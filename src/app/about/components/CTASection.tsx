@@ -16,7 +16,7 @@ const CTASection = ({ className = '' }: CTASectionProps) => {
           <p className="font-body text-lg lg:text-xl text-primary-foreground/90 mb-10 leading-relaxed">
             Join a select community of emotionally intelligent individuals seeking meaningful connections through thoughtful, human-curated introductions.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/application"
@@ -25,7 +25,7 @@ const CTASection = ({ className = '' }: CTASectionProps) => {
               Start Your Application
               <Icon name="ArrowRightIcon" size={20} variant="outline" />
             </Link>
-            
+
             <Link
               href="/how-it-works"
               className="inline-flex items-center gap-2 px-8 py-4 bg-primary-foreground text-primary font-headline font-semibold rounded-md hover:-translate-y-0.5 hover:shadow-hover transition-all duration-200"
@@ -37,7 +37,7 @@ const CTASection = ({ className = '' }: CTASectionProps) => {
 
           <div className="mt-12 pt-8 border-t border-primary-foreground/20">
             <p className="font-body text-base text-primary-foreground/80">
-              Have questions? <Link href="/privacy-and-security" className="underline hover:text-primary-foreground transition-colors">Read our privacy policy</Link> or explore our <Link href="/pricing" className="underline hover:text-primary-foreground transition-colors">transparent pricing</Link>
+              Have questions? <Link href="/privacy-and-security" className="underline hover:text-primary-foreground transition-colors">Read our privacy policy</Link> or explore our <Link href="/membership" className="underline hover:text-primary-foreground transition-colors">membership options</Link>
             </p>
           </div>
         </div>

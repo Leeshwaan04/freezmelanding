@@ -39,7 +39,7 @@ const Header = ({ className = '' }: HeaderProps) => {
             <Link
               href="/"
               className={`text-base font-headline font-medium transition-colors ${isActive('/') || isActive('/homepage')
-                  ? 'text-[#2C5F5D]' : 'text-[#2A2A2A] hover:text-[#2C5F5D]'
+                ? 'text-[#2C5F5D]' : 'text-[#2A2A2A] hover:text-[#2C5F5D]'
                 }`}
             >
               Home
@@ -47,7 +47,7 @@ const Header = ({ className = '' }: HeaderProps) => {
             <Link
               href="/how-it-works"
               className={`text-base font-headline font-medium transition-colors ${isActive('/how-it-works')
-                  ? 'text-[#2C5F5D]' : 'text-[#2A2A2A] hover:text-[#2C5F5D]'
+                ? 'text-[#2C5F5D]' : 'text-[#2A2A2A] hover:text-[#2C5F5D]'
                 }`}
             >
               How It Works
@@ -55,18 +55,18 @@ const Header = ({ className = '' }: HeaderProps) => {
             <Link
               href="/about"
               className={`text-base font-headline font-medium transition-colors ${isActive('/about')
-                  ? 'text-[#2C5F5D]' : 'text-[#2A2A2A] hover:text-[#2C5F5D]'
+                ? 'text-[#2C5F5D]' : 'text-[#2A2A2A] hover:text-[#2C5F5D]'
                 }`}
             >
               About
             </Link>
             <Link
-              href="/pricing"
-              className={`text-base font-headline font-medium transition-colors ${isActive('/pricing')
-                  ? 'text-[#2C5F5D]' : 'text-[#2A2A2A] hover:text-[#2C5F5D]'
+              href="/membership"
+              className={`text-base font-headline font-medium transition-colors ${isActive('/membership')
+                ? 'text-[#2C5F5D]' : 'text-[#2A2A2A] hover:text-[#2C5F5D]'
                 }`}
             >
-              Pricing
+              Membership
             </Link>
 
             {/* More Dropdown */}
@@ -134,7 +134,7 @@ const Header = ({ className = '' }: HeaderProps) => {
               href="/"
               onClick={() => setIsMobileMenuOpen(false)}
               className={`block text-base font-headline font-medium ${isActive('/') || isActive('/homepage')
-                  ? 'text-[#2C5F5D]' : 'text-[#2A2A2A] hover:text-[#2C5F5D]'
+                ? 'text-[#2C5F5D]' : 'text-[#2A2A2A] hover:text-[#2C5F5D]'
                 }`}
             >
               Home
@@ -143,7 +143,7 @@ const Header = ({ className = '' }: HeaderProps) => {
               href="/how-it-works"
               onClick={() => setIsMobileMenuOpen(false)}
               className={`block text-base font-headline font-medium ${isActive('/how-it-works')
-                  ? 'text-[#2C5F5D]' : 'text-[#2A2A2A] hover:text-[#2C5F5D]'
+                ? 'text-[#2C5F5D]' : 'text-[#2A2A2A] hover:text-[#2C5F5D]'
                 }`}
             >
               How It Works
@@ -152,16 +152,16 @@ const Header = ({ className = '' }: HeaderProps) => {
               href="/about"
               onClick={() => setIsMobileMenuOpen(false)}
               className={`block text-base font-headline font-medium ${isActive('/about')
-                  ? 'text-[#2C5F5D]' : 'text-[#2A2A2A] hover:text-[#2C5F5D]'
+                ? 'text-[#2C5F5D]' : 'text-[#2A2A2A] hover:text-[#2C5F5D]'
                 }`}
             >
               About
             </Link>
             <Link
-              href="/pricing"
+              href="/membership"
               onClick={() => setIsMobileMenuOpen(false)}
-              className={`block text-base font-headline font-medium ${isActive('/pricing')
-                  ? 'text-[#2C5F5D]' : 'text-[#2A2A2A] hover:text-[#2C5F5D]'
+              className={`block text-base font-headline font-medium ${isActive('/membership')
+                ? 'text-[#2C5F5D]' : 'text-[#2A2A2A] hover:text-[#2C5F5D]'
                 }`}
             >
               Pricing

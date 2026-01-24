@@ -108,7 +108,7 @@ export default function HowItWorksInteractive() {
     },
     {
       title: "Verified Access",
-      amount: "₹2,999",
+      amount: "Verified",
       description: "One-time verification",
       features: [
         "Human Verification check",
@@ -120,7 +120,7 @@ export default function HowItWorksInteractive() {
     },
     {
       title: "Personal Matchmaker",
-      amount: "From ₹15,000",
+      amount: "By Application",
       description: "Human-led service",
       features: [
         "Dedicated Relationship Manager",
@@ -245,10 +245,10 @@ export default function HowItWorksInteractive() {
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
               <h2 className="font-headline text-3xl lg:text-5xl font-bold text-foreground mb-6">
-                Transparent Pricing
+                Membership Tiers
               </h2>
               <p className="font-body text-lg text-muted-foreground max-w-3xl mx-auto">
-                We believe in honest pricing for honest service. No hidden fees, no subscription traps—just clear investment in your relationship journey.
+                We believe in honest service for honest investment. No hidden fees, no subscription traps—just clear value in your relationship journey.
               </p>
             </div>
 

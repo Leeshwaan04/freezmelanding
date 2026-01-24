@@ -16,7 +16,7 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
     company: [
       { label: 'About Us', href: '/about' },
       { label: 'How It Works', href: '/how-it-works' },
-      { label: 'Pricing', href: '/pricing' },
+      { label: 'Membership', href: '/membership' },
     ],
     legal: [
       { label: 'Privacy & Security', href: '/privacy-and-security' },
@@ -24,7 +24,7 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
     ],
     support: [
       { label: 'Contact Us', href: '/privacy-and-security' },
-      { label: 'FAQ', href: '/pricing' },
+      { label: 'FAQ', href: '/membership' },
     ],
   };
 

@@ -97,10 +97,10 @@ const CostComparison: React.FC<CostComparisonProps> = ({ className = '' }) => {
                     Freezme Premium
                   </td>
                   <td className="px-6 py-4 font-body text-sm text-foreground font-semibold">
-                    One-time
+                    Flexible
                   </td>
                   <td className="px-6 py-4 font-body text-sm text-foreground font-semibold">
-                    From ₹2,999
+                    By Application
                   </td>
                   <td className="px-6 py-4 font-body text-sm text-foreground font-semibold">
                     10-20 hours

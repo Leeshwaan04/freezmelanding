@@ -3,7 +3,7 @@ import Header from '@/components/common/Header';
 import PricingInteractive from './components/PricingInteractive';
 
 export const metadata: Metadata = {
-  title: 'Pricing - Freezme',
+  title: 'Membership - Freezme',
   description: 'Transparent pricing for premium matchmaking service. Investment in quality introductions with human curation, satisfaction guarantee, and secure payments. Compare our value against traditional dating apps.',
 };
 
