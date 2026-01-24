@@ -159,6 +159,9 @@ const PrivacyFooter: React.FC<PrivacyFooterProps> = ({ className = '' }) => {
             <p className="font-body text-sm text-muted-foreground">
               &copy; {currentYear} Freezme. All rights reserved. | Intentional dating for intentional people.
             </p>
+            <p className="font-body text-[10px] text-muted-foreground/60 mt-2 uppercase tracking-widest">
+              Last updated: January 25, 2026
+            </p>
           </div>
         </div>
       </div>

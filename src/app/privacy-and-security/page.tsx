@@ -5,7 +5,6 @@ import PrivacySection from './components/PrivacySection';
 import SecurityMeasures from './components/SecurityMeasures';
 import ComplianceCertifications from './components/ComplianceCertifications';
 import UserRightsControl from './components/UserRightsControl';
-import ContactPrivacy from './components/ContactPrivacy';
 import PrivacyFooter from './components/PrivacyFooter';
 
 export const metadata: Metadata = {
@@ -17,14 +16,13 @@ export default function PrivacyAndSecurityPage() {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      
+
       <main className="pt-16">
         <PrivacyHero />
         <PrivacySection />
         <SecurityMeasures />
         <ComplianceCertifications />
         <UserRightsControl />
-        <ContactPrivacy />
       </main>
 
       <PrivacyFooter />
