@@ -19,14 +19,55 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
 
   return (
     <section className={`relative overflow-hidden py-20 lg:py-32 ${className}`}>
-      {/* Procedural Motion Graphics Background */}
+      {/* Aurora Mesh Gradient Background - Motion Style */}
       <div className="absolute inset-0 z-0 bg-background overflow-hidden">
-        {/* Soft Gold Orb */}
         <motion.div
           animate={{
-            x: [0, 100, -50, 0],
-            y: [0, -50, 100, 0],
-            scale: [1, 1.2, 0.9, 1],
+            rotate: [0, 360],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 45,
+            repeat: Infinity,
+            repeatType: "loop",
+            ease: "linear"
+          }}
+          className="absolute inset-[-50%] w-[200%] h-[200%] opacity-40 blur-[100px]"
+          style={{
+            background: `conic-gradient(from 0deg at 50% 50%, 
+              var(--color-primary) 0deg, 
+              var(--color-accent) 60deg, 
+              var(--color-background) 120deg, 
+              var(--color-secondary) 180deg, 
+              var(--color-primary) 240deg, 
+              var(--color-accent) 300deg, 
+              var(--color-primary) 360deg
+            )`
+          }}
+        />
+
+        {/* Floating Highlight - Breathing Effect */}
+        <motion.div
+          animate={{
+            opacity: [0.3, 0.6, 0.3],
+            scale: [1, 1.5, 1],
+            x: ["-20%", "20%", "-20%"]
+          }}
+          transition={{
+            duration: 20,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "easeInOut"
+          }}
+          className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-accent/20 rounded-full blur-[120px]"
+        />
+
+        {/* Floating Shadow - Breathing Effect */}
+        <motion.div
+          animate={{
+            opacity: [0.3, 0.5, 0.3],
+            scale: [1.2, 0.8, 1.2],
+            x: ["20%", "-20%", "20%"]
           }}
           transition={{
             duration: 25,
@@ -34,43 +75,11 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
             repeatType: "reverse",
             ease: "easeInOut"
           }}
-          className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-accent/20 rounded-full blur-[100px]"
+          className="absolute bottom-1/4 right-1/4 w-[50vw] h-[50vw] bg-primary/20 rounded-full blur-[120px]"
         />
 
-        {/* Deep Teal Orb */}
-        <motion.div
-          animate={{
-            x: [0, -100, 50, 0],
-            y: [0, 100, -50, 0],
-            scale: [1, 1.3, 0.8, 1],
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "easeInOut"
-          }}
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]"
-        />
-
-        {/* Warm Brown/Secondary Orb */}
-        <motion.div
-          animate={{
-            x: [0, 50, -100, 0],
-            y: [0, -100, 50, 0],
-            scale: [1, 1.1, 0.9, 1],
-          }}
-          transition={{
-            duration: 28,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "easeInOut"
-          }}
-          className="absolute -bottom-20 -right-20 w-[550px] h-[550px] bg-secondary/15 rounded-full blur-[100px]"
-        />
-
-        {/* Grid Pattern Overlay for Texture */}
-        <div className="absolute inset-0 z-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px] opacity-30" />
+        {/* Noise Texture for Premium Feel */}
+        <div className="absolute inset-0 z-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-soft-light filter contrast-150 brightness-100" />
       </div>
 
       <div className="container relative z-10 mx-auto px-4">
