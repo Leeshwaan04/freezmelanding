@@ -32,7 +32,7 @@ const FormField = ({
   helpText,
   icon,
 }: FormFieldProps) => {
-  const isFilled = value.length > 0;
+  const isFilled = value?.length > 0;
 
   return (
     <div className="space-y-1.5 group">
