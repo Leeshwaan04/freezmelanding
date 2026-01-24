@@ -19,21 +19,59 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
 
   return (
     <section className={`relative overflow-hidden py-20 lg:py-32 ${className}`}>
-      {/* Cinematic Motion Background */}
-      <motion.div
-        initial={{ scale: 1.05 }}
-        animate={{ scale: 1.15 }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          repeatType: "reverse",
-          ease: "linear"
-        }}
-        className="absolute inset-0 z-0 bg-[url('/images/freezme_couple_bg.png')] bg-cover bg-center bg-no-repeat"
-      />
+      {/* Procedural Motion Graphics Background */}
+      <div className="absolute inset-0 z-0 bg-background overflow-hidden">
+        {/* Soft Gold Orb */}
+        <motion.div
+          animate={{
+            x: [0, 100, -50, 0],
+            y: [0, -50, 100, 0],
+            scale: [1, 1.2, 0.9, 1],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "easeInOut"
+          }}
+          className="absolute -top-20 -left-20 w-[500px] h-[500px] bg-accent/20 rounded-full blur-[100px]"
+        />
 
-      {/* Overlay for Contrast */}
-      <div className="absolute inset-0 z-0 bg-background/60 backdrop-blur-[1px]" />
+        {/* Deep Teal Orb */}
+        <motion.div
+          animate={{
+            x: [0, -100, 50, 0],
+            y: [0, 100, -50, 0],
+            scale: [1, 1.3, 0.8, 1],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "easeInOut"
+          }}
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]"
+        />
+
+        {/* Warm Brown/Secondary Orb */}
+        <motion.div
+          animate={{
+            x: [0, 50, -100, 0],
+            y: [0, -100, 50, 0],
+            scale: [1, 1.1, 0.9, 1],
+          }}
+          transition={{
+            duration: 28,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "easeInOut"
+          }}
+          className="absolute -bottom-20 -right-20 w-[550px] h-[550px] bg-secondary/15 rounded-full blur-[100px]"
+        />
+
+        {/* Grid Pattern Overlay for Texture */}
+        <div className="absolute inset-0 z-0 bg-[linear-gradient(rgba(0,0,0,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.02)_1px,transparent_1px)] bg-[size:40px_40px] opacity-30" />
+      </div>
 
       <div className="container relative z-10 mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
