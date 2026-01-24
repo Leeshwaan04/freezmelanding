@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import Icon from '@/components/ui/AppIcon';
 import PricingHero from './PricingHero';
-import PricingCard from './PricingCard';
 import ValueProposition from './ValueProposition';
 import CostComparison from './CostComparison';
 import DataPrivacySecurity from './DataPrivacySecurity';
@@ -12,17 +11,6 @@ import FAQ from './FAQ';
 import CTASection from './CTASection';
 import Footer from '@/components/common/Footer';
 
-interface PricingTier {
-  title: string;
-  price: string;
-  priceLabel?: string;
-  description: string;
-  features: Array<{ text: string; included: boolean }>;
-  isPopular: boolean;
-  ctaText: string;
-  ctaLink: string;
-}
-
 const PricingInteractive: React.FC = () => {
   const [isHydrated, setIsHydrated] = useState(false);
 
@@ -30,63 +18,16 @@ const PricingInteractive: React.FC = () => {
     setIsHydrated(true);
   }, []);
 
-  const pricingTiers: PricingTier[] = [
-    {
-      title: 'Candidate Profile',
-      price: '',
-      description: 'Your entry point. Submit your profile for evaluation by our curation team.',
-      features: [
-        { text: 'Professional profile review', included: true },
-        { text: 'Compatibility potential score', included: true },
-        { text: 'Community fit assessment', included: true },
-        { text: 'Join Waitlist for Inbound Matches', included: true },
-        { text: 'Active matching updates', included: false },
-        { text: 'Verified profile badge', included: false },
-        { text: 'Guaranteed introductions', included: false },
-        { text: 'Personal introducer', included: false },
-      ],
-      isPopular: false,
-      ctaText: 'Join Waitlist',
-      ctaLink: '/application',
-    },
-    {
-      title: 'Verified Member',
-      price: '',
-      priceLabel: 'By Application',
-      description: 'Exclusive status for verified individuals. Priority access to the network.',
-      features: [
-        { text: 'Everything in Candidate Profile', included: true },
-        { text: 'Human Verification check', included: true },
-        { text: 'Verified Member Badge (Trust signal)', included: true },
-        { text: 'Priority visibility in search', included: true },
-        { text: 'Fast-track approval process', included: true },
-        { text: 'Dedicated personal introducer', included: false },
-        { text: 'Date planning & coordination', included: false },
-        { text: 'External headhunting', included: false },
-      ],
-      isPopular: true,
-      ctaText: 'Apply for Access',
-      ctaLink: '/application',
-    },
-    {
-      title: 'Signature Client',
-      price: '',
-      priceLabel: 'Invitation Only',
-      description: 'Limited spots available. Bespoke introduction by dedicated experts.',
-      features: [
-        { text: 'Everything in Verified Member', included: true },
-        { text: 'Dedicated Relationship Manager', included: true },
-        { text: 'Proactive candidate search', included: true },
-        { text: 'Hand-picked introductions', included: true },
-        { text: 'Date arrangement & feedback', included: true },
-        { text: 'Profile photoshoot guidance', included: true },
-        { text: 'Curated styling advice', included: true },
-        { text: 'Hold membership anytime', included: true },
-      ],
-      isPopular: false,
-      ctaText: 'Check Eligibility',
-      ctaLink: '/application',
-    },
+  const signatureFeatures: Array<{ text: string; included: boolean }> = [
+    { text: 'Complete Human Verification & Vetting', included: true },
+    { text: 'Dedicated Personal Introducer', included: true },
+    { text: 'Bespoke Introduction Strategy', included: true },
+    { text: 'Proactive Candidate Scouting', included: true },
+    { text: 'Seamless Date Planning & Coordination', included: true },
+    { text: 'Post-Introduction Feedback & Refinement', included: true },
+    { text: 'Professional Profile Curation', included: true },
+    { text: 'Photoshoot & Styling Guidance', included: true },
+    { text: 'Absolute Privacy (Profiles are never public)', included: true },
   ];
 
   if (!isHydrated) {
@@ -96,11 +37,7 @@ const PricingInteractive: React.FC = () => {
         <div className="container mx-auto px-4 py-16">
           <div className="animate-pulse space-y-8">
             <div className="h-32 bg-muted rounded-lg" />
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="h-96 bg-muted rounded-lg" />
-              ))}
-            </div>
+            <div className="max-w-3xl mx-auto h-[600px] bg-muted rounded-[2rem]" />
           </div>
         </div>
       </div>
@@ -111,53 +48,102 @@ const PricingInteractive: React.FC = () => {
     <div className="min-h-screen bg-background">
       <PricingHero />
 
-      {/* Pricing Cards Section */}
-      <section className="relative py-24 md:py-32 bg-background overflow-hidden">
-        {/* Refined Background Decorations */}
+      {/* Unified Pricing Section */}
+      <section className="relative py-24 md:py-32 bg-background overflow-hidden font-display">
+        {/* Artistic Background Decorations */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute top-[-5%] left-[-5%] w-[600px] h-[600px] bg-primary/[0.03] rounded-full blur-[120px] animate-pulse" />
-          <div className="absolute bottom-[-5%] right-[-5%] w-[600px] h-[600px] bg-accent/[0.03] rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-[-10%] right-[-5%] w-[800px] h-[800px] bg-primary/[0.04] rounded-full blur-[150px] animate-pulse" />
+          <div className="absolute bottom-[-10%] left-[-5%] w-[800px] h-[800px] bg-accent/[0.04] rounded-full blur-[150px] animate-pulse" style={{ animationDelay: '3s' }} />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Membership Tiers
+            <h2 className="font-headline text-4xl md:text-6xl font-bold text-foreground mb-8 tracking-tight">
+              A Bespoke Experience
             </h2>
-            <div className="h-1 w-20 bg-accent/40 mx-auto mb-8 rounded-full" />
-            <p className="font-body text-lg text-muted-foreground/80 leading-relaxed">
-              Choose the level of support that best aligns with your relationship goals. From curated access to bespoke personal introductions.
+            <div className="h-1.5 w-24 bg-accent/40 mx-auto mb-8 rounded-full" />
+            <p className="font-body text-xl text-muted-foreground/80 leading-relaxed italic">
+              "We don't offer levels of quality. We offer one master service designed for those who value depth, timing, and intentionality above all else."
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 max-w-7xl mx-auto items-stretch">
-            {pricingTiers.map((tier, index) => (
-              <PricingCard
-                key={index}
-                title={tier.title}
-                price={tier.price}
-                priceLabel={tier.priceLabel}
-                description={tier.description}
-                features={tier.features}
-                isPopular={tier.isPopular}
-                ctaText={tier.ctaText}
-                ctaLink={tier.ctaLink}
-              />
-            ))}
-          </div>
+          <div className="max-w-4xl mx-auto">
+            <div className="relative group">
+              {/* Outer Glow Effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-accent/20 via-primary/10 to-accent/20 rounded-[3rem] blur-2xl opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 pointer-events-none" />
 
-          <div className="mt-20 text-center">
-            <div className="inline-flex flex-col md:flex-row items-center gap-4 px-8 py-4 rounded-2xl bg-muted/30 border border-border/40">
-              <Icon name="InformationCircleIcon" size={20} className="text-accent" />
-              <p className="font-body text-sm text-muted-foreground/70">
-                Membership fees are determined based on specific requirements after consultation. Local taxes may apply.
-              </p>
+              <div className="relative bg-card rounded-[2.5rem] p-8 md:p-16 border border-white/40 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.1)] backdrop-blur-xl">
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+
+                  {/* Left Column: Branding & Intro */}
+                  <div className="space-y-8">
+                    <div>
+                      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 mb-6">
+                        <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
+                        <span className="font-headline text-xs font-bold uppercase tracking-[0.2em] text-accent">Exclusive Selection</span>
+                      </div>
+                      <h3 className="font-headline text-4xl md:text-5xl font-bold text-primary mb-6">
+                        The Signature Membership
+                      </h3>
+                      <p className="font-body text-lg text-muted-foreground leading-relaxed">
+                        A fully-managed journey where your dedicated introducer acts as your personal scout, stylist, and strategist.
+                      </p>
+                    </div>
+
+                    <div className="p-8 rounded-3xl bg-primary/5 border border-primary/10 space-y-2 text-center lg:text-left">
+                      <span className="font-headline text-2xl md:text-3xl font-medium text-foreground tracking-wide italic">Membership</span>
+                      <div className="h-px w-12 bg-accent/30 mx-auto lg:mx-0 my-4" />
+                      <p className="font-body text-xs font-bold uppercase tracking-[0.2em] text-accent">By Consultation Only</p>
+                    </div>
+                  </div>
+
+                  {/* Right Column: Features Checklist */}
+                  <div className="bg-background/40 rounded-3xl p-8 border border-border/40">
+                    <h4 className="font-headline text-sm uppercase tracking-widest text-primary mb-8 font-bold">Comprehensive Services</h4>
+                    <ul className="grid grid-cols-1 gap-5">
+                      {signatureFeatures.map((feature, index) => (
+                        <li key={index} className="flex items-start gap-4">
+                          <div className="mt-1 flex-shrink-0 text-accent">
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                            </svg>
+                          </div>
+                          <span className="font-body text-sm md:text-base text-foreground/80 leading-snug">
+                            {feature.text}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                </div>
+
+                <div className="mt-16 flex flex-col items-center gap-8">
+                  <a
+                    href="/application"
+                    className="group/btn relative inline-flex items-center justify-center py-6 px-12 rounded-2xl bg-primary text-primary-foreground text-xl font-headline font-bold shadow-2xl shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-1 transition-all duration-500 overflow-hidden"
+                  >
+                    <div className="absolute inset-0 w-1/2 h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -skew-x-[45deg] -translate-x-full group-hover/btn:animate-shimmer" />
+                    <span className="relative">Apply for Membership</span>
+                    <Icon name="ArrowRightIcon" size={24} className="relative ml-3 transform transition-transform duration-300 group-hover/btn:translate-x-2" />
+                  </a>
+
+                  <p className="font-body text-sm text-muted-foreground/60 text-center max-w-xl">
+                    Our curation team reviews applications within 48 hours. Membership fees and specific introductions are discussed during your initial consultation.
+                  </p>
+                </div>
+
+              </div>
+            </div>
+
+            <div className="mt-24">
+              <ValueProposition />
             </div>
           </div>
         </div>
       </section>
 
-      <ValueProposition />
       <CostComparison />
       <DataPrivacySecurity />
       <MoneyBackGuarantee />
