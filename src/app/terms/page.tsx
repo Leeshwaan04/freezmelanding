@@ -15,7 +15,7 @@ export default function TermsPage() {
                     <section>
                         <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">1. Service Description & Philosophy</h2>
                         <p className="mb-4">
-                            Freezme is not a typical dating app. We provide a human-curated matchmaking service designed for "Slow Dating." This means we prioritize quality over quantity and depth over speed.
+                            Freezme is not a typical dating app. We provide a human-curated Introduction service designed for "Slow Dating." This means we prioritize quality over quantity and depth over speed.
                         </p>
                         <p>
                             What this means for you:
