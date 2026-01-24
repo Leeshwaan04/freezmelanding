@@ -1,6 +1,6 @@
 # 🚀 Freezme Launch Checklist
 
-Follow these steps to take your matchmaking platform live on **freezme.in**.
+Follow these steps to take your introduction platform live on **freezme.in**.
 
 ## 1. Database Setup (Supabase)
 - [ ] Create a project at [Supabase](https://supabase.com).

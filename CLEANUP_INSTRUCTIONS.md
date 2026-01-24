@@ -41,12 +41,12 @@ rm -rf src/app/transactions
 
 ```bash
 rm src/services/adminService.ts
-rm src/services/matchmakingService.ts
+rm src/services/introductionService.ts
 ```
 
 **Files to DELETE**:
 - ❌ `adminService.ts` - Admin operations
-- ❌ `matchmakingService.ts` - Matchmaking logic
+- ❌ `introductionService.ts` - Introduction logic
 
 ### 3. Delete API Routes
 **Location**: `src/app/api/`
@@ -82,11 +82,11 @@ rm src/lib/razorpay.ts
 **Location**: `src/types/`
 
 ```bash
-rm src/types/matchmaking.types.ts
+rm src/types/introduction.types.ts
 ```
 
 **Types to DELETE**:
-- ❌ `matchmaking.types.ts` - Matchmaking type definitions
+- ❌ `introduction.types.ts` - Introduction type definitions
 
 ## ✅ Preserved Files (DO NOT DELETE)
 
@@ -107,7 +107,7 @@ rm src/types/matchmaking.types.ts
 
 After cleanup, verify:
 1. ✅ No routes exist for auth/admin/payments
-2. ✅ No service files for admin/matchmaking
+2. ✅ No service files for admin/introduction
 3. ✅ No API routes for payments
 4. ✅ Navigation only shows 7 original screens
 5. ✅ Database contains no user management tables
@@ -127,5 +127,5 @@ After cleanup, verify:
 - No user_profiles table
 - No transactions table
 - No partner_preferences table
-- No matchmaking functions
+- No introduction functions
 - No auth-related ENUMs
