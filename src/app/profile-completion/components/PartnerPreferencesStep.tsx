@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { ProfileFormData, GenderType, EducationLevelType, LifestyleType, SmokingPreference, DrinkingPreference } from '../../../types/matchmaking.types';
+import { ProfileFormData, GenderType, EducationLevelType, LifestyleType, SmokingPreference, DrinkingPreference } from '../../../types/introduction.types';
 
 interface PartnerPreferencesStepProps {
   formData: Partial<ProfileFormData>;

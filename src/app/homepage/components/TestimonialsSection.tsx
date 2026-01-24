@@ -35,7 +35,7 @@ const TestimonialsSection = ({ className = '' }: TestimonialsSectionProps) => {
     },
     {
       id: 2,
-      quote: "I was skeptical about paying for a matchmaking service, but the quality of the introduction made it worth every rupee. Finally, someone who understood what I was actually looking for.",
+      quote: "I was skeptical about paying for an introduction service, but the quality of the introduction made it worth every rupee. Finally, someone who understood what I was actually looking for.",
       author: "Anonymous",
       age: 31,
       profession: "Software Engineer",

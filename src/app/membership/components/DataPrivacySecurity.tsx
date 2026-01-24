@@ -44,7 +44,7 @@ const DataPrivacySecurity: React.FC<PaymentSecurityProps> = ({ className = '' })
               Your Privacy is Our Priority
             </h2>
             <p className="font-body text-lg text-muted-foreground max-w-3xl mx-auto">
-              Matchmaking is built on trust. We protect your personal story with bank-level security and human discretion.
+              Introduction is built on trust. We protect your personal story with bank-level security and human discretion.
             </p>
           </div>
 

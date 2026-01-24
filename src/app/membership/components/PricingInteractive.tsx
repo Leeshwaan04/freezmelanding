@@ -71,7 +71,7 @@ const PricingInteractive: React.FC = () => {
       title: 'Signature Client',
       price: '',
       priceLabel: 'Invitation Only',
-      description: 'Limited spots available. Bespoke matchmaking by dedicated experts.',
+      description: 'Limited spots available. Bespoke introduction by dedicated experts.',
       features: [
         { text: 'Everything in Verified Member', included: true },
         { text: 'Dedicated Relationship Manager', included: true },

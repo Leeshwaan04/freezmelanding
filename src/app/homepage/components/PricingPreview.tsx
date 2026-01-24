@@ -80,7 +80,7 @@ const PricingPreview = ({ className = '' }: PricingPreviewProps) => {
                   'High-intent introductions',
                   'Ongoing guidance during your journey',
                   'Total privacy & identity protection',
-                  'A human-centric matchmaking approach',
+                  'A human-centric introduction approach',
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <Icon name="CheckCircleIcon" size={20} variant="solid" className="text-success flex-shrink-0 mt-0.5" />

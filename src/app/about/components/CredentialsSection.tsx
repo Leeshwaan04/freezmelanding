@@ -22,8 +22,8 @@ const CredentialsSection = ({ className = '' }: CredentialsSectionProps) => {
     {
       id: 2,
       icon: "ChatBubbleLeftRightIcon",
-      title: "Professional Matchmaking Certification",
-      description: "Certified by the International Matchmaking Institute"
+      title: "Professional Introduction Certification",
+      description: "Certified by the International Introduction Institute"
     },
     {
       id: 3,
@@ -43,7 +43,7 @@ const CredentialsSection = ({ className = '' }: CredentialsSectionProps) => {
     {
       id: 1,
       publication: "The Times of India",
-      title: "Redefining Modern Matchmaking",
+      title: "Redefining Modern Introduction",
       date: "December 2025"
     },
     {
@@ -55,7 +55,7 @@ const CredentialsSection = ({ className = '' }: CredentialsSectionProps) => {
     {
       id: 3,
       publication: "Economic Times",
-      title: "Premium Matchmaking Services on the Rise",
+      title: "Premium Introduction Services on the Rise",
       date: "October 2025"
     }
   ];

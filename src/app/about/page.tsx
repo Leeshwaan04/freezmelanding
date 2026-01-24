@@ -10,7 +10,7 @@ import Footer from '@/components/common/Footer';
 
 export const metadata: Metadata = {
   title: 'About - Freezme',
-  description: 'Discover the philosophy behind Freezme\'s human-curated matchmaking service. Learn about our founder Sumit\'s mission to bring intentional dating and meaningful connections to emotionally intelligent individuals.',
+  description: 'Discover the philosophy behind Freezme\'s human-curated introduction service. Learn about our founder Sumit\'s mission to bring intentional dating and meaningful connections to emotionally intelligent individuals.',
 };
 
 export default function AboutPage() {

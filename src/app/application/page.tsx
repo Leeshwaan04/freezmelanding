@@ -4,7 +4,7 @@ import ApplicationInteractive from './components/ApplicationInteractive';
 
 export const metadata: Metadata = {
   title: 'Application - Freezme',
-  description: 'Apply to Freezme premium matchmaking service. Complete our thoughtful multi-step application to begin your journey toward meaningful connections through human-curated introductions.',
+  description: 'Apply to Freezme premium introduction service. Complete our thoughtful multi-step application to begin your journey toward meaningful connections through human-curated introductions.',
 };
 
 export default function ApplicationPage() {

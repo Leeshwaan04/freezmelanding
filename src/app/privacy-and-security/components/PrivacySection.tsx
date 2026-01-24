@@ -19,7 +19,7 @@ const PrivacySection: React.FC<PrivacySectionProps> = ({ className = '' }) => {
       id: 1,
       icon: 'UserCircleIcon',
       title: 'Data Collection Transparency',
-      description: 'We collect only what we need to provide you with exceptional matchmaking services.',
+      description: 'We collect only what we need to provide you with exceptional introduction services.',
       details: [
         'Personal information: Name, age, contact details, and preferences',
         'Professional background: Education, career, and lifestyle information',
@@ -32,7 +32,7 @@ const PrivacySection: React.FC<PrivacySectionProps> = ({ className = '' }) => {
       id: 2,
       icon: 'EyeSlashIcon',
       title: 'How We Use Your Data',
-      description: 'Your information is used exclusively for matchmaking and service improvement.',
+      description: 'Your information is used exclusively for introduction and service improvement.',
       details: [
         'Curating personalized matches based on compatibility and preferences',
         'Facilitating introductions between compatible individuals',

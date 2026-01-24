@@ -4,7 +4,7 @@ import PricingInteractive from './components/PricingInteractive';
 
 export const metadata: Metadata = {
   title: 'Membership - Freezme',
-  description: 'Transparent pricing for premium matchmaking service. Investment in quality introductions with human curation, satisfaction guarantee, and secure payments. Compare our value against traditional dating apps.',
+  description: 'Transparent pricing for premium introduction service. Investment in quality introductions with human curation, satisfaction guarantee, and secure payments. Compare our value against traditional dating apps.',
 };
 
 export default function PricingPage() {

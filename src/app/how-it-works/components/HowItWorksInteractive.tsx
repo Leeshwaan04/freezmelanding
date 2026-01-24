@@ -60,10 +60,10 @@ export default function HowItWorksInteractive() {
     {
       stepNumber: 2,
       title: "Human Curation & Assessment",
-      description: "Our team carefully reviews your application using emotional intelligence and years of matchmaking experience—not algorithms. We assess compatibility potential, relationship readiness, and alignment with our community.",
+      description: "Our team carefully reviews your application using emotional intelligence and years of introduction experience—not algorithms. We assess compatibility potential, relationship readiness, and alignment with our community.",
       timeline: "3-5 business days",
       details: [
-        "Detailed review by experienced matchmaking professionals",
+        "Detailed review by experienced introduction professionals",
         "Assessment of emotional maturity and relationship readiness",
         "Evaluation of compatibility with existing member pool",
         "Honest feedback regardless of acceptance decision"]

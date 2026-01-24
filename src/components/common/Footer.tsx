@@ -46,7 +46,7 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
               </span>
             </Link>
             <p className="font-body text-sm text-background/80 mb-4 max-w-sm">
-              Premium matchmaking service for intentional daters seeking quality over quantity.
+              Premium introduction service for intentional daters seeking quality over quantity.
             </p>
             <div className="flex items-center gap-3">
               {socialLinks.map((social) => (
