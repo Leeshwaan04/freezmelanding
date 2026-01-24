@@ -11,9 +11,7 @@ export default function Homepage() {
   return (
     <main className="min-h-screen bg-background">
       <Header />
-      <div className="pt-16">
-        <HomepageInteractive />
-      </div>
+      <HomepageInteractive />
     </main>
   );
 }

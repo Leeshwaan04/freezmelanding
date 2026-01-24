@@ -16,7 +16,7 @@ const Header = ({ className = '' }: HeaderProps) => {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <header className="bg-[#F7F5F2] sticky top-0 z-50">
+    <header className="bg-white/50 backdrop-blur-md sticky top-0 z-50 border-b border-white/20">
       <nav className="max-w-[1400px] mx-auto px-6">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
