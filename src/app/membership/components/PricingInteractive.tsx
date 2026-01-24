@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
+import Icon from '@/components/ui/AppIcon';
 import PricingHero from './PricingHero';
 import PricingCard from './PricingCard';
 import ValueProposition from './ValueProposition';
@@ -111,15 +112,25 @@ const PricingInteractive: React.FC = () => {
       <PricingHero />
 
       {/* Pricing Cards Section */}
-      <section className="relative py-16 md:py-24 bg-background overflow-hidden">
-        {/* Background Decorations */}
+      <section className="relative py-24 md:py-32 bg-background overflow-hidden">
+        {/* Refined Background Decorations */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute top-[10%] -left-[10%] w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px]" />
-          <div className="absolute bottom-[10%] -right-[10%] w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px]" />
+          <div className="absolute top-[-5%] left-[-5%] w-[600px] h-[600px] bg-primary/[0.03] rounded-full blur-[120px] animate-pulse" />
+          <div className="absolute bottom-[-5%] right-[-5%] w-[600px] h-[600px] bg-accent/[0.03] rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '2s' }} />
         </div>
 
         <div className="container mx-auto px-4 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto items-stretch">
+          <div className="text-center max-w-3xl mx-auto mb-20">
+            <h2 className="font-headline text-4xl md:text-5xl font-bold text-foreground mb-6">
+              Membership Tiers
+            </h2>
+            <div className="h-1 w-20 bg-accent/40 mx-auto mb-8 rounded-full" />
+            <p className="font-body text-lg text-muted-foreground/80 leading-relaxed">
+              Choose the level of support that best aligns with your relationship goals. From curated access to bespoke personal introductions.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 max-w-7xl mx-auto items-stretch">
             {pricingTiers.map((tier, index) => (
               <PricingCard
                 key={index}
@@ -135,12 +146,13 @@ const PricingInteractive: React.FC = () => {
             ))}
           </div>
 
-          <div className="mt-16 text-center">
-            <p className="font-body text-sm text-muted-foreground/60 max-w-2xl mx-auto">
-              Membership fees are determined based on specific requirements after consultation.
-              <br />
-              Local taxes may apply.
-            </p>
+          <div className="mt-20 text-center">
+            <div className="inline-flex flex-col md:flex-row items-center gap-4 px-8 py-4 rounded-2xl bg-muted/30 border border-border/40">
+              <Icon name="InformationCircleIcon" size={20} className="text-accent" />
+              <p className="font-body text-sm text-muted-foreground/70">
+                Membership fees are determined based on specific requirements after consultation. Local taxes may apply.
+              </p>
+            </div>
           </div>
         </div>
       </section>
