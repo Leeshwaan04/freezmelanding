@@ -19,69 +19,41 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
 
   return (
     <section className={`relative overflow-hidden py-20 lg:py-32 ${className}`}>
-      {/* Aurora Mesh Gradient Background - Motion Style */}
-      {/* Added transform-gpu to force hardware acceleration */}
+      {/* Aurora Mesh Gradient Background - Static Image Texture (Performance Optimized) */}
       <div className="absolute inset-0 z-0 bg-background overflow-hidden transform-gpu">
         <motion.div
           animate={{
             rotate: [0, 360],
-            scale: [1, 1.1, 1], // Reduced scale range for performance
+            scale: [1.2, 1.4, 1.2], // Gentle breathing scale
           }}
           transition={{
-            duration: 60, // Slower animation is less distracting and potentially smoother
+            duration: 90, // Very slow rotation
             repeat: Infinity,
             repeatType: "loop",
             ease: "linear"
           }}
-          // Reduced blur from 100px to 60px to reduce GPU load
-          className="absolute inset-[-50%] w-[200%] h-[200%] opacity-40 blur-[60px]"
+          className="absolute inset-[-50%] w-[200%] h-[200%] opacity-60"
           style={{
-            willChange: 'transform', // Hint browser to optimize for transform changes
-            background: `conic-gradient(from 0deg at 50% 50%, 
-              var(--color-primary) 0deg, 
-              var(--color-accent) 60deg, 
-              var(--color-background) 120deg, 
-              var(--color-secondary) 180deg, 
-              var(--color-primary) 240deg, 
-              var(--color-accent) 300deg, 
-              var(--color-primary) 360deg
-            )`
+            willChange: 'transform',
+            backgroundImage: "url('/assets/images/aurora-mesh.png')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
           }}
         />
 
-        {/* Floating Highlight - Breathing Effect */}
+        {/* Floating Highlight - Breathing Effect (Simpler) */}
         <motion.div
           animate={{
-            opacity: [0.3, 0.5, 0.3], // Reduced opacity swing
-            scale: [1, 1.3, 1],
-            x: ["-10%", "10%", "-10%"] // Reduced movement range
+            opacity: [0.2, 0.4, 0.2],
+            scale: [1, 1.2, 1],
           }}
           transition={{
-            duration: 25,
+            duration: 15,
             repeat: Infinity,
             repeatType: "reverse",
             ease: "easeInOut"
           }}
-          // Reduced blur from 120px to 80px
-          className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-accent/20 rounded-full blur-[80px]"
-          style={{ willChange: 'transform' }}
-        />
-
-        {/* Floating Shadow - Breathing Effect */}
-        <motion.div
-          animate={{
-            opacity: [0.3, 0.5, 0.3],
-            scale: [1.1, 0.9, 1.1],
-            x: ["10%", "-10%", "10%"]
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "easeInOut"
-          }}
-          // Reduced blur from 120px to 80px
-          className="absolute bottom-1/4 right-1/4 w-[50vw] h-[50vw] bg-primary/20 rounded-full blur-[80px]"
+          className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-accent/10 rounded-full blur-[80px]"
           style={{ willChange: 'transform' }}
         />
 
