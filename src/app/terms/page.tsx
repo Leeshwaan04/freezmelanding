@@ -48,7 +48,38 @@ export default function TermsPage() {
                     </section>
 
                     <section>
-                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">6. Termination</h2>
+                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">6. Code of Conduct</h2>
+                        <p>
+                            We expect all members to treat others with dignity and respect. Harassment, discrimination, hate speech, or inappropriate behavior during interactions (online or offline) will result in immediate termination of membership. You agree to report any concerning behavior to our team immediately.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">7. Liability & Interaction Safety</h2>
+                        <div className="p-5 bg-destructive/5 border border-destructive/20 rounded-xl">
+                            <p className="font-bold text-destructive mb-2 uppercase text-xs tracking-widest">Important Disclaimer</p>
+                            <p>
+                                You connect with other members at your own risk. Freezme is a facilitator of introductions, not a guarantor of safety. We are not responsible for the conduct of any user on or off the service. You agree to take all necessary precautions when meeting other members, including meeting in public places and informing a friend or family member of your plans.
+                            </p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">8. Fees & Refunds</h2>
+                        <p>
+                            Membership fees are billed as per the agreed plan. <strong>All fees are non-refundable once the curation process has commenced.</strong> This includes the initial consultation and profile assessment phase. We dedicate significant human resources to each member immediately upon joining.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">9. Intellectual Property</h2>
+                        <p>
+                            The Freezme brand, website content, and curation methodology are the exclusive property of Freezme. You typically agree not to copy, distribute, or create derivative works from our content without express written permission.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2 className="font-headline text-2xl font-semibold text-foreground mb-3">10. Termination</h2>
                         <p>
                             We reserve the right to decline any application or terminate any membership at our sole discretion, without providing specific reasons, if we believe the member does not align with our community values.
                         </p>
