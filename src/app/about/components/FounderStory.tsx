@@ -14,7 +14,7 @@ const FounderStory = ({ className = '' }: FounderStoryProps) => {
             <div className="order-2 lg:order-1">
               <div className="relative overflow-hidden rounded-lg shadow-card">
                 <AppImage
-                  src="https://img.rocket.new/generatedImages/rocket_gen_img_193275cdf-1763295588454.png"
+                  src="/images/sumit_headshot_hd.jpg"
                   alt="Professional portrait of Sumit, founder of Freezme, wearing navy blazer in modern office setting"
                   className="w-full h-[500px] lg:h-[600px] object-cover" />
 
