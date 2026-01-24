@@ -110,15 +110,32 @@ const PrivacyFooter: React.FC<PrivacyFooterProps> = ({ className = '' }) => {
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            {/* Logo */}
             <Link href="/homepage" className="flex items-center">
-
-
-
-
-
-
-
+              <svg
+                width="120"
+                height="36"
+                viewBox="0 0 120 36"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8 12h8v2H8v-2zm0 4h8v2H8v-2zm0 4h6v2H8v-2z"
+                  fill="currentColor"
+                  className="text-primary"
+                />
+                <circle cx="12" cy="12" r="2" fill="currentColor" className="text-accent" />
+                <text
+                  x="28"
+                  y="24"
+                  fontFamily="Crimson Text, serif"
+                  fontSize="20"
+                  fontWeight="600"
+                  fill="currentColor"
+                  className="text-primary"
+                >
+                  Freezme
+                </text>
+              </svg>
             </Link>
 
             <nav className="flex flex-wrap justify-center gap-6">
