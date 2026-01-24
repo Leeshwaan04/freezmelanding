@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Icon from '@/components/ui/AppIcon';
 import PricingHero from './PricingHero';
 import ValueProposition from './ValueProposition';
@@ -12,12 +12,6 @@ import CTASection from './CTASection';
 import Footer from '@/components/common/Footer';
 
 const PricingInteractive: React.FC = () => {
-  const [isHydrated, setIsHydrated] = useState(false);
-
-  useEffect(() => {
-    setIsHydrated(true);
-  }, []);
-
   const signatureFeatures: Array<{ text: string; included: boolean }> = [
     { text: 'Complete Human Verification & Vetting', included: true },
     { text: 'Dedicated Personal Introducer', included: true },
@@ -30,22 +24,10 @@ const PricingInteractive: React.FC = () => {
     { text: 'Absolute Privacy (Profiles are never public)', included: true },
   ];
 
-  if (!isHydrated) {
-    return (
-      <div className="min-h-screen bg-background">
-        <div className="h-16" />
-        <div className="container mx-auto px-4 py-16">
-          <div className="animate-pulse space-y-8">
-            <div className="h-32 bg-muted rounded-lg" />
-            <div className="max-w-3xl mx-auto h-[600px] bg-muted rounded-[2rem]" />
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen bg-background">
+      <div className="h-16 lg:h-20" /> {/* Spacer for fixed header */}
+
       <PricingHero />
 
       {/* Unified Pricing Section */}
