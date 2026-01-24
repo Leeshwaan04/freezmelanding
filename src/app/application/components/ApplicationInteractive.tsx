@@ -482,7 +482,7 @@ const ApplicationInteractive = () => {
               <ul className="text-sm font-body text-muted-foreground space-y-1">
                 <li>• Profile review by our expert team</li>
                 <li>• Personalized consultation call</li>
-                <li>• Match curation begins</li>
+                <li>• Introduction curation begins</li>
                 <li>• First introduction within 2-3 weeks</li>
               </ul>
             </div>

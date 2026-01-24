@@ -11,11 +11,6 @@ interface HeroSectionProps {
 }
 
 const HeroSection = ({ className = '' }: HeroSectionProps) => {
-  const [isHydrated, setIsHydrated] = useState(false);
-
-  useEffect(() => {
-    setIsHydrated(true);
-  }, []);
 
   return (
     <section className={`relative overflow-hidden py-20 lg:py-32 ${className}`}>
@@ -96,7 +91,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
                 </div>
               </div>
               <h3 className="font-headline text-lg font-semibold text-foreground mb-2">Quality Over Quantity</h3>
-              <p className="font-body text-sm text-muted-foreground">Carefully selected introductions, not endless profiles. One thoughtful match at a time.</p>
+              <p className="font-body text-sm text-muted-foreground">Carefully selected introductions, not endless profiles. One thoughtful introduction at a time.</p>
             </div>
 
             <div className="bg-popover p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300">
@@ -128,25 +123,23 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
           </div>
 
           {/* Trust Signal */}
-          {isHydrated && (
-            <div className="mt-12 pt-8 border-t border-border">
-              <p className="font-body text-sm text-muted-foreground mb-4">Trusted by professionals seeking meaningful connections</p>
-              <div className="flex flex-wrap justify-center items-center gap-6">
-                <div className="flex items-center gap-2">
-                  <Icon name="CheckBadgeIcon" size={20} variant="solid" className="text-success" />
-                  <span className="font-body text-sm text-foreground">Verified Profiles</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Icon name="LockClosedIcon" size={20} variant="solid" className="text-primary" />
-                  <span className="font-body text-sm text-foreground">Secure & Private</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Icon name="HeartIcon" size={20} variant="solid" className="text-accent" />
-                  <span className="font-body text-sm text-foreground">Human Curated</span>
-                </div>
+          <div className="mt-12 pt-8 border-t border-border">
+            <p className="font-body text-sm text-muted-foreground mb-4">Trusted by professionals seeking meaningful connections</p>
+            <div className="flex flex-wrap justify-center items-center gap-6">
+              <div className="flex items-center gap-2">
+                <Icon name="CheckBadgeIcon" size={20} variant="solid" className="text-success" />
+                <span className="font-body text-sm text-foreground">Verified Profiles</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Icon name="LockClosedIcon" size={20} variant="solid" className="text-primary" />
+                <span className="font-body text-sm text-foreground">Secure & Private</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Icon name="HeartIcon" size={20} variant="solid" className="text-accent" />
+                <span className="font-body text-sm text-foreground">Human Curated</span>
               </div>
             </div>
-          )}
+          </div>
         </div>
       </div>
 

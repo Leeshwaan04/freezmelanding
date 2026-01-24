@@ -164,7 +164,7 @@ const Header = ({ className = '' }: HeaderProps) => {
                 ? 'text-[#2C5F5D]' : 'text-[#2A2A2A] hover:text-[#2C5F5D]'
                 }`}
             >
-              Pricing
+              Membership
             </Link>
             <Link
               href="/privacy-and-security"

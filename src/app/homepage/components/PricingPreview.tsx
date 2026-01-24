@@ -62,7 +62,7 @@ const PricingPreview = ({ className = '' }: PricingPreviewProps) => {
                     </h4>
                   </div>
                   <p className="font-body text-sm text-muted-foreground">
-                    Bespoke matching plans tailored to your specific relationship goals and lifestyle.
+                    Bespoke introduction plans tailored to your specific relationship goals and lifestyle.
                   </p>
                 </div>
               </div>
@@ -107,7 +107,7 @@ const PricingPreview = ({ className = '' }: PricingPreviewProps) => {
           {/* Value Statement */}
           <div className="mt-8 text-center">
             <p className="font-body text-sm text-muted-foreground">
-              Quality introductions require time, care, and expertise. Our pricing reflects the value of human curation over algorithmic matching.
+              Quality introductions require time, care, and expertise. Our pricing reflects the value of human curation over algorithmic sorting.
             </p>
           </div>
         </div>

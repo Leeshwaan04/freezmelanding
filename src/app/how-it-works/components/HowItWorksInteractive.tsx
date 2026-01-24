@@ -38,11 +38,6 @@ interface FAQData {
 }
 
 export default function HowItWorksInteractive() {
-  const [isHydrated, setIsHydrated] = useState(false);
-
-  useEffect(() => {
-    setIsHydrated(true);
-  }, []);
 
   const processSteps: ProcessStepData[] = [
     {
@@ -72,11 +67,11 @@ export default function HowItWorksInteractive() {
     {
       stepNumber: 3,
       title: "Consultation & Membership",
-      description: "If accepted, we invite you for a personal consultation to discuss membership options tailored to your needs. This is where we align on your journey and investment in finding the right partner.",
+      description: "If accepted, we invite you for a personal consultation to discuss the Signature Membership tailored to your needs. This is where we align on your journey and investment in finding the right partner.",
       timeline: "60-minute call",
       details: [
         "One-on-one session with a relationship expert",
-        "Discussion of membership tiers and curated matching plans",
+        "Discussion of the Signature Membership and curated introduction plans",
         "Mutual agreement on expectations and timelines",
         "Formal onboarding into the Freezme community"]
 
@@ -87,7 +82,7 @@ export default function HowItWorksInteractive() {
       description: "Once onboarded, we begin the search. We provide support and guidance as we present hand-selected introductions. The connection is yours to nurture, but you are never alone in the process.",
       timeline: "Ongoing",
       details: [
-        "Receive detailed profiles of potential matches",
+        "Receive detailed profiles of potential candidates",
         "Connect directly after mutual consent",
         "Optional check-ins and relationship guidance available",
         "Feedback loops to refine future introductions"]
@@ -95,44 +90,17 @@ export default function HowItWorksInteractive() {
     }];
 
 
-  const pricingOptions: PricingData[] = [
-    {
-      title: "The Assessment",
-      amount: "Complimentary",
-      description: "Zero-cost entry point",
-      features: [
-        "Professional profile review",
-        "Compatibility potential score",
-        "Community fit assessment",
-        "Database inclusion (Passive)"],
-
-      ctaText: "Start Free Assessment"
-    },
-    {
-      title: "Verified Access",
-      amount: "Verified",
-      description: "One-time verification",
-      features: [
-        "Human Verification check",
-        "Verified Profile Badge",
-        "Priority visibility in search",
-        "Pay-per-match introductions"],
-
-      ctaText: "Apply for Verification",
-      isHighlighted: true
-    },
-    {
-      title: "Personal Introducer",
-      amount: "By Application",
-      description: "Human-led service",
-      features: [
-        "Dedicated Relationship Manager",
-        "Proactive candidate search",
-        "Hand-picked introductions",
-        "Date arrangement & feedback"],
-
-      ctaText: "Request Consultation"
-    }];
+  const signatureFeatures = [
+    "Complete Human Verification & Vetting",
+    "Dedicated Personal Introducer",
+    "Bespoke Introduction Strategy",
+    "Proactive Candidate Scouting",
+    "Seamless Date Planning & Coordination",
+    "Post-Introduction Feedback & Refinement",
+    "Professional Profile Curation",
+    "Photoshoot & Styling Guidance",
+    "Absolute Privacy (Profiles are never public)"
+  ];
 
 
   const testimonials: TestimonialData[] = [
@@ -162,7 +130,7 @@ export default function HowItWorksInteractive() {
   const faqs: FAQData[] = [
     {
       question: "How long does the entire process take?",
-      answer: "The assessment phase takes 3-5 business days after application submission. Introduction timing varies based on suitable match availability—we prioritize quality over speed. Some members receive introductions within weeks, others may wait 2-3 months for the right match. We believe patience leads to better outcomes."
+      answer: "The assessment phase takes 3-5 business days after application submission. Introduction timing varies based on suitable candidate availability—we prioritize quality over speed. Some members receive introductions within weeks, others may wait 2-3 months for the right person. We believe patience leads to better outcomes."
     },
     {
       question: "What happens if I'm not accepted?",
@@ -186,7 +154,7 @@ export default function HowItWorksInteractive() {
     },
     {
       question: "Is there a refund policy?",
-      answer: "Assessment fees are non-refundable as they cover our team's time reviewing your application. Introduction fees are refundable if we're unable to provide a suitable introduction within 6 months. We're committed to transparency and fairness in all financial matters."
+      answer: "Assessment fees (if applicable) are non-refundable as they cover our team's time reviewing your application. Introduction fees are refundable if we're unable to provide a suitable introduction within 6 months. We're committed to transparency and fairness in all financial matters."
     },
     {
       question: "How many introductions can I expect?",
@@ -194,23 +162,6 @@ export default function HowItWorksInteractive() {
     }];
 
 
-  if (!isHydrated) {
-    return (
-      <div className="min-h-screen bg-background">
-        <div className="container mx-auto px-4 py-16">
-          <div className="animate-pulse space-y-8">
-            <div className="h-12 bg-muted rounded w-3/4 mx-auto"></div>
-            <div className="h-6 bg-muted rounded w-1/2 mx-auto"></div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-16">
-              {[1, 2, 3, 4].map((i) =>
-                <div key={i} className="h-64 bg-muted rounded"></div>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>);
-
-  }
 
   return (
     <div className="min-h-screen bg-background">
@@ -243,28 +194,67 @@ export default function HowItWorksInteractive() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-20 lg:py-32 bg-gradient-to-br from-muted/30 to-background">
+      {/* Pricing Section - Unified Signature Membership */}
+      <section className="py-20 lg:py-32 bg-gradient-to-br from-muted/30 to-background overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
+            <div className="text-center mb-20">
               <h2 className="font-headline text-3xl lg:text-5xl font-bold text-foreground mb-6">
-                Membership Tiers
+                The Signature Membership
               </h2>
-              <p className="font-body text-lg text-muted-foreground max-w-3xl mx-auto">
-                We believe in honest service for honest investment. No hidden fees, no subscription traps—just clear value in your relationship journey.
+              <p className="font-body text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed italic">
+                "We don't offer levels of quality. We offer one master service designed for those who value depth, timing, and intentionality above all else."
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {pricingOptions.map((pricing, index) =>
-                <PricingCard key={index} {...pricing} />
-              )}
+            <div className="max-w-4xl mx-auto relative">
+              {/* Artistic Background glow */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-accent/10 to-primary/10 rounded-[3rem] blur-3xl opacity-50 will-change-transform" />
+
+              <div className="relative bg-card rounded-[2.5rem] p-8 md:p-12 border border-border/50 shadow-2xl backdrop-blur-sm">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                  <div className="space-y-6">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent animate-ping" />
+                      <span className="font-headline text-[10px] font-bold uppercase tracking-widest text-accent">Exclusive Selection</span>
+                    </div>
+                    <h3 className="font-headline text-3xl font-bold text-primary">All-Inclusive Introduction Service</h3>
+                    <p className="font-body text-base text-muted-foreground leading-relaxed">
+                      A boutique, human-led journey where every detail is managed by your dedicated introducer.
+                    </p>
+                    <div className="pt-4 border-t border-border/50">
+                      <p className="font-headline text-xl font-medium text-foreground italic">By Consultation Only</p>
+                    </div>
+                  </div>
+
+                  <div className="bg-background/50 rounded-2xl p-6 border border-border/40">
+                    <ul className="space-y-4">
+                      {signatureFeatures.slice(0, 6).map((feature, index) => (
+                        <li key={index} className="flex items-start gap-3">
+                          <svg className="w-5 h-5 text-accent mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
+                          </svg>
+                          <span className="font-body text-sm text-foreground/80">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="mt-12 text-center">
+                  <a
+                    href="/application"
+                    className="inline-flex items-center justify-center px-10 py-4 bg-primary text-primary-foreground font-headline font-bold rounded-xl hover:-translate-y-1 hover:shadow-2xl transition-all duration-300"
+                  >
+                    Apply for Membership
+                  </a>
+                </div>
+              </div>
             </div>
 
-            <div className="mt-12 p-6 bg-accent/10 rounded-lg border border-accent/20">
-              <p className="font-body text-sm text-foreground text-center">
-                <strong>Our Commitment:</strong> We invest heavily in understanding you before we ever accept you as a member. If we don't believe we can genuinely serve you with high-quality options, we won't waste your time or money.
+            <div className="mt-16 p-6 bg-accent/5 rounded-2xl border border-accent/10 text-center">
+              <p className="font-body text-sm text-muted-foreground italic">
+                Detailed service scope and contribution fees are discussed during your personal consultation.
               </p>
             </div>
           </div>

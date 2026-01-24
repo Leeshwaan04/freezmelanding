@@ -18,13 +18,13 @@ const WhyChooseSection = ({ className = '' }: WhyChooseSectionProps) => {
     },
     {
       icon: 'AcademicCapIcon',
-      title: 'Emotionally Intelligent Matching',
+      title: 'Emotionally Intelligent Selection',
       description: 'We consider values, life goals, communication styles, and emotional readiness—not just surface-level compatibility.',
     },
     {
       icon: 'EyeSlashIcon',
       title: 'Complete Privacy',
-      description: 'No public profiles, no browsing by strangers. Your information is shared only with carefully selected potential matches.',
+      description: 'No public profiles, no browsing by strangers. Your information is shared only with carefully selected potential candidates.',
     },
     {
       icon: 'UserGroupIcon',
@@ -89,7 +89,7 @@ const WhyChooseSection = ({ className = '' }: WhyChooseSectionProps) => {
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-destructive mt-1">•</span>
-                    <span>Algorithm-driven matches lacking context</span>
+                    <span>Algorithm-driven sorting lacking context</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-destructive mt-1">•</span>

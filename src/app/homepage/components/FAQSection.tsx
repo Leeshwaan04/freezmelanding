@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Icon from '@/components/ui/AppIcon';
 
@@ -15,33 +15,28 @@ interface FAQSectionProps {
 }
 
 const FAQSection = ({ className = '' }: FAQSectionProps) => {
-  const [isHydrated, setIsHydrated] = useState(false);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
-
-  useEffect(() => {
-    setIsHydrated(true);
-  }, []);
 
   const faqs: FAQ[] = [
     {
       id: 1,
       question: 'How is Freezme different from dating apps?',
-      answer: 'Unlike dating apps that rely on algorithms and endless swiping, Freezme offers human-curated introductions. Our founder personally reviews every profile and makes thoughtful matches based on genuine compatibility, values, and relationship goals—not just superficial criteria.',
+      answer: 'Unlike dating apps that rely on algorithms and endless swiping, Freezme offers human-curated introductions. Our founder personally reviews every profile and makes thoughtful introduction decisions based on genuine compatibility, values, and relationship goals—not just superficial criteria.',
     },
     {
       id: 2,
       question: 'How long does the process take?',
-      answer: 'Quality takes time. After your application is approved, finding the right match can take anywhere from a few weeks to several months. We prioritize quality over speed, ensuring each introduction is thoughtfully considered.',
+      answer: 'Quality takes time. After your application is approved, finding the right introduction can take anywhere from a few weeks to several months. We prioritize quality over speed, ensuring each introduction is thoughtfully considered.',
     },
     {
       id: 3,
       question: "What if I don't connect with my introduction?",
-      answer: "That's completely normal and expected. Not every introduction will lead to a relationship, and that's okay. We provide honest feedback and continue working to find compatible matches. There's no pressure or rush.",
+      answer: "That's completely normal and expected. Not every introduction will lead to a relationship, and that's okay. We provide honest feedback and continue working to find compatible candidates. There's no pressure or rush.",
     },
     {
       id: 4,
       question: 'Is my information kept private?',
-      answer: 'Absolutely. Your profile is never made public, and your information is only shared with carefully selected potential matches. We take privacy seriously and never share your data with third parties.',
+      answer: 'Absolutely. Your profile is never made public, and your information is only shared with carefully selected potential candidates. We take privacy seriously and never share your data with third parties.',
     },
     {
       id: 5,
@@ -53,30 +48,6 @@ const FAQSection = ({ className = '' }: FAQSectionProps) => {
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
-
-  if (!isHydrated) {
-    return (
-      <section className={`py-16 lg:py-24 bg-muted ${className}`}>
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="font-headline text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-4">
-                Frequently Asked Questions
-              </h2>
-            </div>
-            <div className="space-y-4">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="bg-card p-6 rounded-lg shadow-sm animate-pulse">
-                  <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
-                  <div className="h-3 bg-muted rounded w-1/2"></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
 
   return (
     <section className={`py-16 lg:py-24 bg-muted ${className}`}>
@@ -111,9 +82,8 @@ const FAQSection = ({ className = '' }: FAQSectionProps) => {
                     name="ChevronDownIcon"
                     size={24}
                     variant="outline"
-                    className={`text-primary flex-shrink-0 transition-transform duration-200 ${
-                      openIndex === index ? 'rotate-180' : ''
-                    }`}
+                    className={`text-primary flex-shrink-0 transition-transform duration-200 ${openIndex === index ? 'rotate-180' : ''
+                      }`}
                   />
                 </button>
                 {openIndex === index && (
