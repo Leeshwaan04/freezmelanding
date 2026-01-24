@@ -20,20 +20,23 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
   return (
     <section className={`relative overflow-hidden py-20 lg:py-32 ${className}`}>
       {/* Aurora Mesh Gradient Background - Motion Style */}
-      <div className="absolute inset-0 z-0 bg-background overflow-hidden">
+      {/* Added transform-gpu to force hardware acceleration */}
+      <div className="absolute inset-0 z-0 bg-background overflow-hidden transform-gpu">
         <motion.div
           animate={{
             rotate: [0, 360],
-            scale: [1, 1.2, 1],
+            scale: [1, 1.1, 1], // Reduced scale range for performance
           }}
           transition={{
-            duration: 45,
+            duration: 60, // Slower animation is less distracting and potentially smoother
             repeat: Infinity,
             repeatType: "loop",
             ease: "linear"
           }}
-          className="absolute inset-[-50%] w-[200%] h-[200%] opacity-40 blur-[100px]"
+          // Reduced blur from 100px to 60px to reduce GPU load
+          className="absolute inset-[-50%] w-[200%] h-[200%] opacity-40 blur-[60px]"
           style={{
+            willChange: 'transform', // Hint browser to optimize for transform changes
             background: `conic-gradient(from 0deg at 50% 50%, 
               var(--color-primary) 0deg, 
               var(--color-accent) 60deg, 
@@ -49,25 +52,9 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
         {/* Floating Highlight - Breathing Effect */}
         <motion.div
           animate={{
-            opacity: [0.3, 0.6, 0.3],
-            scale: [1, 1.5, 1],
-            x: ["-20%", "20%", "-20%"]
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            repeatType: "reverse",
-            ease: "easeInOut"
-          }}
-          className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-accent/20 rounded-full blur-[120px]"
-        />
-
-        {/* Floating Shadow - Breathing Effect */}
-        <motion.div
-          animate={{
-            opacity: [0.3, 0.5, 0.3],
-            scale: [1.2, 0.8, 1.2],
-            x: ["20%", "-20%", "20%"]
+            opacity: [0.3, 0.5, 0.3], // Reduced opacity swing
+            scale: [1, 1.3, 1],
+            x: ["-10%", "10%", "-10%"] // Reduced movement range
           }}
           transition={{
             duration: 25,
@@ -75,7 +62,27 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
             repeatType: "reverse",
             ease: "easeInOut"
           }}
-          className="absolute bottom-1/4 right-1/4 w-[50vw] h-[50vw] bg-primary/20 rounded-full blur-[120px]"
+          // Reduced blur from 120px to 80px
+          className="absolute top-1/4 left-1/4 w-[40vw] h-[40vw] bg-accent/20 rounded-full blur-[80px]"
+          style={{ willChange: 'transform' }}
+        />
+
+        {/* Floating Shadow - Breathing Effect */}
+        <motion.div
+          animate={{
+            opacity: [0.3, 0.5, 0.3],
+            scale: [1.1, 0.9, 1.1],
+            x: ["10%", "-10%", "10%"]
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            repeatType: "reverse",
+            ease: "easeInOut"
+          }}
+          // Reduced blur from 120px to 80px
+          className="absolute bottom-1/4 right-1/4 w-[50vw] h-[50vw] bg-primary/20 rounded-full blur-[80px]"
+          style={{ willChange: 'transform' }}
         />
 
         {/* Noise Texture for Premium Feel */}
