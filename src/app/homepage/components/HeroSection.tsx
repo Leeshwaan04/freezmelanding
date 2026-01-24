@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Icon from '@/components/ui/AppIcon';
 
+import { motion } from 'framer-motion';
+
 interface HeroSectionProps {
   className?: string;
 }
@@ -16,8 +18,24 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
   }, []);
 
   return (
-    <section className={`relative bg-[url('/images/freezme_hero_bg.png')] bg-cover bg-center bg-no-repeat py-20 lg:py-32 ${className}`}>
-      <div className="container mx-auto px-4">
+    <section className={`relative overflow-hidden py-20 lg:py-32 ${className}`}>
+      {/* Cinematic Motion Background */}
+      <motion.div
+        initial={{ scale: 1.05 }}
+        animate={{ scale: 1.15 }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "linear"
+        }}
+        className="absolute inset-0 z-0 bg-[url('/images/freezme_couple_bg.png')] bg-cover bg-center bg-no-repeat"
+      />
+
+      {/* Overlay for Contrast */}
+      <div className="absolute inset-0 z-0 bg-background/80 backdrop-blur-[1px]" />
+
+      <div className="container relative z-10 mx-auto px-4">
         <div className="max-w-4xl mx-auto text-center">
           {/* Main Headline */}
           <h1 className="font-headline text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground mb-6 leading-tight">
