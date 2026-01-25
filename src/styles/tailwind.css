@@ -112,6 +112,15 @@
     opacity: 1;
   }
 
+  /* Style date input placeholder (when empty) */
+  input[type="date"]:not(:valid),
+  input[type="date"]::-webkit-datetime-edit-text,
+  input[type="date"]::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+  input[type="date"]::-webkit-datetime-edit-day-field:not([aria-valuenow]),
+  input[type="date"]::-webkit-datetime-edit-year-field:not([aria-valuenow]) {
+    color: #9CA3AF;
+  }
+
   /* Custom class for select placeholder state */
   .select-placeholder {
     color: #9CA3AF !important;
