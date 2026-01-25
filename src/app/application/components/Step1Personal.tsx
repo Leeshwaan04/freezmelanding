@@ -96,7 +96,7 @@ const Step1Personal = ({ data, errors, onChange }: Step1PersonalProps) => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 md:gap-y-10">
         <motion.div variants={itemVariants}>
           <FormField
             label="Full Name"

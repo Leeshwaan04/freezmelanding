@@ -54,7 +54,7 @@ const Step3AboutYou = ({ data, errors, onChange }: Step3AboutYouProps) => {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="space-y-10"
+      className="space-y-6 md:space-y-10"
     >
       <div className="border-b border-border/20 pb-6">
         <h2 className="font-headline text-3xl font-bold bg-gradient-to-r from-foreground to-foreground/60 bg-clip-text text-transparent mb-2">
@@ -65,7 +65,7 @@ const Step3AboutYou = ({ data, errors, onChange }: Step3AboutYouProps) => {
         </p>
       </div>
 
-      <div className="space-y-10">
+      <div className="space-y-6 md:space-y-10">
         <motion.div variants={itemVariants} className="relative">
           <FormField
             label="Tell us about yourself"

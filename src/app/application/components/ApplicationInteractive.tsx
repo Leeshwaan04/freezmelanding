@@ -364,7 +364,7 @@ const ApplicationInteractive = () => {
                 x: { type: "spring", stiffness: 300, damping: 30 },
                 opacity: { duration: 0.2 }
               }}
-              className="bg-card/50 backdrop-blur-md border border-border/50 rounded-3xl shadow-2xl p-6 md:p-10 mb-8 transform-gpu"
+              className="bg-card/50 backdrop-blur-md border border-border/50 rounded-3xl shadow-2xl p-5 md:p-10 mb-8 transform-gpu"
             >
               {currentStep === 1 && (
                 <Step1Personal
@@ -434,7 +434,7 @@ const ApplicationInteractive = () => {
         </div>
 
         {/* Navigation Buttons */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 px-2">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-6 px-2">
           <button
             onClick={handlePrevious}
             disabled={currentStep === 1}
