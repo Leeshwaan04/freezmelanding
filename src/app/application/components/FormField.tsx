@@ -36,7 +36,7 @@ const FormField = ({
 
   return (
     <div className="space-y-1.5 group">
-      <div className="flex justify-between items-center px-1">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-1 px-1">
         <label htmlFor={name} className="block text-sm font-headline font-bold text-foreground/80 group-focus-within:text-primary transition-colors duration-200 uppercase tracking-wider">
           {label}
           {required && <span className="text-accent ml-1">*</span>}
@@ -45,7 +45,7 @@ const FormField = ({
           <motion.span
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-xs font-semibold text-destructive tracking-wide"
+            className="text-xs font-semibold text-destructive tracking-wide sm:text-right"
           >
             {error}
           </motion.span>

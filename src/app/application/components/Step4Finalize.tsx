@@ -99,7 +99,7 @@ const Step4Finalize = ({ data, errors, onChange }: Step4FinalizeProps) => {
           </label>
         </div>
         {errors.acceptTerms && (
-          <p className="text-xs font-bold text-destructive uppercase tracking-widest px-14">{errors.acceptTerms}</p>
+          <p className="text-xs font-semibold text-destructive tracking-wide px-14">{errors.acceptTerms}</p>
         )}
 
         <div className="group flex items-start gap-4 p-4 rounded-2xl transition-colors hover:bg-muted/30">
@@ -122,7 +122,7 @@ const Step4Finalize = ({ data, errors, onChange }: Step4FinalizeProps) => {
           </label>
         </div>
         {errors.acceptPrivacy && (
-          <p className="text-xs font-bold text-destructive uppercase tracking-widest px-14">{errors.acceptPrivacy}</p>
+          <p className="text-xs font-semibold text-destructive tracking-wide px-14">{errors.acceptPrivacy}</p>
         )}
       </div>
 

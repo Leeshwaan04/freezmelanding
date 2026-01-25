@@ -92,19 +92,29 @@ const ApplicationInteractive = () => {
     setIsHydrated(true);
 
     // Load saved progress from localStorage
-    const savedData = localStorage.getItem('freezme_application_progress');
-    const savedStep = localStorage.getItem('freezme_application_step');
+    try {
+      const savedData = localStorage.getItem('freezme_application_progress');
+      const savedStep = localStorage.getItem('freezme_application_step');
 
-    if (savedData) {
-      try {
-        setFormData(JSON.parse(savedData));
-      } catch (error) {
-        console.error('Error loading saved data:', error);
+      if (savedData) {
+        const parsed = JSON.parse(savedData);
+        // Ensure the parsed data has the expected structure
+        if (parsed && typeof parsed === 'object') {
+          setFormData(parsed);
+        }
       }
-    }
 
-    if (savedStep) {
-      setCurrentStep(parseInt(savedStep, 10));
+      if (savedStep) {
+        const stepNum = parseInt(savedStep, 10);
+        if (stepNum >= 1 && stepNum <= 4) {
+          setCurrentStep(stepNum);
+        }
+      }
+    } catch (error) {
+      console.error('Error loading saved data:', error);
+      // Clear corrupted data
+      localStorage.removeItem('freezme_application_progress');
+      localStorage.removeItem('freezme_application_step');
     }
   }, []);
 
@@ -114,10 +124,15 @@ const ApplicationInteractive = () => {
 
     setIsSaving(true);
     const timer = setTimeout(() => {
-      localStorage.setItem('freezme_application_progress', JSON.stringify(formData));
-      localStorage.setItem('freezme_application_step', currentStep.toString());
-      setIsSaving(false);
-    }, 1000); // Save only after 1 second of inactivity
+      try {
+        localStorage.setItem('freezme_application_progress', JSON.stringify(formData));
+        localStorage.setItem('freezme_application_step', currentStep.toString());
+        setIsSaving(false);
+      } catch (error) {
+        console.error('Error saving data:', error);
+        setIsSaving(false);
+      }
+    }, 500); // Reduced from 1000ms to 500ms for faster saves
 
     return () => {
       clearTimeout(timer);
@@ -464,7 +479,7 @@ const ApplicationInteractive = () => {
             {/* Auto-save status */}
             <AnimatePresence mode="wait">
               {isSaving ? (
-                <motion.p
+                <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
@@ -472,15 +487,15 @@ const ApplicationInteractive = () => {
                 >
                   <div className="w-2 h-2 rounded-full bg-success animate-pulse" />
                   Saving progress...
-                </motion.p>
+                </motion.div>
               ) : (
-                <motion.p
+                <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   className="text-xs font-body text-muted-foreground/40"
                 >
                   Last saved: {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                </motion.p>
+                </motion.div>
               )}
             </AnimatePresence>
           </div>
