@@ -98,7 +98,7 @@ const FormField = ({
               value={value}
               onChange={onChange}
               required={required}
-              className={`w-full ${icon ? 'pl-12' : 'px-5'} py-4 bg-card/40 backdrop-blur-sm border-2 rounded-2xl font-body transition-all duration-300 appearance-none focus:outline-none focus:ring-0 focus:bg-card/80 ${value === '' ? 'text-foreground/70' : 'text-foreground'
+              className={`w-full ${icon ? 'pl-12' : 'px-5'} py-4 bg-card/40 backdrop-blur-sm border-2 rounded-2xl font-body transition-all duration-300 appearance-none focus:outline-none focus:ring-0 focus:bg-card/80 ${value === '' ? 'text-muted-foreground/60' : 'text-foreground'
                 } ${error ? 'border-destructive/40 focus:border-destructive' : 'border-border/50 focus:border-primary'
                 }`}
             >
