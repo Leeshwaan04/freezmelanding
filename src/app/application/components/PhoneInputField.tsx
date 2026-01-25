@@ -97,7 +97,7 @@ const PhoneInputField = ({
                     onChange={onChange}
                     placeholder={placeholder}
                     required={required}
-                    className={`flex-1 px-4 py-4 bg-card/40 backdrop-blur-sm border-2 rounded-r-2xl font-body text-foreground transition-all duration-300 focus:outline-none focus:ring-0 focus:bg-card/80 ${error ? 'border-destructive/40 focus:border-destructive' : 'border-border/50 focus:border-primary'} text-sm sm:text-base min-w-0`}
+                    className={`flex-1 px-4 py-4 bg-card/40 backdrop-blur-sm border-2 border-l-0 rounded-r-2xl font-body text-foreground transition-all duration-300 focus:outline-none focus:ring-0 focus:bg-card/80 ${error ? 'border-destructive/40 focus:border-destructive' : 'border-border/50 focus:border-primary'} text-sm sm:text-base min-w-0`}
                 />
             </motion.div>
         </div>

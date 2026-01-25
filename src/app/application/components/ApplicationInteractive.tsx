@@ -539,8 +539,11 @@ const ApplicationInteractive = () => {
         </div>
       )}
       {/* Version Marker for debugging */}
-      <div className="text-center mt-8 pb-4 opacity-20 hover:opacity-100 transition-opacity">
-        <p className="text-[10px] font-mono text-muted-foreground">Freezme App v1.1 (Mobile Fixes Live)</p>
+      {/* Version Marker for debugging */}
+      <div className="text-center mt-8 pb-4">
+        <p className="text-xs font-bold text-red-500 bg-red-100 py-2 px-4 rounded-full inline-block animate-pulse border border-red-200">
+          Freezme App v1.2 (DOB & Layout Fixes Live)
+        </p>
       </div>
     </div>
   );
