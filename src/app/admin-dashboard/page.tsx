@@ -44,6 +44,8 @@ export default function AdminDashboard() {
     const [error, setError] = useState<string | null>(null);
     const [searchQuery, setSearchQuery] = useState('');
     const [selectedApp, setSelectedApp] = useState<Application | null>(null);
+    const [deleteConfirm, setDeleteConfirm] = useState<number | null>(null);
+    const [deleting, setDeleting] = useState(false);
 
     useEffect(() => {
         if (!isAuthenticated) return;
@@ -76,6 +78,25 @@ export default function AdminDashboard() {
             setIsAuthenticated(true);
         } else {
             alert('Incorrect password');
+        }
+    };
+
+    const handleDelete = async (id: number) => {
+        setDeleting(true);
+        try {
+            const { error } = await supabase
+                .from('applications')
+                .delete()
+                .eq('id', id);
+
+            if (error) throw error;
+            setApplications(applications.filter(app => app.id !== id));
+            setDeleteConfirm(null);
+        } catch (err: any) {
+            console.error('Error deleting application:', err);
+            alert('Failed to delete: ' + (err.message || 'Unknown error'));
+        } finally {
+            setDeleting(false);
         }
     };
 
@@ -214,7 +235,8 @@ export default function AdminDashboard() {
                                         <th className="px-8 py-6">Applicant Node</th>
                                         <th className="px-8 py-6">Identity details</th>
                                         <th className="px-8 py-6">Submission cycle</th>
-                                        <th className="px-8 py-6 text-right">Narrative</th>
+                                        <th className="px-8 py-6 text-center">Narrative</th>
+                                        <th className="px-8 py-6 text-right">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-border/30">
@@ -252,13 +274,51 @@ export default function AdminDashboard() {
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td className="px-8 py-6 text-right">
+                                            <td className="px-8 py-6 text-center">
                                                 <button
                                                     className="inline-flex items-center gap-2 text-primary font-headline font-bold text-xs uppercase tracking-widest group-hover:gap-3 transition-all px-4 py-2 rounded-xl bg-primary/5 border border-primary/20"
                                                 >
                                                     View Depth
                                                     <Icon name="ChevronRightIcon" size={14} />
                                                 </button>
+                                            </td>
+                                            <td className="px-8 py-6 text-right">
+                                                <div className="flex items-center justify-end gap-2" onClick={(e) => e.stopPropagation()}>
+                                                    <button
+                                                        onClick={() => setSelectedApp(app)}
+                                                        className="p-2 text-primary hover:bg-primary/10 rounded-lg transition-all"
+                                                        title="Edit"
+                                                    >
+                                                        <Icon name="PencilSquareIcon" size={18} />
+                                                    </button>
+                                                    {deleteConfirm === app.id ? (
+                                                        <div className="flex items-center gap-1">
+                                                            <button
+                                                                onClick={() => handleDelete(app.id)}
+                                                                disabled={deleting}
+                                                                className="p-2 bg-destructive text-white rounded-lg hover:bg-destructive/80 transition-all disabled:opacity-50"
+                                                                title="Confirm Delete"
+                                                            >
+                                                                <Icon name="CheckIcon" size={18} />
+                                                            </button>
+                                                            <button
+                                                                onClick={() => setDeleteConfirm(null)}
+                                                                className="p-2 text-muted-foreground hover:bg-muted rounded-lg transition-all"
+                                                                title="Cancel"
+                                                            >
+                                                                <Icon name="XMarkIcon" size={18} />
+                                                            </button>
+                                                        </div>
+                                                    ) : (
+                                                        <button
+                                                            onClick={() => setDeleteConfirm(app.id)}
+                                                            className="p-2 text-destructive hover:bg-destructive/10 rounded-lg transition-all"
+                                                            title="Delete"
+                                                        >
+                                                            <Icon name="TrashIcon" size={18} />
+                                                        </button>
+                                                    )}
+                                                </div>
                                             </td>
                                         </tr>
                                     ))}
