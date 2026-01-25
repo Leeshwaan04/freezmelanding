@@ -100,6 +100,40 @@ export default function AdminDashboard() {
         }
     };
 
+    const [isEditing, setIsEditing] = useState(false);
+
+    const handleSave = async () => {
+        if (!selectedApp) return;
+        setLoading(true);
+        try {
+            const { error } = await supabase
+                .from('applications')
+                .update({
+                    full_name: selectedApp.full_name,
+                    email: selectedApp.email,
+                    phone: selectedApp.phone,
+                    gender: selectedApp.gender,
+                    city: selectedApp.city,
+                    education: selectedApp.education,
+                    profession: selectedApp.profession,
+                    // We can add more fields here as needed
+                })
+                .eq('id', selectedApp.id);
+
+            if (error) throw error;
+
+            // Update local state
+            setApplications(applications.map(app => app.id === selectedApp.id ? selectedApp : app));
+            setIsEditing(false);
+            alert('Application updated successfully');
+        } catch (err: any) {
+            console.error('Error updating application:', err);
+            alert('Failed to update: ' + (err.message || 'Unknown error'));
+        } finally {
+            setLoading(false);
+        }
+    };
+
     const [sortConfig, setSortConfig] = useState<{ key: keyof Application | string, direction: 'asc' | 'desc' }>({ key: 'submitted_at', direction: 'desc' });
 
     const filteredApps = applications.filter(app =>
@@ -399,19 +433,71 @@ export default function AdminDashboard() {
                                         {selectedApp.full_name?.[0]?.toUpperCase()}
                                     </div>
                                     <div>
-                                        <h2 className="font-headline text-3xl font-bold text-foreground mb-1">{selectedApp.full_name}</h2>
-                                        <p className="font-body text-muted-foreground flex items-center gap-4">
-                                            <span className="flex items-center gap-1.5"><Icon name="EnvelopeIcon" size={16} /> {selectedApp.email}</span>
-                                            <span className="flex items-center gap-1.5"><Icon name="PhoneIcon" size={16} /> {selectedApp.phone}</span>
-                                        </p>
+                                        {isEditing ? (
+                                            <input
+                                                type="text"
+                                                value={selectedApp.full_name}
+                                                onChange={(e) => setSelectedApp({ ...selectedApp, full_name: e.target.value })}
+                                                className="font-headline text-3xl font-bold text-foreground mb-1 bg-transparent border-b border-primary/20 focus:outline-none focus:border-primary w-full"
+                                            />
+                                        ) : (
+                                            <h2 className="font-headline text-3xl font-bold text-foreground mb-1">{selectedApp.full_name}</h2>
+                                        )}
+                                        <div className="font-body text-muted-foreground flex flex-col gap-2 mt-2">
+                                            {isEditing ? (
+                                                <>
+                                                    <div className="flex items-center gap-2">
+                                                        <Icon name="EnvelopeIcon" size={16} />
+                                                        <input
+                                                            type="email"
+                                                            value={selectedApp.email}
+                                                            onChange={(e) => setSelectedApp({ ...selectedApp, email: e.target.value })}
+                                                            className="bg-transparent border-b border-primary/20 focus:outline-none focus:border-primary text-sm w-64"
+                                                        />
+                                                    </div>
+                                                    <div className="flex items-center gap-2">
+                                                        <Icon name="PhoneIcon" size={16} />
+                                                        <input
+                                                            type="text"
+                                                            value={selectedApp.phone}
+                                                            onChange={(e) => setSelectedApp({ ...selectedApp, phone: e.target.value })}
+                                                            className="bg-transparent border-b border-primary/20 focus:outline-none focus:border-primary text-sm w-40"
+                                                        />
+                                                    </div>
+                                                </>
+                                            ) : (
+                                                <p className="flex items-center gap-4">
+                                                    <span className="flex items-center gap-1.5"><Icon name="EnvelopeIcon" size={16} /> {selectedApp.email}</span>
+                                                    <span className="flex items-center gap-1.5"><Icon name="PhoneIcon" size={16} /> {selectedApp.phone}</span>
+                                                </p>
+                                            )}
+                                        </div>
                                     </div>
                                 </div>
-                                <button
-                                    onClick={() => setSelectedApp(null)}
-                                    className="p-2 rounded-xl bg-muted/50 hover:bg-muted text-muted-foreground transition-all"
-                                >
-                                    <Icon name="XMarkIcon" size={24} />
-                                </button>
+                                <div className="flex items-center gap-2">
+                                    <button
+                                        onClick={() => {
+                                            if (isEditing) {
+                                                handleSave();
+                                            } else {
+                                                setIsEditing(true);
+                                            }
+                                        }}
+                                        className={`p-2 rounded-xl transition-all ${isEditing ? 'bg-primary text-white hover:bg-primary/90' : 'bg-muted/50 hover:bg-muted text-muted-foreground'}`}
+                                        title={isEditing ? "Save Changes" : "Edit Application"}
+                                    >
+                                        <Icon name={isEditing ? "CheckIcon" : "PencilSquareIcon"} size={24} />
+                                    </button>
+                                    <button
+                                        onClick={() => {
+                                            setSelectedApp(null);
+                                            setIsEditing(false);
+                                        }}
+                                        className="p-2 rounded-xl bg-muted/50 hover:bg-muted text-muted-foreground transition-all"
+                                    >
+                                        <Icon name="XMarkIcon" size={24} />
+                                    </button>
+                                </div>
                             </div>
 
                             <div className="flex-1 overflow-y-auto p-10 space-y-12 custom-scrollbar">
@@ -422,17 +508,48 @@ export default function AdminDashboard() {
                                         <h3 className="font-headline text-lg font-bold uppercase tracking-widest text-foreground/50 text-sm">Vital Identity</h3>
                                     </div>
                                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-10">
-                                        <DetailItem label="Born" value={selectedApp.dob ? new Date(selectedApp.dob).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : 'Unknown'} icon="CalendarIcon" />
-                                        <DetailItem label="Biological" value={selectedApp.gender} icon="UserIcon" />
-                                        <DetailItem label="Location" value={selectedApp.city} icon="MapPinIcon" />
-                                        <DetailItem label="Education" value={selectedApp.education} icon="AcademicCapIcon" />
+                                        <DetailItem
+                                            label="Born"
+                                            value={selectedApp.dob ? new Date(selectedApp.dob).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' }) : 'Unknown'}
+                                            icon="CalendarIcon"
+                                        />
+                                        <DetailItem
+                                            label="Biological"
+                                            value={selectedApp.gender}
+                                            icon="UserIcon"
+                                            isEditing={isEditing}
+                                            onChange={(val) => setSelectedApp({ ...selectedApp, gender: val })}
+                                        />
+                                        <DetailItem
+                                            label="Location"
+                                            value={selectedApp.city}
+                                            icon="MapPinIcon"
+                                            isEditing={isEditing}
+                                            onChange={(val) => setSelectedApp({ ...selectedApp, city: val })}
+                                        />
+                                        <DetailItem
+                                            label="Education"
+                                            value={selectedApp.education}
+                                            icon="AcademicCapIcon"
+                                            isEditing={isEditing}
+                                            onChange={(val) => setSelectedApp({ ...selectedApp, education: val })}
+                                        />
                                     </div>
                                     <div className="mt-10 p-6 bg-muted/30 rounded-2xl border border-border/30 flex items-center justify-between">
-                                        <div>
+                                        <div className="w-full">
                                             <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground mb-1">Path & Purpose</p>
-                                            <p className="font-headline text-xl font-bold text-foreground">{selectedApp.profession}</p>
+                                            {isEditing ? (
+                                                <input
+                                                    type="text"
+                                                    value={selectedApp.profession}
+                                                    onChange={(e) => setSelectedApp({ ...selectedApp, profession: e.target.value })}
+                                                    className="font-headline text-xl font-bold text-foreground bg-transparent border-b border-primary/20 focus:outline-none focus:border-primary w-full"
+                                                />
+                                            ) : (
+                                                <p className="font-headline text-xl font-bold text-foreground">{selectedApp.profession}</p>
+                                            )}
                                         </div>
-                                        <Icon name="BriefcaseIcon" size={32} className="text-primary/20" />
+                                        <Icon name="BriefcaseIcon" size={32} className="text-primary/20 ml-4" />
                                     </div>
                                 </section>
 
@@ -479,7 +596,10 @@ export default function AdminDashboard() {
                             {/* Actions */}
                             <div className="p-8 border-t border-border/50 bg-background flex items-center justify-between">
                                 <button
-                                    onClick={() => setSelectedApp(null)}
+                                    onClick={() => {
+                                        setSelectedApp(null);
+                                        setIsEditing(false);
+                                    }}
                                     className="px-8 py-3 text-muted-foreground font-bold font-headline uppercase tracking-widest hover:text-foreground transition-colors"
                                 >
                                     Back to Queue
@@ -502,13 +622,22 @@ export default function AdminDashboard() {
 
 // --- Helper Components ---
 
-function DetailItem({ label, value, icon }: { label: string, value: string, icon: string }) {
+function DetailItem({ label, value, icon, isEditing, onChange }: { label: string, value: string, icon: string, isEditing?: boolean, onChange?: (val: string) => void }) {
     return (
         <div className="flex items-start gap-3">
             <div className="mt-1 text-primary/30"><Icon name={icon} size={18} variant="outline" /></div>
             <div>
                 <p className="font-headline text-[10px] font-bold text-muted-foreground uppercase tracking-widest mb-1">{label}</p>
-                <p className="font-body font-bold text-foreground">{value || '-'}</p>
+                {isEditing && onChange ? (
+                    <input
+                        type="text"
+                        value={value}
+                        onChange={(e) => onChange(e.target.value)}
+                        className="font-body font-bold text-foreground bg-transparent border-b border-primary/20 focus:outline-none focus:border-primary w-full text-sm py-1"
+                    />
+                ) : (
+                    <p className="font-body font-bold text-foreground">{value || '-'}</p>
+                )}
             </div>
         </div>
     );
