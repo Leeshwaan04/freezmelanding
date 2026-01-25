@@ -98,7 +98,7 @@ export default function HowItWorksInteractive() {
     "Seamless Date Planning & Coordination",
     "Post-Introduction Feedback & Refinement",
     "Professional Profile Curation",
-    "Photoshoot & Styling Guidance",
+    "E2E Guidance & Support",
     "Absolute Privacy (Profiles are never public)"
   ];
 

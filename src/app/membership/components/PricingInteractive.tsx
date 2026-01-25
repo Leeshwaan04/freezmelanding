@@ -20,7 +20,7 @@ const PricingInteractive: React.FC = () => {
     { text: 'Seamless Date Planning & Coordination', included: true },
     { text: 'Post-Introduction Feedback & Refinement', included: true },
     { text: 'Professional Profile Curation', included: true },
-    { text: 'Photoshoot & Styling Guidance', included: true },
+    { text: 'E2E Guidance & Support', included: true },
     { text: 'Absolute Privacy (Profiles are never public)', included: true },
   ];
 
