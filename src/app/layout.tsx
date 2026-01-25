@@ -32,17 +32,17 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: 'Freezme - Premium Introduction for Intentional Daters',
-  description: 'Tired of swiping? Experience human-curated introduction designed for intentional dating and meaningful connections. Quality over quantity, always.',
-  keywords: ['introduction', 'intentional dating', 'premium dating', 'curated introductions', 'serious relationships'],
+  title: 'Freezme - Premium Introductions for Intentional Daters',
+  description: 'Human-curated introductions for intentional dating and meaningful connections. Quality over quantity, always.',
+  keywords: ['introductions', 'matchmaking', 'intentional dating', 'premium dating', 'curated introductions', 'serious relationships'],
   authors: [{ name: 'Sumit', url: 'https://freezme.in' }],
   metadataBase: new URL('https://freezme.in'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Freezme - Premium Introduction for Intentional Daters',
-    description: 'Human-curated introduction for professionals and intentional daters.',
+    title: 'Freezme - Premium Introductions for Intentional Daters',
+    description: 'Human-curated introductions for professionals and intentional daters.',
     url: 'https://freezme.in',
     siteName: 'Freezme',
     locale: 'en_IN',

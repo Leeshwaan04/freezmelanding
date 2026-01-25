@@ -39,33 +39,12 @@ const CredentialsSection = ({ className = '' }: CredentialsSectionProps) => {
     }
   ];
 
-  const mediaFeatures = [
-    {
-      id: 1,
-      publication: "The Times of India",
-      title: "Redefining Modern Introduction",
-      date: "December 2025"
-    },
-    {
-      id: 2,
-      publication: "Hindustan Times",
-      title: "The Human Touch in Digital Dating",
-      date: "November 2025"
-    },
-    {
-      id: 3,
-      publication: "Economic Times",
-      title: "Premium Introduction Services on the Rise",
-      date: "October 2025"
-    }
-  ];
-
   return (
     <section className={`py-16 lg:py-24 bg-card ${className}`}>
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Professional Credentials */}
-          <div className="mb-20">
+          <div>
             <div className="text-center mb-12">
               <h2 className="font-headline text-3xl lg:text-4xl font-semibold text-foreground mb-4">
                 Professional Credentials
@@ -94,40 +73,6 @@ const CredentialsSection = ({ className = '' }: CredentialsSectionProps) => {
                       {credential.description}
                     </p>
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Media Recognition */}
-          <div>
-            <div className="text-center mb-12">
-              <h2 className="font-headline text-3xl lg:text-4xl font-semibold text-foreground mb-4">
-                Media Recognition
-              </h2>
-              <p className="font-body text-lg text-muted-foreground">
-                Featured in leading publications for our innovative approach
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              {mediaFeatures.map((feature) => (
-                <div
-                  key={feature.id}
-                  className="bg-background p-6 rounded-lg border border-border hover:border-primary transition-all duration-300"
-                >
-                  <div className="mb-4">
-                    <Icon name="NewspaperIcon" size={32} variant="outline" className="text-primary" />
-                  </div>
-                  <h3 className="font-headline text-lg font-semibold text-foreground mb-2">
-                    {feature.publication}
-                  </h3>
-                  <p className="font-body text-base text-muted-foreground mb-2">
-                    {feature.title}
-                  </p>
-                  <p className="font-body text-sm text-muted-foreground opacity-75">
-                    {feature.date}
-                  </p>
                 </div>
               ))}
             </div>

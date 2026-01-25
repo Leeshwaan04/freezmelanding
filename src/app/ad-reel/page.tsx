@@ -9,26 +9,26 @@ const SCENES = [
     {
         id: 1,
         duration: 4000,
-        image: '/ad_couple_rooftop.png', // We will use the generated image
-        text1: "We want kids...",
-        text2: "Just not today.",
-        highlight: "today"
+        image: '/ad_couple_rooftop.png', // Placeholder (Chaos/Crowd would be better)
+        text1: "Tired of the",
+        text2: "endless scroll?",
+        highlight: "scroll"
     },
     {
         id: 2,
         duration: 4000,
-        image: '/ad_abstract_clock.png', // We will use the generated image
-        text1: "Don't let the clock",
-        text2: "dictate your love story.",
-        highlight: "love story"
+        image: '/ad_abstract_clock.png', // Placeholder (Calm/Classy would be better)
+        text1: "Date with intention.",
+        text2: "Not algorithms.",
+        highlight: "intention"
     },
     {
         id: 3,
         duration: 5000,
-        image: '/ad_freezme_app.png', // We will use the generated image
-        text1: "Freeze Time.",
-        text2: "Secure Your Future.",
-        highlight: "Future",
+        image: '/ad_freezme_app.png',
+        text1: "Freezme.",
+        text2: "Human Curated.",
+        highlight: "Human",
         isEnd: true
     }
 ];
