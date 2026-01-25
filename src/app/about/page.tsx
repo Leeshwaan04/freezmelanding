@@ -4,7 +4,6 @@ import HeroSection from './components/HeroSection';
 import FounderStory from './components/FounderStory';
 import MissionValues from './components/MissionValues';
 import PhilosophySection from './components/PhilosophySection';
-import CredentialsSection from './components/CredentialsSection';
 import CTASection from './components/CTASection';
 import Footer from '@/components/common/Footer';
 
@@ -23,7 +22,6 @@ export default function AboutPage() {
         <FounderStory />
         <MissionValues />
         <PhilosophySection />
-        <CredentialsSection />
         <CTASection />
         <Footer />
       </div>
