@@ -539,12 +539,6 @@ const ApplicationInteractive = () => {
         </div>
       )}
       {/* Version Marker for debugging */}
-      {/* Version Marker for debugging */}
-      <div className="text-center mt-8 pb-4">
-        <p className="text-xs font-bold text-red-500 bg-red-100 py-2 px-4 rounded-full inline-block animate-pulse border border-red-200">
-          Freezme App v1.2 (DOB & Layout Fixes Live)
-        </p>
-      </div>
     </div>
   );
 };
