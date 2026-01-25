@@ -40,10 +40,10 @@ const ContactPrivacy: React.FC<ContactPrivacyProps> = ({ className = '' }) => {
                   For privacy-related inquiries and data requests
                 </p>
                 <a
-                  href="mailto:privacy@freezme.com"
+                  href="mailto:privacy@freezme.in"
                   className="font-body text-base font-medium text-primary hover:text-primary/80 transition-colors duration-200"
                 >
-                  privacy@freezme.com
+                  privacy@freezme.in
                 </a>
               </div>
 
@@ -83,7 +83,7 @@ const ContactPrivacy: React.FC<ContactPrivacyProps> = ({ className = '' }) => {
                       <span className="font-medium">Name:</span> Priya Sharma
                     </p>
                     <p className="font-body text-sm text-foreground">
-                      <span className="font-medium">Email:</span> dpo@freezme.com
+                      <span className="font-medium">Email:</span> dpo@freezme.in
                     </p>
                     <p className="font-body text-sm text-foreground">
                       <span className="font-medium">Office Hours:</span> Monday - Friday, 9:00 AM - 6:00 PM IST
@@ -132,10 +132,10 @@ const ContactPrivacy: React.FC<ContactPrivacyProps> = ({ className = '' }) => {
                 For privacy-related inquiries and data requests
               </p>
               <a
-                href="mailto:privacy@freezme.com"
+                href="mailto:privacy@freezme.in"
                 className="font-body text-base font-medium text-primary hover:text-primary/80 transition-colors duration-200"
               >
-                privacy@freezme.com
+                privacy@freezme.in
               </a>
             </div>
 
@@ -175,7 +175,7 @@ const ContactPrivacy: React.FC<ContactPrivacyProps> = ({ className = '' }) => {
                     <span className="font-medium">Name:</span> Priya Sharma
                   </p>
                   <p className="font-body text-sm text-foreground">
-                    <span className="font-medium">Email:</span> dpo@freezme.com
+                    <span className="font-medium">Email:</span> dpo@freezme.in
                   </p>
                   <p className="font-body text-sm text-foreground">
                     <span className="font-medium">Office Hours:</span> Monday - Friday, 9:00 AM - 6:00 PM IST
