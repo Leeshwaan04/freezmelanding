@@ -1,12 +1,14 @@
 'use client';
 
 import FormField from './FormField';
+import PhoneInputField from './PhoneInputField';
 import { motion } from 'framer-motion';
 
 interface PersonalData {
   fullName: string;
   email: string;
   phone: string;
+  countryCode: string;
   dateOfBirth: string;
   gender: string;
   height: string;
@@ -123,15 +125,15 @@ const Step1Personal = ({ data, errors, onChange }: Step1PersonalProps) => {
         </motion.div>
 
         <motion.div variants={itemVariants}>
-          <FormField
+          <PhoneInputField
             label="Phone Number"
             name="phone"
-            type="tel"
             value={data.phone}
+            countryCode={data.countryCode}
             onChange={onChange}
             error={errors.phone}
             required
-            placeholder="+91 00000 00000"
+            placeholder="00000 00000"
             icon="PhoneIcon"
           />
         </motion.div>

@@ -17,6 +17,7 @@ interface FormData {
   fullName: string;
   email: string;
   phone: string;
+  countryCode: string;
   dateOfBirth: string;
   gender: string;
   height: string;
@@ -57,6 +58,7 @@ const ApplicationInteractive = () => {
     fullName: '',
     email: '',
     phone: '',
+    countryCode: '+91', // Default to India
     dateOfBirth: '',
     gender: '',
     height: '',
@@ -370,6 +372,7 @@ const ApplicationInteractive = () => {
                     fullName: formData.fullName,
                     email: formData.email,
                     phone: formData.phone,
+                    countryCode: formData.countryCode,
                     dateOfBirth: formData.dateOfBirth,
                     gender: formData.gender,
                     height: formData.height,
