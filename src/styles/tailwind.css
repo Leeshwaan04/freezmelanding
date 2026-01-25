@@ -9,50 +9,75 @@
 @layer base {
   :root {
     /* Background Colors */
-    --color-background: #FDFCFA; /* warm-white */
-    --color-foreground: #2A2A2A; /* warm-black */
-    --color-card: #F7F5F2; /* beige-50 */
-    --color-card-foreground: #2A2A2A; /* warm-black */
-    --color-popover: #FFFFFF; /* white */
-    --color-popover-foreground: #2A2A2A; /* warm-black */
-    
+    --color-background: #FDFCFA;
+    /* warm-white */
+    --color-foreground: #2A2A2A;
+    /* warm-black */
+    --color-card: #F7F5F2;
+    /* beige-50 */
+    --color-card-foreground: #2A2A2A;
+    /* warm-black */
+    --color-popover: #FFFFFF;
+    /* white */
+    --color-popover-foreground: #2A2A2A;
+    /* warm-black */
+
     /* Muted Colors */
-    --color-muted: #F7F5F2; /* beige-50 */
-    --color-muted-foreground: #6B6B6B; /* gray-500 */
-    
+    --color-muted: #F7F5F2;
+    /* beige-50 */
+    --color-muted-foreground: #6B6B6B;
+    /* gray-500 */
+
     /* Border & Input */
-    --color-border: #E9ECEF; /* gray-200 */
-    --color-input: #E9ECEF; /* gray-200 */
-    --color-ring: #2C5F5D; /* teal-700 */
-    
+    --color-border: #E9ECEF;
+    /* gray-200 */
+    --color-input: #E9ECEF;
+    /* gray-200 */
+    --color-ring: #2C5F5D;
+    /* teal-700 */
+
     /* Primary Colors */
-    --color-primary: #2C5F5D; /* teal-700 */
-    --color-primary-foreground: #FFFFFF; /* white */
-    
+    --color-primary: #2C5F5D;
+    /* teal-700 */
+    --color-primary-foreground: #FFFFFF;
+    /* white */
+
     /* Secondary Colors */
-    --color-secondary: #8B7355; /* brown-600 */
-    --color-secondary-foreground: #FFFFFF; /* white */
-    
+    --color-secondary: #8B7355;
+    /* brown-600 */
+    --color-secondary-foreground: #FFFFFF;
+    /* white */
+
     /* Accent Colors */
-    --color-accent: #D4A574; /* gold-400 */
-    --color-accent-foreground: #2A2A2A; /* warm-black */
-    
+    --color-accent: #D4A574;
+    /* gold-400 */
+    --color-accent-foreground: #2A2A2A;
+    /* warm-black */
+
     /* Destructive Colors */
-    --color-destructive: #A0522D; /* sienna-600 */
-    --color-destructive-foreground: #FFFFFF; /* white */
-    
+    --color-destructive: #A0522D;
+    /* sienna-600 */
+    --color-destructive-foreground: #FFFFFF;
+    /* white */
+
     /* Success Colors */
-    --color-success: #5A8B5A; /* green-600 */
-    --color-success-foreground: #FFFFFF; /* white */
-    
+    --color-success: #5A8B5A;
+    /* green-600 */
+    --color-success-foreground: #FFFFFF;
+    /* white */
+
     /* Warning Colors */
-    --color-warning: #B8860B; /* darkgoldenrod */
-    --color-warning-foreground: #FFFFFF; /* white */
-    
+    --color-warning: #B8860B;
+    /* darkgoldenrod */
+    --color-warning-foreground: #FFFFFF;
+    /* white */
+
     /* Error Colors */
-    --color-error: #A0522D; /* sienna-600 */
-    --color-error-foreground: #FFFFFF; /* white */
-    
+    --color-error: #A0522D;
+    /* sienna-600 */
+    --color-error-foreground: #FFFFFF;
+    /* white */
+
     /* Spacing System */
     --space-xs: 8px;
     --space-sm: 16px;
@@ -60,7 +85,7 @@
     --space-lg: 40px;
     --space-xl: 64px;
     --space-2xl: 104px;
-    
+
     /* Border Radius */
     --radius: 0.5rem;
   }
@@ -70,11 +95,25 @@
   * {
     @apply border-border;
   }
+
   html {
     background-color: var(--color-primary);
   }
+
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Match native input placeholder color for select dropdowns */
+  input::placeholder,
+  textarea::placeholder {
+    color: #9CA3AF;
+    opacity: 1;
+  }
+
+  /* Custom class for select placeholder state */
+  .select-placeholder {
+    color: #9CA3AF !important;
   }
 }
