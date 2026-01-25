@@ -57,7 +57,7 @@ const FormField = ({
         whileTap={{ scale: 0.995 }}
       >
         {icon && (
-          <div className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground/50 transition-colors duration-200 group-focus-within:text-primary">
+          <div className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground/50 transition-colors duration-200 group-focus-within:text-primary z-10">
             <Icon name={icon} size={20} variant="outline" />
           </div>
         )}
