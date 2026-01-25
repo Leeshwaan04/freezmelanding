@@ -74,7 +74,7 @@ const PhoneInputField = ({
                         name="countryCode"
                         value={countryCode}
                         onChange={onChange}
-                        className={`h-full ${icon ? 'pl-12' : 'pl-4'} pr-2 py-4 bg-card/40 backdrop-blur-sm border-2 rounded-l-2xl font-body text-foreground transition-all duration-300 focus:outline-none focus:ring-0 focus:bg-card/80 ${error ? 'border-destructive/40 focus:border-destructive' : 'border-border/50 focus:border-primary'} appearance-none cursor-pointer`}
+                        className={`h-full ${icon ? 'pl-12' : 'pl-4'} pr-8 py-4 bg-card/40 backdrop-blur-sm border-2 rounded-l-2xl font-body text-foreground transition-all duration-300 focus:outline-none focus:ring-0 focus:bg-card/80 ${error ? 'border-destructive/40 focus:border-destructive' : 'border-border/50 focus:border-primary'} appearance-none cursor-pointer`}
                     >
                         {countryCodes.map(({ code, country, flag }) => (
                             <option key={code} value={code}>
@@ -82,8 +82,8 @@ const PhoneInputField = ({
                             </option>
                         ))}
                     </select>
-                    <div className="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none">
-                        <Icon name="ChevronDownIcon" size={16} variant="outline" className="text-muted-foreground/50" />
+                    <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none">
+                        <Icon name="ChevronDownIcon" size={14} variant="outline" className="text-muted-foreground/50" />
                     </div>
                 </div>
 
