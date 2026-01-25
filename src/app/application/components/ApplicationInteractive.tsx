@@ -538,6 +538,10 @@ const ApplicationInteractive = () => {
           </div>
         </div>
       )}
+      {/* Version Marker for debugging */}
+      <div className="text-center mt-8 pb-4 opacity-20 hover:opacity-100 transition-opacity">
+        <p className="text-[10px] font-mono text-muted-foreground">Freezme App v1.1 (Mobile Fixes Live)</p>
+      </div>
     </div>
   );
 };
