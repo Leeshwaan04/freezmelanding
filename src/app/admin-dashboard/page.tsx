@@ -100,11 +100,37 @@ export default function AdminDashboard() {
         }
     };
 
+    const [sortConfig, setSortConfig] = useState<{ key: keyof Application | string, direction: 'asc' | 'desc' }>({ key: 'submitted_at', direction: 'desc' });
+
     const filteredApps = applications.filter(app =>
         (app.full_name?.toLowerCase() || '').includes(searchQuery.toLowerCase()) ||
         (app.email?.toLowerCase() || '').includes(searchQuery.toLowerCase()) ||
         (app.city?.toLowerCase() || '').includes(searchQuery.toLowerCase())
     );
+
+    const handleSort = (key: string) => {
+        let direction: 'asc' | 'desc' = 'asc';
+        if (sortConfig.key === key && sortConfig.direction === 'asc') {
+            direction = 'desc';
+        }
+        setSortConfig({ key, direction });
+    };
+
+    const sortedApps = [...filteredApps].sort((a, b) => {
+        if (sortConfig.key === 'submitted_at') {
+            const dateA = new Date(a.submitted_at).getTime();
+            const dateB = new Date(b.submitted_at).getTime();
+            return sortConfig.direction === 'asc' ? dateA - dateB : dateB - dateA;
+        }
+        if (sortConfig.key === 'full_name') {
+            const nameA = a.full_name?.toLowerCase() || '';
+            const nameB = b.full_name?.toLowerCase() || '';
+            if (nameA < nameB) return sortConfig.direction === 'asc' ? -1 : 1;
+            if (nameA > nameB) return sortConfig.direction === 'asc' ? 1 : -1;
+            return 0;
+        }
+        return 0;
+    });
 
     if (!isAuthenticated) {
         return (
@@ -232,15 +258,31 @@ export default function AdminDashboard() {
                             <table className="w-full text-left border-collapse">
                                 <thead className="bg-muted/30 text-muted-foreground uppercase text-[10px] font-bold tracking-widest">
                                     <tr>
-                                        <th className="px-8 py-6">Applicant Node</th>
+                                        <th className="px-8 py-6 cursor-pointer hover:bg-muted/50 transition-colors group" onClick={() => handleSort('full_name')}>
+                                            <div className="flex items-center gap-2">
+                                                Applicant Node
+                                                <div className="flex flex-col">
+                                                    <Icon name="ChevronUpIcon" size={10} className={`${sortConfig.key === 'full_name' && sortConfig.direction === 'asc' ? 'text-primary' : 'text-muted-foreground/30'}`} />
+                                                    <Icon name="ChevronDownIcon" size={10} className={`-mt-1 ${sortConfig.key === 'full_name' && sortConfig.direction === 'desc' ? 'text-primary' : 'text-muted-foreground/30'}`} />
+                                                </div>
+                                            </div>
+                                        </th>
                                         <th className="px-8 py-6">Identity details</th>
-                                        <th className="px-8 py-6">Submission cycle</th>
+                                        <th className="px-8 py-6 cursor-pointer hover:bg-muted/50 transition-colors group" onClick={() => handleSort('submitted_at')}>
+                                            <div className="flex items-center gap-2">
+                                                Submission cycle
+                                                <div className="flex flex-col">
+                                                    <Icon name="ChevronUpIcon" size={10} className={`${sortConfig.key === 'submitted_at' && sortConfig.direction === 'asc' ? 'text-primary' : 'text-muted-foreground/30'}`} />
+                                                    <Icon name="ChevronDownIcon" size={10} className={`-mt-1 ${sortConfig.key === 'submitted_at' && sortConfig.direction === 'desc' ? 'text-primary' : 'text-muted-foreground/30'}`} />
+                                                </div>
+                                            </div>
+                                        </th>
                                         <th className="px-8 py-6 text-center">Narrative</th>
                                         <th className="px-8 py-6 text-right">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-border/30">
-                                    {filteredApps.map((app) => (
+                                    {sortedApps.map((app) => (
                                         <tr key={app.id} className="hover:bg-primary/5 transition-all group cursor-pointer" onClick={() => setSelectedApp(app)}>
                                             <td className="px-8 py-6">
                                                 <div className="flex items-center gap-4">
@@ -268,7 +310,7 @@ export default function AdminDashboard() {
                                                                 month: 'short', day: 'numeric'
                                                             })}
                                                         </p>
-                                                        <p className="font-body text-[10px] text-muted-foreground uppercase tracking-tighter">
+                                                        <p className="font-body text-xs text-muted-foreground uppercase tracking-tighter">
                                                             {new Date(app.submitted_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                                         </p>
                                                     </div>
@@ -276,7 +318,11 @@ export default function AdminDashboard() {
                                             </td>
                                             <td className="px-8 py-6 text-center">
                                                 <button
-                                                    className="inline-flex items-center gap-2 text-primary font-headline font-bold text-xs uppercase tracking-widest group-hover:gap-3 transition-all px-4 py-2 rounded-xl bg-primary/5 border border-primary/20"
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        setSelectedApp(app);
+                                                    }}
+                                                    className="inline-flex items-center gap-2 text-primary font-headline font-bold text-xs uppercase tracking-widest group-hover:gap-3 transition-all px-4 py-2 rounded-xl bg-primary/5 border border-primary/20 hover:bg-primary hover:text-white"
                                                 >
                                                     View Depth
                                                     <Icon name="ChevronRightIcon" size={14} />
@@ -287,7 +333,7 @@ export default function AdminDashboard() {
                                                     <button
                                                         onClick={() => setSelectedApp(app)}
                                                         className="p-2 text-primary hover:bg-primary/10 rounded-lg transition-all"
-                                                        title="Edit"
+                                                        title="Edit / Details"
                                                     >
                                                         <Icon name="PencilSquareIcon" size={18} />
                                                     </button>

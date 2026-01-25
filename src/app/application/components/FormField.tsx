@@ -122,8 +122,8 @@ const FormField = ({
             onChange={onChange}
             placeholder={placeholder}
             required={required}
-            className={`w-full ${icon ? 'pl-12 pr-5' : 'px-5'} py-4 bg-card/40 backdrop-blur-sm border-2 rounded-2xl font-body text-foreground transition-all duration-300 focus:outline-none focus:ring-0 focus:bg-card/80 ${error ? 'border-destructive/40 focus:border-destructive shadow-[0_0_15px_rgba(var(--destructive),0.1)]' : 'border-border/50 focus:border-primary shadow-sm focus:shadow-[0_10px_30px_rgba(var(--primary),0.05)]'
-              } ${type === 'date' ? '[&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-inner-spin-button]:hidden [&::-webkit-clear-button]:hidden' : ''}`}
+            className={`w-full ${icon ? 'pl-12 pr-5' : 'px-5'} py-4 bg-card/40 backdrop-blur-sm border-2 rounded-2xl font-body transition-all duration-300 focus:outline-none focus:ring-0 focus:bg-card/80 ${error ? 'border-destructive/40 focus:border-destructive shadow-[0_0_15px_rgba(var(--destructive),0.1)]' : 'border-border/50 focus:border-primary shadow-sm focus:shadow-[0_10px_30px_rgba(var(--primary),0.05)]'
+              } ${(type === 'date' && !value) ? 'text-gray-400' : 'text-foreground'} ${type === 'date' ? '[&::-webkit-calendar-picker-indicator]:hidden [&::-webkit-inner-spin-button]:hidden [&::-webkit-clear-button]:hidden' : ''}`}
           />
         )}
       </motion.div>

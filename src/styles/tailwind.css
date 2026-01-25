@@ -112,13 +112,14 @@
     opacity: 1;
   }
 
-  /* Style date input placeholder (when empty) */
-  input[type="date"]:not(:valid),
+  /* Force date input internal fields to inherit text color */
+  input[type="date"]::-webkit-datetime-edit,
+  input[type="date"]::-webkit-datetime-edit-fields-wrapper,
   input[type="date"]::-webkit-datetime-edit-text,
-  input[type="date"]::-webkit-datetime-edit-month-field:not([aria-valuenow]),
-  input[type="date"]::-webkit-datetime-edit-day-field:not([aria-valuenow]),
-  input[type="date"]::-webkit-datetime-edit-year-field:not([aria-valuenow]) {
-    color: #9CA3AF;
+  input[type="date"]::-webkit-datetime-edit-month-field,
+  input[type="date"]::-webkit-datetime-edit-day-field,
+  input[type="date"]::-webkit-datetime-edit-year-field {
+    color: inherit;
   }
 
   /* Custom class for select placeholder state */
