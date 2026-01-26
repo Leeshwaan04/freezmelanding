@@ -87,6 +87,22 @@ const Step1Personal = ({ data, errors, onChange }: Step1PersonalProps) => {
       variants={containerVariants}
       className="space-y-8"
     >
+      {/* Founder's Message - Human Touch */}
+      <motion.div
+        variants={itemVariants}
+        className="bg-accent/10 border border-accent/20 rounded-2xl p-6 mb-8 flex items-start gap-4"
+      >
+        <div className="flex-shrink-0 w-12 h-12 bg-accent rounded-full flex items-center justify-center text-accent-foreground font-headline font-bold text-xl">
+          S
+        </div>
+        <div>
+          <h4 className="font-headline font-semibold text-primary mb-1">A Note from Sumit</h4>
+          <p className="font-body text-sm text-foreground/80 leading-relaxed italic">
+            &quot;I created Freezme because I saw how swiping culture was burning out good people. My team and I manually review every application to protect the quality of this community. Take your time—we&apos;re looking for depth, not just data.&quot;
+          </p>
+        </div>
+      </motion.div>
+
       <div className="border-b border-border/20 pb-6">
         <h2 className="font-headline text-3xl font-bold bg-gradient-to-r from-foreground to-foreground/60 bg-clip-text text-transparent mb-2">
           Personal Information

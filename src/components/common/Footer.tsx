@@ -103,7 +103,7 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
             <h3 className="font-headline text-base font-semibold text-background mb-4">
               Connect
             </h3>
-            <div className="space-y-3">
+            <div className="space-y-4">
               <a
                 href="mailto:hello@freezme.in"
                 className="flex items-center gap-2 font-body text-sm text-background/70 hover:text-accent transition-colors duration-300"
@@ -111,6 +111,48 @@ const Footer: React.FC<FooterProps> = ({ className = '' }) => {
                 <Icon name="EnvelopeIcon" size={16} variant="outline" />
                 hello@freezme.in
               </a>
+
+              {/* Newsletter Soft Lead */}
+              <div className="pt-4 border-t border-background/10">
+                <p className="font-body text-xs text-background/60 mb-3">
+                  Join our &quot;Intentional Dating&quot; newsletter for exclusive relationship insights.
+                </p>
+                <form
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    const form = e.target as HTMLFormElement;
+                    const emailInput = form.querySelector('input') as HTMLInputElement;
+                    const email = emailInput.value;
+                    if (!email) return;
+
+                    try {
+                      await fetch('/api/leads', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email, leadSource: 'footer_newsletter' }),
+                      });
+                      emailInput.value = '';
+                      alert('Thank you for subscribing!');
+                    } catch (err) {
+                      console.error(err);
+                    }
+                  }}
+                  className="flex gap-2"
+                >
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    required
+                    className="flex-1 bg-background/5 border border-background/10 rounded px-3 py-2 text-xs text-background focus:outline-none focus:border-accent transition-colors"
+                  />
+                  <button
+                    type="submit"
+                    className="bg-accent text-accent-foreground px-3 py-2 rounded text-xs font-headline font-bold hover:bg-accent/90 transition-colors"
+                  >
+                    Join
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
 

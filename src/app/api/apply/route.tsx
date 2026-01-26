@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
+import { resend } from '@/lib/resend';
+import { WelcomeEmailTemplate } from '@/components/emails/WelcomeEmailTemplate';
 
 export async function POST(request: Request) {
     try {
@@ -14,10 +16,10 @@ export async function POST(request: Request) {
             );
         }
 
-        // Try to save to Supabase if configured, otherwise just log
+        // Try to save to Supabase if configured
         if (process.env.NEXT_PUBLIC_SUPABASE_URL && process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
             try {
-                const { data, error } = await supabase
+                const { error } = await supabase
                     .from('applications')
                     .insert([
                         {
@@ -52,11 +54,29 @@ export async function POST(request: Request) {
 
                 if (error) {
                     console.error('Supabase error:', error);
-                    // We'll still return success to the user but log the error for the dev
-                    // This prevents the UI from breaking if DB schema isn't ready yet
                 }
             } catch (dbError) {
                 console.error('Database connection error:', dbError);
+            }
+        }
+
+        // Send Welcome Email via Resend
+        if (resend) {
+            try {
+                const { data, error: emailError } = await resend.emails.send({
+                    from: 'Freezme <hello@freezme.in>',
+                    to: [email],
+                    subject: 'Application Received - Freezme Community',
+                    react: <WelcomeEmailTemplate fullName={fullName} />,
+                });
+
+                if (emailError) {
+                    console.error('Email sending error:', emailError);
+                } else {
+                    console.log('Welcome email sent successfully:', data?.id);
+                }
+            } catch (emailErr) {
+                console.error('Resend service error:', emailErr);
             }
         }
 

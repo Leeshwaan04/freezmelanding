@@ -232,6 +232,24 @@ const ApplicationInteractive = () => {
 
   const handleNext = () => {
     if (validateStep(currentStep)) {
+      // Capture Soft Lead on Step 1 completion
+      if (currentStep === 1) {
+        fetch('/api/leads', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fullName: formData.fullName,
+            email: formData.email,
+            phone: formData.phone,
+            leadSource: 'application_abandonment_prevention',
+            metadata: {
+              gender: formData.gender,
+              city: formData.city
+            }
+          }),
+        }).catch(err => console.error('Silent lead capture failed:', err));
+      }
+
       setDirection(1);
       setCurrentStep((prev) => Math.min(prev + 1, 4));
       window.scrollTo({ top: 0, behavior: 'smooth' });
